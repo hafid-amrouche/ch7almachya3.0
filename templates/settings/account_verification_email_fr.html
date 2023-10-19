@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+  salut, {{ user.first_name|capfirst }}
+
+  je suis hafid du "Ch7al machya"
+
+  Cliquez s'il vous plait le lien ci-dessous pour confirmer votre inscription
+
+  http://{{ domain }}{% url 'confirm-activation' uidb64=uid token=token %}
+  
+
+{% endautoescape %}

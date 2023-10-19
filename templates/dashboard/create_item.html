@@ -1,0 +1,466 @@
+{% extends 'base.html' %}
+{% load user_templates %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+{% include 'includes/alerts.html' %}
+  {% if LANGUAGE_CODE != "ar"  %}
+    <form action="{% url 'create-item' %}" method="POST" enctype="multipart/form-data" id="my-form">
+      {% csrf_token %}
+        <section class="comments">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black p-3">
+                    <div class="container pl-0">
+                      <h4>{% trans "Item information" %}</h4>
+                    </div>
+                    <div class="form-group">
+                      <label  class="col-form-label pl-0">{% trans "State" %}</label>
+                      <select class="form-control " name="state">
+                        {% for state in states %}
+                          <option value="{{state.id}}">{{ state.code }} - {{ state.name|capfirst }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "City" %}</label>
+                      <div class="">
+                        <input type="text" name="city" placeholder="{% trans 'You can keep this field empty' %}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "Phone number" %} 1</label>
+                      <div class="">
+                        <input type="tel" name="phone_number" placeholder="{% trans 'You can keep this field empty' %}"  maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "Phone number" %} 2</label>
+                      <div class="">
+                        <input type="tel" name="phone_number2" placeholder="{% trans 'You can keep this field empty' %}" maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "Phone number" %} 3</label>
+                      <div class="">
+                        <input type="tel" name="phone_number3" placeholder="{% trans 'You can keep this field empty' %}" maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "Brand" %} </label>
+                      <div>
+                        <select name="category" id="category-select" class="form-control">
+                            {% for parent in parent_categories|order_by:"-order" %}
+                              <option disabled style="color:#00b517; font-weight:900;">{{ parent.name|capfirst }}</option>
+                                {% for category in parent.children.all|order_by:"-order" %}
+                                  <option value="{{ parent.name_en }}|{{ category.name_en }}" id="{{ parent.name_en }}-{{ category.name_en }}"> &ensp; &ensp;{{ category.name|capfirst }}</option>
+                                {% endfor %}
+                            {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-3"  id="id_new_category_div" style="display: none;">
+                      <input type="text" name="new-brand" id="id_new_category" style="border: 2px var(--red) solid;" maxlength="50" class="form-control" placeholder="{% trans "Brand name" %}">
+                      <hr>
+                    </div>
+                    <div class="form-group {% if form.name.errors %}error{% endif %}">
+                      <label  class="form-label">{% trans "Model" %}  (*)</label>
+                      <div class="">
+                        <textarea type="text" rows="1" placeholder="{% trans "example : symbol" %}"  name="name" maxlength="200" class="form-control" required id="id_name"></textarea>
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_year" class="form-label">{% trans "Year" %}</label>
+                      <div class="">
+                       <select name="year" id="id_year" class="form-control" required>
+                        {% for year in years %}
+                          <option value="{{year}}">{{year}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Color" %}</label>
+                      <div class="">
+                       <select name="color" id="" class="form-control" required>
+                        {% for color in colors %}
+                          <option value="{{ color.id }}">{{color.name|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Document" %}</label>
+                      <div class="">
+                       <select name="document" id="" class="form-control" required>
+                        {% for document in documents %}
+                          <option value="{{ document.id }}">{{document.name|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "Engine" %}</label>
+                      <div class="">
+                        <input type="text" placeholder="{% trans 'You can keep this field empty' %}" name="engine" maxlength="30" class="form-control">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                      <label for="id_price" class="form-label">{% trans "Price in millions" %}</label>
+                      <div class="">
+                        <input type="number" placeholder="You can keep this field empty" name="price" class="form-control" id="id_price">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_given_price" class="form-label">{% trans "Offered price in millions" %}</label>
+                      <div class="">
+                        <input type="number" name="given_price" placeholder="You can keep this field empty" class="form-control" id="id_given_price">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group mb-3">
+                      <label class="form-label">{% trans "Car condition" %}</label>
+                      <div class="">
+                        <select name="condition" id="" class="form-control">
+                            <option value="used" selected>{% trans "Used" %}</option>
+                            <option value="new">{% trans "New" %}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="id_distance" class="form-label">{% trans "Distance travelled in Kilo Meters" %}  (*)</label>
+                      <div class="">
+                        <input type="number" name="distance" class="form-control" max="99999999" required id="id_distance">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Fuel" %}</label>
+                      <div class="">
+                       <select name="fuel" id="" class="form-control" required>
+                        {% for fuel in fuels %}
+                          <option value="{{ fuel.name_en }}">{{fuel|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_gear" class="col-form-label">{% trans "Gear box" %}</label>
+                      <div class="">
+                       <select name="gear" id="id_gear" class="form-control" required>
+                        {% for gear_box in gear_boxs %}
+                          <option value="{{ gear_box.name_en }}">{{ gear_box.name }}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group d-flex my-2  align-items-center">
+                      <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "Open for exchange?" %}</strong>
+                      <input class="mx-3 " style=""   type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                    </div>
+                    <hr>
+                    <div class="form-group d-flex mb-0  align-items-center">
+                      <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "All options car ?" %}</strong>
+                      <input class="mx-3"  type="checkbox" id="flexSwitchCheckChecked" name="all_options">
+                    </div>
+                    <div class="form-group mt-4 mb-3" id="options-div">
+                      <strong class="form-label" style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "If not what are it's options then ?" %}</strong>
+                      <div class="col-12 mt-3" id="select-div">
+                          <select id="multiple-checkboxes"  class="form-control"multiple="multiple" name="options">
+                              {% for option in options %}
+                                  <option value="{{ option.id }}">{{ option.name|capfirst }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group" >
+                      <div class=" p-2">
+                        <label class="form-label pl-0">{% trans "Description" %}:</label>
+                        <textarea type="text" placeholder="{% trans 'You can keep this field empty' %}" class="form-control" id="description" name="description"rows="6"></textarea>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section style="">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black">
+                    <div class="col-12">
+                      <div class="container pt-3">
+                        <h4>{% trans "Photos" %}</h4>
+                        <div>
+                          <strong class="mb-2">{% trans "Your post must have at least 1 photo" %}</strong>
+                        </div>
+                      </div>
+                      <div class="multiple-uploader" id="multiple-uploader">
+                        <div class="mup-msg">
+                            <span class="mup-main-msg" style="color: #00b517;">{% trans "Click to upload images" %}</span>
+                            <span class="mup-msg" style="color: #00b517;">{% trans "upload up to 20 images" %}</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+        <section style="">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black p-3">
+                  <p class="text-center mb-3">
+                    <strong>
+                      {% trans "This operation might take some time according to your internet speed. So please be patient" %}
+                    </strong>
+                  </p>
+                  <button class="btn btn-success m-2" id="load_button" disabled onclick="load(this)">{% trans "Create" %}</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  {% else %}
+    <form action="{% url 'create-item' %}" method="POST" enctype="multipart/form-data" id="my-form">
+      {% csrf_token %}
+        <section class="comments">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black p-3 text-right">
+                    <div class="container text-right pr-0">
+                      <h4>{% trans "Item information" %}</h4>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label pr-0">{% trans "State" %}</label>
+                      <select class="form-control text-right" name="state">
+                        {% for state in states %}
+                          <option value="{{state.id}}">{{ state.code }} - {{ state.name|capfirst }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">{% trans "City" %}</label>
+                      <div class=" ml-auto">
+                        <input type="text" placeholder="{% trans 'You can keep this field empty' %}" name="city" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">رقم الهاتف 1</label>
+                      <div class=" ml-auto">
+                        <input type="tel" name="phone_number" placeholder="{% trans 'You can keep this field empty' %}" maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">رقم الهاتف 2</label>
+                      <div class=" ml-auto">
+                        <input type="tel" name="phone_number2" placeholder="{% trans 'You can keep this field empty' %}" maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="form-label">رقم الهاتف 3</label>
+                      <div class=" ml-auto">
+                        <input type="tel" name="phone_number3" placeholder="{% trans 'You can keep this field empty' %}" maxlength="20" class="form-control">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group mb-3 ">
+                      <label  class="col-form-label text-right">{% trans "Brand" %}</label>
+                      <div class="">
+                        <select name="category" id="category-select" class="form-control text-right">
+                            {% for parent in parent_categories|order_by:"-order" %}
+                              <option disabled style="color:#00b517; font-weight:900;">{{ parent.name|capfirst }}</option>
+                                {% for category in parent.children.all|order_by:"-order" %}
+                                  <option value="{{ parent.name_en }}|{{ category.name_en }}" id="{{ parent.name_en }}-{{ category.name_en }}">{{ category.name|capfirst }} &ensp; &ensp;</option>
+                                {% endfor %}
+                            {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-3"  id="id_new_category_div" style="display: none;">
+                      <input type="text" name="new-brand" id="id_new_category" style="border: 2px var(--red) solid;" maxlength="50" class="form-control" placeholder="{% trans "Brand name" %}">
+                      <hr>
+                    </div>
+                    <div class="form-group {% if form.name.errors %}error{% endif %}">
+                      <label  class="col-form-label">(*) اسم السيارة</label>
+                      <div class="">
+                        <textarea type="text" rows="1" name="name" maxlength="200" class="form-control" required="" id="id_name" placeholder="مثال : symbol"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_year" class="form-label">{% trans "Year" %}</label>
+                      <div class=" ">
+                       <select name="year" id="id_year" class="form-control text-right" required>
+                        {% for year in years %}
+                          <option value="{{year}}">{{year}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Color" %}</label>
+                      <div class="">
+                       <select name="color" id="" class="form-control text-right" required>
+                        {% for color in colors %}
+                          <option value="{{ color.id }}">{{color.name|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Document" %}</label>
+                      <div class="">
+                       <select name="document" id="" class="form-control text-right" required>
+                        {% for document in documents %}
+                          <option value="{{ document.id }}">{{document.name|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="col-form-label">{% trans "Engine" %}</label>
+                      <div class=" ">
+                        <input type="text" placeholder="{% trans 'You can keep this field empty' %}" name="engine" maxlength="30" class="form-control">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group {% if form.price.errors %}error{% endif %}">
+                      <label for="id_price" class="form-label">الثمن بالمليون سنتيم</label>
+                      <div class="">
+                        <input type="number" placeholder="You can keep this field empty" name="price" max="999999" class="form-control" id="id_price">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_given_price" class="form-label">شحال عطاوك بالملون سنتيم</label>
+                      <div class="">
+                        <input type="number" name="given_price" placeholder="You can keep this field empty" max="999999" class="form-control" id="id_given_price">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="form-label">{% trans "Car condition" %}</label>
+                      <div class="">
+                        <select name="condition" id="" class="form-control text-right">
+                            <option value="used" selected>{% trans "Used" %}</option>
+                            <option value="new">{% trans "Store" %}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="id_distance" class="form-label">(*) {% trans "Distance travelled in Kilo Meters" %}</label>
+                      <div class="">
+                        <input type="number" name="distance" class="form-control"  max="99999999" required id="id_distance">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_fuel" class="col-form-label">{% trans "Fuel" %}</label>
+                      <div class="">
+                       <select name="fuel" id="" class="form-control text-right" required>
+                        {% for fuel in fuels %}
+                          <option value="{{ fuel.name_en }}">{{fuel|capfirst}}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_gear" class="col-form-label">{% trans "Gear box" %}</label>
+                      <div class="">
+                       <select name="gear" id="id_gear" class="form-control text-right" required>
+                        {% for gear_box in gear_boxs %}
+                          <option value="{{ gear_box.name_en }}">{{ gear_box.name }}</option>
+                        {% endfor %}
+                       </select>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group my-2 d-flex align-items-center">
+                      <div>
+                        <input class="" style=";margin-left: 15px;"   type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                      </div>
+                      <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;margin-left: auto;">{% trans "Open for exchange?" %}</strong>
+                    </div>
+                    <hr>
+                    <div class="form-group mb-0 d-flex align-items-center">
+                      <div>
+                        <input class="mx-3 " style=";"   type="checkbox" id="flexSwitchCheckChecked" name="all_options">
+                      </div>
+                      <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;margin-left: auto;">{% trans "All options car ?" %}</strong>
+                    </div>
+                    <div class="form-group mt-4 mb-3" id="options-div">
+                      <strong class="form-label" style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;margin-left: auto;">اذا لم تكن كاملة الخيارات. ماهي خياراتها اذا ؟</strong>
+                      <div class="col-12 mt-3" id="select-div">
+                          <select id="multiple-checkboxes"  class="form-control text-right" multiple="multiple" name="options">
+                              {% for option in options %}
+                                  <option value="{{ option.id }}">{{ option.name|capfirst }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                    </div>  
+                    <hr>
+                    <div class="form-group" >
+                      <div class=" ml-auto p-2">
+                        <label class="form-label pl-0">{% trans "Description" %}</label>
+                        <textarea type="text" placeholder="{% trans 'You can keep this field empty' %}" class="form-control text-right" id="description" name="description"rows="6"></textarea>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section style="">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black">
+                    <div class="col-12">
+                      <div class="container pt-3 text-right">
+                        <h4>{% trans "Photos" %}</h4>
+                        <div>
+                          <strong class="mb-2">{% trans "Your post must have at least 1 photo" %}</strong>
+                        </div>
+                      </div>
+                      <div class="multiple-uploader" id="multiple-uploader">
+                        <div class="mup-msg">
+                            <span class="mup-main-msg" style="color: #00b517;">{% trans "Click to upload images" %}</span>
+                            <span class="mup-msg" style="color: #00b517;">يمكنك تحميل 20 صورة</span>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+        <section style="">
+          <div class="container py-2">
+            <div class="justify-content-center">
+              <div class="">
+                <div class="card text-black p-3">
+                  <p class="text-center mb-3">
+                    <strong>
+                      {% trans "This operation might take some time according to your internet speed. So please be patient" %}
+                    </strong>
+                  </p>
+                  <button class="btn btn-success m-2" id="load_button" disabled onclick="load(this)">{% trans "Create" %}</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  {% endif %}
+  <link href="{% static 'images_uploader/css/main.css' %}" rel="stylesheet" type="text/css">
+  <script src="{% static 'images_uploader/js/multiple-uploader.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/dashboard/create_item.js' %}"></script>
+{% endblock content %}

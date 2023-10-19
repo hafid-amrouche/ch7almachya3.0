@@ -1,0 +1,1464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-18 00:30+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\ch7almachya\views.py:48
+msgid "Latest"
+msgstr "الأحدث"
+
+#: .\ch7almachya\views.py:164
+msgid "Welcome to your profile. Please remember your username \"{}\""
+msgstr "مرحبًا بك في ملفك الشخصي. الرجاء تذكر اسم المستخدم \"{}\""
+
+#: .\ch7almachya\views.py:172
+msgid "Something went wrong, please try to register again"
+msgstr "حدث خطأ ما ، يرجى محاولة التسجيل مرة أخرى"
+
+#: .\ch7almachya\views.py:180 .\templates\base.html:71 .\templates\log
+#: in.html:33 .\templates\register.html:26 .\templates\register.html:234
+msgid "Register"
+msgstr "انشاء حساب"
+
+#: .\ch7almachya\views.py:181
+msgid "Register with us at ch7al machya and start selling vehicles"
+msgstr "سجل معنا على شحال ماشيا و ابدا في بيع السيارات"
+
+#: .\ch7almachya\views.py:191 .\templates\base.html:67 .\templates\log
+#: in.html:11 in.html:28 .\templates\register.html:239
+#: .\templates\settings\forgot_password.html:19
+#: .\templates\settings\forgot_password.html:35
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\ch7almachya\views.py:192
+msgid "Login to your account at Ch7al machya"
+msgstr "سجل دخولك لحسابك على شحال ماشيا"
+
+#: .\ch7almachya\views.py:208
+msgid "You are logged in."
+msgstr "لقد سجلت الدخول."
+
+#: .\ch7almachya\views.py:211
+msgid "Login Failed"
+msgstr "فشل تسجيل الدخول"
+
+#: .\ch7almachya\views.py:224
+msgid "You are logged out."
+msgstr ".لقد قمت بتسجيل الخروج"
+
+#: .\ch7almachya\views.py:1442
+msgid "Your message was sent successfully"
+msgstr "تم ارسال رسالتك بنجاح"
+
+#: .\ch7almachya\views.py:1448 .\templates\base.html:159
+#: .\templates\base.html:225
+msgid "Contact Us"
+msgstr "تواصل معنا"
+
+#: .\ch7almachya\views.py:1449
+msgid ""
+"Contact our team at Ch7al machya for any information we will reply to you in "
+"less than a day"
+msgstr ""
+"اتصل بفريقنا في شعال ماشيا للحصول على أي معلومات سنقوم بالرد عليك في أقل من "
+"يوم"
+
+#: .\ch7almachya\views.py:1533
+msgid "Notification"
+msgstr "إشعار"
+
+#: .\dashboard\views.py:27
+msgid "You added 50 articles, for now that is the maximum number of artciles per user"
+msgstr "لقد أضفت أكثر من 50 منشور، وهذا هو الحد الأقصى لعدد المنشورات لكل مستخدم حاليًا"
+
+#: .\dashboard\views.py:29 .\templates\base.html:104 .\templates\base.html:171
+msgid "Your items"
+msgstr "منشوراتك المعروضة"
+
+#: .\dashboard\views.py:66 .\templates\base.html:109 .\templates\base.html:175
+msgid "Saved posts"
+msgstr "منشورات محفوظة"
+
+#: .\dashboard\views.py:150 .\dashboard\views.py:375
+msgid "Problem with registring the brand"
+msgstr "مشكلة في تسجيل العلامة التجارية"
+
+#: .\dashboard\views.py:224 .\templates\dashboard\create_item.html:202
+#: .\templates\dashboard\create_item.html:430
+#: .\templates\dashboard\edit_item.html:212
+#: .\templates\dashboard\edit_item.html:498
+msgid "Your post must have at least 1 photo"
+msgstr "يجب أن يحتوي منشورك على صورة واحدة على الأقل"
+
+#: .\dashboard\views.py:256
+msgid "Your item was created succesfully"
+msgstr "تم نشر منشورك بنجاح"
+
+#: .\dashboard\views.py:262
+msgid "Your item was Not created"
+msgstr "لم يتم نشر منشورك"
+
+#: .\dashboard\views.py:276 .\templates\base.html:106 .\templates\base.html:173
+msgid "Create item"
+msgstr "اضافة منشور"
+
+#: .\dashboard\views.py:425
+msgid "Your item was updated succesfully"
+msgstr "تم تحديث منشورك بنجاح"
+
+#: .\dashboard\views.py:430
+msgid "Your item was not updated"
+msgstr "لم يتم تحديث منشورك"
+
+#: .\dashboard\views.py:450
+msgid "Edit item"
+msgstr "تغيير منشور"
+
+#: .\funtions.py:19 .\user\templatetags\user_templates.py:35
+msgid " s"
+msgstr "ث"
+
+#: .\funtions.py:22 .\user\templatetags\user_templates.py:38
+msgid " m"
+msgstr "د"
+
+#: .\funtions.py:25 .\user\templatetags\user_templates.py:41
+msgid "h"
+msgstr "س"
+
+#: .\funtions.py:28 .\user\templatetags\user_templates.py:44
+msgid " d"
+msgstr "ي"
+
+#: .\funtions.py:31 .\user\templatetags\user_templates.py:47
+msgid " w"
+msgstr "أ"
+
+#: .\funtions.py:34 .\user\templatetags\user_templates.py:50
+msgid " y"
+msgstr "س"
+
+#: .\message\views.py:63 .\templates\base.html:102
+msgid "Messages"
+msgstr "رسائل"
+
+#: .\product\views.py:72
+msgid "{} is selling a {} {}"
+msgstr "{} يبع في سيارة {} {}"
+
+#: .\settings\views.py:57
+msgid "Profile picture was updated successfully"
+msgstr "تم تحديث صورة الملف الشخصي بنجاح"
+
+#: .\settings\views.py:65
+msgid "Profile picture couldn't be updated"
+msgstr "تعذر تحديث صورة الملف الشخصي"
+
+#: .\settings\views.py:98
+msgid "Profile was updated successfully"
+msgstr "تم تحديث الملف الشخصي بنجاح"
+
+#: .\settings\views.py:100
+msgid "Profile was not updated"
+msgstr "لم يتم تحديث الملف الشخصي"
+
+#: .\settings\views.py:115
+msgid "Email added successfuly"
+msgstr "تمت إضافة البريد الإلكتروني بنجاح"
+
+#: .\settings\views.py:120 .\settings\views.py:150
+msgid "\"{}\" is not corret, make sure your email is written correctly"
+msgstr "\"{}\"غير صحيح ، تأكد من كتابة بريدك الإلكتروني بشكل صحيح"
+
+#: .\settings\views.py:129
+msgid "the email \"{}\" is used too many times, please use a new email"
+msgstr ""
+"تم استخدام البريد الإلكتروني \"{}\"عدة مرات ، يرجى استخدام بريد إلكتروني جديد"
+
+#: .\settings\views.py:132
+msgid "New email is the same as the current email"
+msgstr "البريد الإلكتروني الجديد هو نفس البريد الإلكتروني الحالي"
+
+#: .\settings\views.py:139
+msgid "Email removed successfuly"
+msgstr "تمت إزالة البريد الإلكتروني بنجاح"
+
+#: .\settings\views.py:143
+msgid "Email updated successfuly"
+msgstr "تم تحديث البريد الإلكتروني بنجاح"
+
+#: .\settings\views.py:190
+msgid ""
+"Email verification  failed, please try again. If this problem still occurs "
+"please contact our customer service"
+msgstr ""
+"فشل التحقق من البريد الإلكتروني ، يرجى المحاولة مرة أخرى. في حالة استمرار "
+"حدوث هذه المشكلة ، يرجى الاتصال بخدمة العملاء"
+
+#: .\settings\views.py:208
+msgid " Your email is verified "
+msgstr "تم التحقق من بريدك الإلكتروني"
+
+#: .\settings\views.py:211
+msgid "Invalid link"
+msgstr "رابط تفعيل خاطئ"
+
+#: .\settings\views.py:219 .\templates\base.html:118 .\templates\base.html:184
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: .\settings\views.py:227
+msgid "Your password must be longer than 8 characters"
+msgstr "يجب أن تكون كلمة مرورك أطول من 8 أحرف"
+
+#: .\settings\views.py:230
+msgid "Your password was updated successfully"
+msgstr "تم تحديث كلمة المرور الخاصة بك بنجاح"
+
+#: .\settings\views.py:239
+msgid "New password and its confirmation does not match"
+msgstr "كلمة المرور الجديدة وتأكيدها غير متطابقين"
+
+#: .\settings\views.py:242
+msgid "Your current password is wrong"
+msgstr "كلمة مرورك خاطئة"
+
+#: .\settings\views.py:285
+msgid "Account does not exist"
+msgstr "حساب غير موجود"
+
+#: .\settings\views.py:287 .\templates\settings\forgot_password.html:12
+#: .\templates\settings\forgot_password.html:28
+msgid "Forgot Password ?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\settings\views.py:304
+msgid "This link has been expired"
+msgstr "رابط التفعيل مستعمل"
+
+#: .\settings\views.py:315 .\templates\settings\reset_password.html:13
+#: .\templates\settings\reset_password.html:15
+msgid "Reset Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\settings\views.py:323
+msgid "Password must have at least 8 characters"
+msgstr "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
+
+#: .\settings\views.py:327
+msgid "Passwords must match"
+msgstr "كلمات المرور لا تتطابقان"
+
+#: .\settings\views.py:337
+msgid "password has been updated successfully"
+msgstr "تم تحديث كلمة المرور بنجاح"
+
+#: .\settings\views.py:350
+msgid "Your account have been deleted"
+msgstr "تم حذف حسابك"
+
+#: .\settings\views.py:353
+msgid "Wrong password"
+msgstr "كلمة مرور خاطئة"
+
+#: .\templates\404.html:5 .\templates\error.html:5
+msgid "Page was not found"
+msgstr "لم يتم ايجاد الصفحة"
+
+#: .\templates\base.html:19
+msgid ""
+"Get the best deals on used and new cars and all other vehicles according to "
+"your tastes at ch7al machya."
+msgstr ""
+"احصل على أفضل العروض على السيارات المستعملة والجديدة وجميع المركبات الأخرى "
+"حسب ذوقك في شحال ماشية"
+
+#: .\templates\base.html:25
+msgid "Ch7al machya | Sell & Buy cars"
+msgstr "شحال ماشيا | أشري و بيع طوموبيلات"
+
+#: .\templates\base.html:96 .\templates\base.html:163
+msgid "My Account"
+msgstr "حسابي"
+
+#: .\templates\base.html:99 .\templates\base.html:165
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: .\templates\base.html:103
+msgid "Notifications"
+msgstr "الاشعارات"
+
+#: .\templates\base.html:113 .\templates\base.html:178
+msgid "Settings"
+msgstr "اعدادات"
+
+#: .\templates\base.html:116 .\templates\base.html:182
+#: .\templates\settings\profile.html:51 .\templates\settings\profile.html:121
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\base.html:117 .\templates\base.html:183
+msgid "Manage email"
+msgstr "إدارة البريد الإلكتروني"
+
+#: .\templates\base.html:119 .\templates\base.html:185
+#: .\templates\settings\delete_account.html:17
+#: .\templates\settings\delete_account.html:32
+msgid "Delete account"
+msgstr "حذف الحساب"
+
+#: .\templates\base.html:123 .\templates\base.html:189
+msgid "Language"
+msgstr "اللغة"
+
+#: .\templates\base.html:139
+msgid "CARS"
+msgstr ""
+
+#: .\templates\base.html:158 .\templates\base.html:224
+msgid "Useful Links"
+msgstr "روابط اضافية"
+
+#: .\templates\base.html:233
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\templates\base.html:261 .\templates\base.html:289
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates\base.html:327
+msgid "0 selected"
+msgstr "0 اختيار"
+
+#: .\templates\base.html:328
+msgid "selected"
+msgstr "اختيارات"
+
+#: .\templates\base.html:329
+msgid "All selected"
+msgstr "الكل مختار"
+
+#: .\templates\base.html:330
+msgid " Select all"
+msgstr "اختر الكل "
+
+#: .\templates\category.html:28 .\templates\search.html:35
+msgid "Best match"
+msgstr "بحث ملائم"
+
+#: .\templates\category.html:29 .\templates\search.html:36
+msgid "Most viewed first"
+msgstr "الأكثر مشاهدة أولا"
+
+#: .\templates\category.html:30 .\templates\search.html:37
+msgid "Highest rated first"
+msgstr "الأعلى تقييما أولا"
+
+#: .\templates\category.html:31 .\templates\search.html:38
+msgid "Cheapest first"
+msgstr "الأرخص أولا"
+
+#: .\templates\category.html:32 .\templates\search.html:39
+msgid "Newest first"
+msgstr "الأحدث أولا"
+
+#: .\templates\category.html:38 .\templates\search.html:45
+msgid "filter"
+msgstr "فلترة"
+
+#: .\templates\category.html:117 .\templates\category.html:269
+#: .\templates\search.html:122 .\templates\search.html:274
+msgid "States"
+msgstr "ولايات"
+
+#: .\templates\category.html:130 .\templates\dashboard\create_item.html:53
+#: .\templates\dashboard\create_item.html:279
+#: .\templates\dashboard\edit_item.html:59
+#: .\templates\dashboard\edit_item.html:343 .\templates\product\product.html:96
+#: .\templates\product\product.html:200 .\templates\search.html:135
+msgid "Brand"
+msgstr "العلامة"
+
+#: .\templates\category.html:134 .\templates\search.html:139
+msgid "All brands"
+msgstr "كل العلامات"
+
+#: .\templates\category.html:146 .\templates\category.html:297
+#: .\templates\search.html:151 .\templates\search.html:302
+msgid "Colors"
+msgstr "الألوان"
+
+#: .\templates\category.html:158 .\templates\category.html:309
+#: .\templates\product\product.html:113 .\templates\product\product.html:219
+#: .\templates\search.html:163 .\templates\search.html:314
+msgid "Documents"
+msgstr "الوثائق"
+
+#: .\templates\category.html:170 .\templates\product\product.html:126
+#: .\templates\product\product.html:235 .\templates\search.html:175
+msgid "Price"
+msgstr "ثمن"
+
+#: .\templates\category.html:170 .\templates\category.html:186
+#: .\templates\category.html:322 .\templates\category.html:344
+#: .\templates\search.html:175 .\templates\search.html:191
+#: .\templates\search.html:327 .\templates\search.html:349
+msgid "min"
+msgstr "أصغر"
+
+#: .\templates\category.html:170 .\templates\category.html:183
+#: .\templates\category.html:186 .\templates\category.html:324
+#: .\templates\category.html:337 .\templates\category.html:342
+#: .\templates\search.html:175 .\templates\search.html:188
+#: .\templates\search.html:191 .\templates\search.html:329
+#: .\templates\search.html:342 .\templates\search.html:347
+msgid "max"
+msgstr "أكبر"
+
+#: .\templates\category.html:173 .\templates\search.html:178
+msgid "Hide cars with no price"
+msgstr ""
+
+#: .\templates\category.html:180 .\templates\search.html:185
+msgid "Kilometrage"
+msgstr " كيلومتراج"
+
+#: .\templates\category.html:186 .\templates\search.html:191
+msgid "what year"
+msgstr "أي سنة"
+
+#: .\templates\category.html:192 .\templates\search.html:197
+msgid "Car options"
+msgstr "خيارات السيارة"
+
+#: .\templates\category.html:204 .\templates\search.html:209
+msgid "All options only"
+msgstr "كاملة الخيارات فقط؟"
+
+#: .\templates\category.html:212 .\templates\dashboard\create_item.html:142
+#: .\templates\dashboard\create_item.html:366
+#: .\templates\dashboard\edit_item.html:153
+#: .\templates\dashboard\edit_item.html:438
+#: .\templates\product\product.html:143 .\templates\product\product.html:256
+#: .\templates\search.html:217
+msgid "Fuel"
+msgstr "الوقود"
+
+#: .\templates\category.html:224 .\templates\search.html:229
+msgid "Gear Box"
+msgstr "علبة السرعة"
+
+#: .\templates\category.html:236 .\templates\search.html:241
+msgid "Exchange only"
+msgstr "فقط التبادل"
+
+#: .\templates\category.html:241 .\templates\search.html:246
+msgid "Minimum rating"
+msgstr "أقل تقييم"
+
+#: .\templates\category.html:243 .\templates\dashboard\create_item.html:127
+#: .\templates\dashboard\create_item.html:351
+#: .\templates\dashboard\edit_item.html:133
+#: .\templates\dashboard\edit_item.html:418 .\templates\search.html:248
+msgid "Car condition"
+msgstr "حالة السيارة"
+
+#: .\templates\category.html:247 .\templates\dashboard\create_item.html:130
+#: .\templates\dashboard\create_item.html:354
+#: .\templates\dashboard\edit_item.html:137
+#: .\templates\dashboard\edit_item.html:140
+#: .\templates\dashboard\edit_item.html:425
+#: .\templates\product\product.html:403 .\templates\search.html:252
+msgid "Used"
+msgstr "مستعمل"
+
+#: .\templates\category.html:253 .\templates\dashboard\create_item.html:131
+#: .\templates\dashboard\edit_item.html:138
+#: .\templates\dashboard\edit_item.html:141
+#: .\templates\product\product.html:404 .\templates\search.html:258
+msgid "New"
+msgstr "جديدة"
+
+#: .\templates\category.html:259 .\templates\category.html:425
+#: .\templates\search.html:264 .\templates\search.html:430
+msgid "Done"
+msgstr "انتهى"
+
+#: .\templates\category.html:461 .\templates\home.html:93
+#: .\templates\product\product.html:413 .\templates\search.html:590
+msgid "Price: "
+msgstr "الثمن"
+
+#: .\templates\category.html:462 .\templates\home.html:94
+#: .\templates\product\product.html:414 .\templates\search.html:591
+msgid "Offered price: "
+msgstr "شحال عطاولو"
+
+#: .\templates\category.html:463 .\templates\dashboard\saved_posts.html:109
+#: .\templates\dashboard\your_items.html:120 .\templates\home.html:95
+#: .\templates\product\product.html:415 .\templates\search.html:592
+#: .\templates\user\profile.html:175
+msgid "Price is unavailable"
+msgstr "الثمن غير موجود"
+
+#: .\templates\category.html:464 .\templates\product\product.html:416
+#: .\templates\search.html:593
+msgid "All options"
+msgstr "كاملة الخيارات"
+
+#: .\templates\category.html:465 .\templates\dashboard\create_item.html:355
+#: .\templates\dashboard\edit_item.html:423
+#: .\templates\dashboard\edit_item.html:426
+#: .\templates\product\product.html:417 .\templates\search.html:594
+msgid "Store"
+msgstr "متجر"
+
+#: .\templates\category.html:466 .\templates\search.html:595
+msgid "No items were Found, try changing the search parameters."
+msgstr "لم يتم العثور على نتائج، حاول تغيير اعدادات البحث."
+
+#: .\templates\category.html:467 .\templates\search.html:596
+msgid "No company was found"
+msgstr "لم يتم العثور على شركة"
+
+#: .\templates\category.html:468 .\templates\search.html:597
+msgid "No person was found"
+msgstr "لم يتم العثور على أي شخص"
+
+#: .\templates\contact_us.html:12 .\templates\settings\email.html:27
+#: .\templates\settings\email.html:62 .\templates\settings\email.html:87
+#: .\templates\settings\email.html:122
+msgid "Email"
+msgstr "بريد الكتروني"
+
+#: .\templates\contact_us.html:17
+msgid "subject"
+msgstr "الموضوع"
+
+#: .\templates\contact_us.html:22
+msgid "message"
+msgstr "الرسالة"
+
+#: .\templates\contact_us.html:28
+msgid "Send"
+msgstr "ارسال"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "You have to confirm your email first to upload items. click"
+msgstr "يجب عليك تأكيد بريدك الإلكتروني أولاً لتحميل العناصر. انقر"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "here"
+msgstr "هنا"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "to activate it"
+msgstr "لتنشيطه"
+
+#: .\templates\dashboard\create_item.html:17
+#: .\templates\dashboard\create_item.html:243
+#: .\templates\dashboard\edit_item.html:18
+#: .\templates\dashboard\edit_item.html:301
+msgid "Item information"
+msgstr "معلومات عن المنتج"
+
+#: .\templates\dashboard\create_item.html:20
+#: .\templates\dashboard\create_item.html:246
+#: .\templates\dashboard\edit_item.html:27
+#: .\templates\dashboard\edit_item.html:310
+#: .\templates\product\product.html:271 .\templates\register.html:108
+#: .\templates\register.html:207 .\templates\settings\profile.html:81
+#: .\templates\settings\profile.html:153
+msgid "State"
+msgstr "ولاية"
+
+#: .\templates\dashboard\create_item.html:28
+#: .\templates\dashboard\create_item.html:254
+#: .\templates\dashboard\edit_item.html:35
+#: .\templates\dashboard\edit_item.html:318
+#: .\templates\product\product.html:275 .\templates\settings\profile.html:91
+#: .\templates\settings\profile.html:163
+msgid "City"
+msgstr "مدينة"
+
+#: .\templates\dashboard\create_item.html:30
+#: .\templates\dashboard\create_item.html:36
+#: .\templates\dashboard\create_item.html:42
+#: .\templates\dashboard\create_item.html:48
+#: .\templates\dashboard\create_item.html:109
+#: .\templates\dashboard\create_item.html:185
+#: .\templates\dashboard\create_item.html:256
+#: .\templates\dashboard\create_item.html:262
+#: .\templates\dashboard\create_item.html:268
+#: .\templates\dashboard\create_item.html:274
+#: .\templates\dashboard\create_item.html:334
+#: .\templates\dashboard\create_item.html:413
+msgid "You can keep this field empty"
+msgstr "يمكنك ترك هذه الخانة فارغًة"
+
+#: .\templates\dashboard\create_item.html:34
+#: .\templates\dashboard\create_item.html:40
+#: .\templates\dashboard\create_item.html:46
+#: .\templates\dashboard\edit_item.html:41
+#: .\templates\dashboard\edit_item.html:47
+#: .\templates\dashboard\edit_item.html:53 .\templates\product\product.html:174
+#: .\templates\product\product.html:291
+msgid "Phone number"
+msgstr " رقم الهاتف"
+
+#: .\templates\dashboard\create_item.html:66
+#: .\templates\dashboard\create_item.html:292
+#: .\templates\dashboard\edit_item.html:73
+#: .\templates\dashboard\edit_item.html:356
+msgid "Brand name"
+msgstr "اسم العلامة"
+
+#: .\templates\dashboard\create_item.html:70
+#: .\templates\dashboard\edit_item.html:77 .\templates\product\product.html:101
+#: .\templates\product\product.html:205
+msgid "Model"
+msgstr "اسم السيارة"
+
+#: .\templates\dashboard\create_item.html:72
+msgid "example : symbol"
+msgstr ""
+
+#: .\templates\dashboard\create_item.html:77
+#: .\templates\dashboard\create_item.html:302
+#: .\templates\dashboard\edit_item.html:84
+#: .\templates\dashboard\edit_item.html:367
+#: .\templates\product\product.html:105 .\templates\product\product.html:209
+msgid "Year"
+msgstr "السنة"
+
+#: .\templates\dashboard\create_item.html:87
+#: .\templates\dashboard\create_item.html:312
+#: .\templates\dashboard\edit_item.html:94
+#: .\templates\dashboard\edit_item.html:377
+#: .\templates\product\product.html:109 .\templates\product\product.html:214
+msgid "Color"
+msgstr "اللون"
+
+#: .\templates\dashboard\create_item.html:97
+#: .\templates\dashboard\create_item.html:322
+#: .\templates\dashboard\edit_item.html:104
+#: .\templates\dashboard\edit_item.html:387
+msgid "Document"
+msgstr "الوثائق"
+
+#: .\templates\dashboard\create_item.html:107
+#: .\templates\dashboard\create_item.html:332
+#: .\templates\dashboard\edit_item.html:114
+#: .\templates\dashboard\edit_item.html:397
+#: .\templates\product\product.html:118 .\templates\product\product.html:225
+msgid "Engine"
+msgstr "المحرك"
+
+#: .\templates\dashboard\create_item.html:114
+#: .\templates\dashboard\edit_item.html:121
+msgid "Price in millions"
+msgstr "الثمن بالمليون سنتيم"
+
+#: .\templates\dashboard\create_item.html:120
+#: .\templates\dashboard\edit_item.html:127
+msgid "Offered price in millions"
+msgstr "شحال عطاولك بالملون سنتيم"
+
+#: .\templates\dashboard\create_item.html:136
+#: .\templates\dashboard\create_item.html:360
+#: .\templates\dashboard\edit_item.html:147
+#: .\templates\dashboard\edit_item.html:432
+msgid "Distance travelled in Kilo Meters"
+msgstr "عداد المسافة بالكيلومتر"
+
+#: .\templates\dashboard\create_item.html:152
+#: .\templates\dashboard\create_item.html:376
+#: .\templates\dashboard\edit_item.html:163
+#: .\templates\dashboard\edit_item.html:448
+#: .\templates\product\product.html:147 .\templates\product\product.html:261
+msgid "Gear box"
+msgstr "علبة السرعة"
+
+#: .\templates\dashboard\create_item.html:163
+#: .\templates\dashboard\create_item.html:390
+#: .\templates\dashboard\edit_item.html:174
+#: .\templates\dashboard\edit_item.html:460
+msgid "Open for exchange?"
+msgstr "هل تقبل المبادلة؟"
+
+#: .\templates\dashboard\create_item.html:168
+#: .\templates\dashboard\create_item.html:397
+#: .\templates\dashboard\edit_item.html:179
+#: .\templates\dashboard\edit_item.html:466
+msgid "All options car ?"
+msgstr "هل السيارة كاملة الخيارات ؟"
+
+#: .\templates\dashboard\create_item.html:172
+#: .\templates\dashboard\edit_item.html:183
+msgid "If not what are it's options then ?"
+msgstr ""
+
+#: .\templates\dashboard\create_item.html:184
+#: .\templates\dashboard\create_item.html:412
+#: .\templates\dashboard\edit_item.html:195
+#: .\templates\dashboard\edit_item.html:481
+#: .\templates\product\product.html:409
+msgid "Description"
+msgstr "صندوق الوصف"
+
+#: .\templates\dashboard\create_item.html:200
+#: .\templates\dashboard\create_item.html:428
+#: .\templates\dashboard\edit_item.html:211
+#: .\templates\dashboard\edit_item.html:497
+msgid "Photos"
+msgstr "صور"
+
+#: .\templates\dashboard\create_item.html:207
+#: .\templates\dashboard\create_item.html:435
+#: .\templates\dashboard\edit_item.html:218
+#: .\templates\dashboard\edit_item.html:505
+msgid "Click to upload images"
+msgstr "اضغط لتحمل الصور"
+
+#: .\templates\dashboard\create_item.html:208
+msgid "upload up to 20 images"
+msgstr ""
+
+#: .\templates\dashboard\create_item.html:224
+#: .\templates\dashboard\create_item.html:452
+#: .\templates\dashboard\edit_item.html:236
+#: .\templates\dashboard\edit_item.html:524
+msgid ""
+"This operation might take some time according to your internet speed. So "
+"please be patient"
+msgstr ""
+"قد تستغرق هذه العملية بعض الوقت وفقًا لسرعة الإنترنت لديك. لذا يرجى التحلي "
+"بالصبر"
+
+#: .\templates\dashboard\create_item.html:227
+#: .\templates\dashboard\create_item.html:455
+msgid "Create"
+msgstr "اضافة "
+
+#: .\templates\dashboard\edit_item.html:21
+#: .\templates\dashboard\edit_item.html:304
+msgid "Creation date"
+msgstr "تاريخ الاضافة"
+
+#: .\templates\dashboard\edit_item.html:219
+msgid "upload up to "
+msgstr ""
+
+#: .\templates\dashboard\edit_item.html:219
+msgid " images"
+msgstr " صور"
+
+#: .\templates\dashboard\edit_item.html:239
+#: .\templates\dashboard\edit_item.html:527
+#: .\templates\settings\change_password.html:28
+#: .\templates\settings\change_password.html:57
+msgid "Save"
+msgstr "حفظ"
+
+#: .\templates\dashboard\edit_item.html:281
+#: .\templates\dashboard\edit_item.html:567
+msgid "likes"
+msgstr "اعجاب"
+
+#: .\templates\dashboard\edit_item.html:282
+#: .\templates\dashboard\edit_item.html:568
+msgid "dislikes"
+msgstr "غير اعجاب"
+
+#: .\templates\dashboard\edit_item.html:283
+#: .\templates\dashboard\edit_item.html:569
+msgid "comments"
+msgstr "تعليقات"
+
+#: .\templates\dashboard\edit_item.html:284
+#: .\templates\dashboard\edit_item.html:570
+msgid "views"
+msgstr "مشاهدات"
+
+#: .\templates\dashboard\edit_item.html:422
+msgid "used"
+msgstr "مستعملة"
+
+#: .\templates\dashboard\saved_posts.html:141
+msgid "You have not save any post yet"
+msgstr "لم تحفط أي منشور بعد"
+
+#: .\templates\dashboard\your_items.html:24
+msgid ""
+"You added more than 50 articles, for now that is the maximum number of "
+"artciles per user"
+msgstr "لقد أضفت أكثر من 50 منشور، وهذا هو الحد الأقصى لعدد المنشورات لكل مستخدم حاليًا"
+
+#: .\templates\dashboard\your_items.html:158
+msgid "You don't have any products yet"
+msgstr "لا تملك أي منشور بعد"
+
+#: .\templates\dashboard\your_items.html:173
+msgid "Are you sure you want to remove this item"
+msgstr "هل أنت متأكد أنك تريد إزالة هذاالمنتج"
+
+#: .\templates\log in.html:16 .\templates\register.html:43
+#: .\templates\register.html:144 .\templates\settings\profile.html:55
+#: .\templates\settings\profile.html:56 .\templates\settings\profile.html:125
+#: .\templates\settings\profile.html:126
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\templates\log in.html:19 .\templates\register.html:120
+#: .\templates\register.html:228 .\templates\settings\reset_password.html:21
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: .\templates\log in.html:24
+msgid "Forgot password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\templates\log in.html:33
+msgid "Don't have account?"
+msgstr "ليس لديك حساب ؟"
+
+#: .\templates\message\messages_box.html:73
+msgid "Enter text here..."
+msgstr "...أكتب هنا"
+
+#: .\templates\message\messages_box.html:87
+#: .\templates\message\messages_list.html:30
+msgid "You:"
+msgstr "أنت:"
+
+#: .\templates\message\messages_box.html:88
+#: .\templates\message\messages_list.html:31
+msgid "No messages yet"
+msgstr "لا رسائل بعد"
+
+#: .\templates\notifications.html:30
+msgid "No notifications yet"
+msgstr "لا اشعارات بعد"
+
+#: .\templates\product\product.html:79
+msgid "Message"
+msgstr "راسل"
+
+#: .\templates\product\product.html:122 .\templates\product\product.html:230
+msgid "Condition"
+msgstr "الحالة"
+
+#: .\templates\product\product.html:130 .\templates\product\product.html:240
+msgid "Offered price"
+msgstr "شحال عطاولو"
+
+#: .\templates\product\product.html:134 .\templates\product\product.html:245
+msgid "Exchange"
+msgstr "تبادل"
+
+#: .\templates\product\product.html:139 .\templates\product\product.html:251
+msgid "Distance"
+msgstr "عداد المسافة"
+
+#: .\templates\product\product.html:151 .\templates\product\product.html:266
+msgid "All options ?"
+msgstr "كاملة الخيارات؟"
+
+#: .\templates\product\product.html:319
+msgid "Type comment..."
+msgstr "...علق"
+
+#: .\templates\product\product.html:320
+msgid "Comment"
+msgstr "علق"
+
+#: .\templates\product\product.html:329
+msgid "Comments"
+msgstr "تعليقات"
+
+#: .\templates\product\product.html:346
+msgid "Similar offers:"
+msgstr "عروض مشابهة"
+
+#: .\templates\product\product.html:400
+#: .\templates\product\single_comment.html:13
+msgid "delete"
+msgstr "حذف"
+
+#: .\templates\product\product.html:401
+msgid "Call"
+msgstr "اتصل"
+
+#: .\templates\product\product.html:402
+msgid "Not given"
+msgstr "غير معطى"
+
+#: .\templates\product\product.html:405
+msgid "No offers yet"
+msgstr "لا عروض بعد"
+
+#: .\templates\product\product.html:406
+msgid "yes"
+msgstr "نعم"
+
+#: .\templates\product\product.html:407
+msgid "No"
+msgstr "لا"
+
+#: .\templates\product\product.html:408
+msgid "Options"
+msgstr "الخيارات"
+
+#: .\templates\product\product.html:410
+msgid "Seller provided no description"
+msgstr "لم يقدم البائع أي وصف"
+
+#: .\templates\product\product.html:411
+msgid "Just now"
+msgstr "مند لحظات"
+
+#: .\templates\product\product.html:418
+msgid "No suggestions :("
+msgstr "لا اقتراحات :("
+
+#: .\templates\register.html:32 .\templates\register.html:137
+msgid "First name"
+msgstr "الاسم"
+
+#: .\templates\register.html:37 .\templates\register.html:132
+msgid "Last name"
+msgstr "اللقب"
+
+#: .\templates\register.html:119 .\templates\register.html:227
+msgid "Create password"
+msgstr "كلمة المرور"
+
+#: .\templates\register.html:123 .\templates\register.html:124
+#: .\templates\register.html:222 .\templates\register.html:223
+msgid "Repeat password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\templates\register.html:128 .\templates\register.html:231
+#: .\templates\settings\reset_password.html:26
+msgid "Passwords must have at least 8 characters"
+msgstr "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
+
+#: .\templates\register.html:239
+msgid "Have an account?"
+msgstr "لديك حساب؟"
+
+#: .\templates\register.html:269
+msgid "this username is taken"
+msgstr "اسم المستخدم هذا مأخوذ"
+
+#: .\templates\register.html:270
+msgid ""
+"Your username should not be empty and only include letters, numbers and \"_"
+"\" "
+msgstr ""
+"يجب ألا يكون اسم المستخدم الخاص بك فارغًا وأن يتضمن فقط أحرفًا وأرقامًا و \"_\" "
+
+#: .\templates\search.html:25
+msgid "Cars"
+msgstr "سيارات"
+
+#: .\templates\search.html:26
+msgid "People"
+msgstr "أشخاص"
+
+#: .\templates\search.html:27
+msgid "Companies"
+msgstr "شركات"
+
+#: .\templates\settings\activation_link_sent.html:23
+msgid ""
+"Thank you for registering with us. we have sent you the activation link to "
+"your email"
+msgstr "شكرا لتسجيلك معنا. لقد أرسلنا لك رابط التفعيل إلى بريدك الإلكتروني"
+
+#: .\templates\settings\change_email.html:13
+#: .\templates\settings\change_email.html:32
+msgid "Current email"
+msgstr "البريد إلكتروني الحالي"
+
+#: .\templates\settings\change_email.html:17
+#: .\templates\settings\change_email.html:36
+msgid "New email"
+msgstr "بريد إلكتروني جديد"
+
+#: .\templates\settings\change_email.html:18
+#: .\templates\settings\change_email.html:37
+msgid "Keep this empty to remove your email"
+msgstr "اترك هذا فارغًا لإزالة بريدك الإلكتروني"
+
+#: .\templates\settings\change_email.html:21
+#: .\templates\settings\change_email.html:40 .\templates\settings\email.html:66
+#: .\templates\settings\email.html:126
+#: .\templates\settings\forgot_password.html:22
+#: .\templates\settings\forgot_password.html:39
+#: .\templates\settings\reset_password.html:28
+msgid "Submit"
+msgstr "إرسال"
+
+#: .\templates\settings\change_password.html:12
+#: .\templates\settings\change_password.html:41
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\settings\change_password.html:17
+#: .\templates\settings\change_password.html:46
+msgid "Current password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\settings\change_password.html:18
+#: .\templates\settings\change_password.html:47
+msgid "enter your current password"
+msgstr "أدخر كلمة المرور الحالية"
+
+#: .\templates\settings\change_password.html:21
+#: .\templates\settings\change_password.html:50
+msgid "New password"
+msgstr "كلمة مرور جديدة"
+
+#: .\templates\settings\change_password.html:22
+#: .\templates\settings\change_password.html:51
+msgid "enter your new password"
+msgstr "أدخل كلمة مرور جديدة"
+
+#: .\templates\settings\change_password.html:25
+#: .\templates\settings\change_password.html:54
+msgid "Confirm new password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\settings\change_password.html:26
+#: .\templates\settings\change_password.html:55
+msgid "reenter your new password"
+msgstr "أعد ادخال كلمة المرور"
+
+#: .\templates\settings\delete_account.html:13
+#: .\templates\settings\delete_account.html:28
+msgid "Write your password to delete your account"
+msgstr "اكتب كلمة المرور لحذف حسابك"
+
+#: .\templates\settings\delete_account.html:14
+#: .\templates\settings\delete_account.html:29
+msgid "password"
+msgstr "كلمة المرور"
+
+#: .\templates\settings\email.html:28 .\templates\settings\email.html:63
+#: .\templates\settings\email.html:88 .\templates\settings\email.html:123
+msgid "enter your email"
+msgstr "أدخل بريد الكتروني"
+
+#: .\templates\settings\email.html:33 .\templates\settings\email.html:93
+msgid "Verify your email to activate it your account"
+msgstr "تحقق من بريدك الإلكتروني لتنشيطه حسابك"
+
+#: .\templates\settings\email.html:36 .\templates\settings\email.html:96
+msgid "Verify your email "
+msgstr "قم بتأكيد بريدك الألكتروني "
+
+#: .\templates\settings\email.html:41 .\templates\settings\email.html:101
+msgid "Change your email"
+msgstr "تغيير بريدك الإلكتروني"
+
+#: .\templates\settings\forgot_password.html:16
+#: .\templates\settings\forgot_password.html:32
+msgid "Email Address"
+msgstr "البريد الاكتروني"
+
+#: .\templates\settings\forgot_password.html:19
+#: .\templates\settings\forgot_password.html:36
+msgid "Remembered Password?"
+msgstr "تذكرت كلمة المرور؟"
+
+#: .\templates\settings\profile.html:30
+msgid "Change profile picture"
+msgstr "غير الصور الشخصية"
+
+#: .\templates\settings\profile.html:32
+msgid "Add profile picture"
+msgstr "أضف صورة شخصية"
+
+#: .\templates\settings\profile.html:41 .\templates\settings\profile.html:111
+msgid "Bio"
+msgstr "السيرة"
+
+#: .\templates\settings\profile.html:59 .\templates\settings\profile.html:129
+msgid "First Name"
+msgstr "الاسم"
+
+#: .\templates\settings\profile.html:60 .\templates\settings\profile.html:130
+msgid "first name"
+msgstr "الاسم"
+
+#: .\templates\settings\profile.html:63 .\templates\settings\profile.html:133
+msgid "Family Name"
+msgstr "اللقب"
+
+#: .\templates\settings\profile.html:64 .\templates\settings\profile.html:134
+msgid "last name"
+msgstr "اللقب"
+
+#: .\templates\settings\profile.html:67 .\templates\settings\profile.html:138
+msgid "Gender"
+msgstr "الجنس"
+
+#: .\templates\settings\profile.html:70 .\templates\settings\profile.html:73
+#: .\templates\settings\profile.html:141 .\templates\settings\profile.html:144
+msgid "Male"
+msgstr "ذكر"
+
+#: .\templates\settings\profile.html:71 .\templates\settings\profile.html:74
+#: .\templates\settings\profile.html:142 .\templates\settings\profile.html:145
+msgid "Female"
+msgstr "أنثى"
+
+#: .\templates\settings\profile.html:92 .\templates\settings\profile.html:164
+msgid "Put your city here"
+msgstr "ضع مدينتك هنا"
+
+#: .\templates\settings\profile.html:97 .\templates\settings\profile.html:169
+msgid "Remove profile picture"
+msgstr "حذف الصورة الشخصية"
+
+#: .\templates\settings\profile.html:102 .\templates\settings\profile.html:174
+msgid "Company profile"
+msgstr "حساب شركة"
+
+#: .\templates\settings\profile.html:181 .\templates\settings\profile.html:195
+msgid "Save Profile"
+msgstr "حفظ الملف الشخصي"
+
+#: .\templates\settings\profile.html:186
+msgid "View your profile"
+msgstr "شاهد حسابك"
+
+#: .\templates\settings\reset_password.html:24
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\templates\user\profile.html:44
+msgid "Followers"
+msgstr "متابع"
+
+#: .\templates\user\profile.html:51
+msgid "Items"
+msgstr "منشور"
+
+#: .\templates\user\profile.html:58
+msgid "Feedback"
+msgstr "التقييم"
+
+#: .\templates\user\profile.html:64
+msgid "Scoore"
+msgstr "علامة"
+
+#: .\templates\user\profile.html:70
+msgid "Rank"
+msgstr "ترتيب"
+
+#: .\templates\user\profile.html:176
+msgid "User don't have any products yet"
+msgstr "ليس لدى المستخدم أي منتجات حتى الآن"
+
+#: .\templates\user\profile.html:177
+msgid "Follow"
+msgstr "تابع"
+
+#: .\templates\user\profile.html:178
+msgid "Unfollow"
+msgstr "نزع المتابعة"
+
+#: .\templates\user\profile.html:179 .\user\views.py:116
+msgid "Report"
+msgstr "تبليغ"
+
+#: .\templates\user\profile.html:180
+msgid "Not yet"
+msgstr "ليس بعد"
+
+#: .\templates\user\report.html:28
+msgid "I am wrong"
+msgstr "لست متأكد"
+
+#: .\templates\user\report.html:31
+msgid "I am sure"
+msgstr "أنا متأكد"
+
+#: .\user\templatetags\user_templates.py:12
+msgid " seconds ago"
+msgstr " ثواني "
+
+#: .\user\templatetags\user_templates.py:15
+msgid " minutes ago"
+msgstr " دقائق "
+
+#: .\user\templatetags\user_templates.py:18
+msgid "less than "
+msgstr " أقل من "
+
+#: .\user\templatetags\user_templates.py:18
+msgid " hours ago"
+msgstr " ساعات "
+
+#: .\user\templatetags\user_templates.py:77
+msgid "{} seconds ago"
+msgstr "منذ {} ثانية"
+
+#: .\user\templatetags\user_templates.py:80
+msgid "{} minutes ago"
+msgstr "منذ {} دقيقة"
+
+#: .\user\templatetags\user_templates.py:83
+msgid "{} hours ago"
+msgstr "منذ {} ساعات"
+
+#: .\user\templatetags\user_templates.py:86
+msgid "{} days ago"
+msgstr "منذ {} أيام"
+
+#: .\user\templatetags\user_templates.py:89
+msgid "{} weeks ago"
+msgstr "منذ {} أسابيع"
+
+#: .\user\templatetags\user_templates.py:92
+msgid "{} years ago"
+msgstr "منذ {} سنوات"
+
+#: .\user\views.py:32
+msgid "welcome to {} profile at Ch7al machya"
+msgstr "مرحبا بك في صفحة {} على موقع شحال ماشية"
+
+#: .\user\views.py:111
+msgid "Your Report was submited"
+msgstr "تم ارسال تبليغك"
+
+#~ msgid "{} Sent a message"
+#~ msgstr "{} أرسل رسالة"
+
+#~ msgid "Go to message {}:"
+#~ msgstr "انتقل إلى الرسالة {}:"
+
+#~ msgid "{} said"
+#~ msgstr "{} قال"
+
+#~ msgid "{} Commented"
+#~ msgstr "{} علّق"
+
+#~ msgid "Go to post {}"
+#~ msgstr "انتقال إلى المنشور {}"
+
+#~ msgid "{} has commented on your post '{}':"
+#~ msgstr "{} علق على منشورك '{}':"
+
+#~ msgid "store"
+#~ msgstr "المتجر"
+
+#~ msgid "Add more images"
+#~ msgstr "أضف صورا أكثر"
+
+#~ msgid ""
+#~ "\"{ email }\" is not corret, make sure your email is written correctly"
+#~ msgstr "\" {email} \"غير صحيح ، تأكد من كتابة بريدك الإلكتروني بشكل صحيح"
+
+#~ msgid "Mobile Number"
+#~ msgstr "رقم الهاتف"
+
+#~ msgid "enter phone number"
+#~ msgstr "أدخل رقم الهات"
+
+#~ msgid "Verify your phone number to activate your account"
+#~ msgstr "Verify your phone number to activate your account"
+
+#~ msgid "Welcome to your dashboard"
+#~ msgstr "مرحبًا بك في لوحة التحكم الخاصة بك"
+
+#~ msgid "Did you forget your password? Click on 'Forget password?' down below"
+#~ msgstr ""
+#~ "هل نسيت كلمة المرور الخاصة بك؟ انقر فوق 'نسيت كلمة المرور' أسفل أدناه"
+
+#~ msgid "User does not exist"
+#~ msgstr "المستخدم غير موجود"
+
+#~ msgid "Other "
+#~ msgstr " أخرى"
+
+#~ msgid "Go back to your profile"
+#~ msgstr "العودة إلى ملف التعريف الخاص بك"
+
+#~ msgid "Number"
+#~ msgstr "رقم الهاتف"
+
+#~ msgid "This email is already used"
+#~ msgstr "هذا البريد الإلكتروني مستخدم بالفعل"
+
+#~ msgid "Passwords do not match."
+#~ msgstr "كلمات المرور لا تتطابقان"
+
+#~ msgid "If you add a vedio it will take a bit longer to upload"
+#~ msgstr "اذا أضفت فيديو سيتطلب الأمر ربما دقائق للتحميل"
+
+#~ msgid "The vedio size must be no more than 10MB"
+#~ msgstr "يجب ألا يزيد حجم الفيديو عن 10 ميغا بايت"
+
+#~ msgid "Add a vedio"
+#~ msgstr "اضافة فيديو"
+
+#~ msgid "The vedio size must be no more than 10 MB"
+#~ msgstr "يجب ألا يزيد حجم الفيديو عن 10 ميغا بايت"
+
+#~ msgid "Details: "
+#~ msgstr "تفاصيل: "
+
+#~ msgid "Title"
+#~ msgstr "عنوان"
+
+#~ msgid "Detail"
+#~ msgstr "تفصيل"
+
+#~ msgid "Add a detail"
+#~ msgstr "اضافة تفصيل"
+
+#~ msgid "Seller provided no video"
+#~ msgstr "البائع لم يضف فيديو"
+
+#~ msgid "Millions"
+#~ msgstr "مليون"
+
+#~ msgid "city"
+#~ msgstr "مدينة"
+
+#~ msgid "Options :"
+#~ msgstr "الخيارات"
+
+#~ msgid "Deletion refused, your items must have at least one image"
+#~ msgstr "رفض الحذف ، يجب أن تحتوي منشورك على صورة واحدة على الأقل"
+
+#~ msgid "Used and new {} cars and vehicles"
+#~ msgstr "سيارات و مركبات {} مستعملة و جديدة"
+
+#~ msgid ""
+#~ "You have selected no state in the search parameters, add more states to "
+#~ "see results."
+#~ msgstr ""
+#~ "لم تحدد أي ولاية في البحث ، أضف المزيد من الولايات اعدادات البحث لاجاد "
+#~ "نتائج."
+
+#~ msgid "Previous"
+#~ msgstr "سابق"
+
+#~ msgid "Next"
+#~ msgstr "قادم"
+
+#~ msgid "Active"
+#~ msgstr "ناشط"
+
+#~ msgid "Last seen"
+#~ msgstr "شوهد أخر مرة منذ"
+
+#~ msgid "load older"
+#~ msgstr "رسائل أقدم"
+
+#~ msgid "report"
+#~ msgstr "تبليغ"
+
+#~ msgid "Only people who wants to exchange"
+#~ msgstr "فقط من يريد المبادلة"
+
+#~ msgid "Distance travelled in Kilo Meters:"
+#~ msgstr "عداد المسافة بالكيلومتر"
+
+#~ msgid "Distance travelled in thousand KM:"
+#~ msgstr "عداد المسافة بالكيلومتر :"
+
+#~ msgid "Given price"
+#~ msgstr "شحال عطاولو"
+
+#~ msgid "Name"
+#~ msgstr "اسم"
+
+#~ msgid "Link copied"
+#~ msgstr "تم نسخ الرابط"
+
+#~ msgid "Reset"
+#~ msgstr "إعادة تعيين"
+
+#~ msgid "About Us"
+#~ msgstr "معلومات عنا"
+
+#~ msgid "Terms Of Service"
+#~ msgstr "شروط الخدمة"
+
+#~ msgid "Second hand"
+#~ msgstr "مستعملة"
+
+#~ msgid ", you can put items for sale."
+#~ msgstr "يمكنك طرح أشياء للبيع ,"
+
+#~ msgid "Other Brand"
+#~ msgstr "علامة أخرى"
+
+#~ msgid "Categories:"
+#~ msgstr ":فئات"
+
+#~ msgid "Seller provided no categories"
+#~ msgstr "لم يقدم البائع أي فئات"
+
+#~ msgid "Other Brand "
+#~ msgstr "علامة أخرى "
+
+#~ msgid "DA"
+#~ msgstr "دج"
+
+#~ msgid "Negotiable"
+#~ msgstr "قابل للتفاوض"
+
+#~ msgid "Condtion"
+#~ msgstr "الحالة"
+
+#~ msgid "Seller provided no other details"
+#~ msgstr "لم يقدم البائع أي تفاصيل أخرى"
+
+#~ msgid "Men's Fashion"
+#~ msgstr "ملابس رجال"
+
+#~ msgid "Women's Fashion"
+#~ msgstr "ملابس نساء"
+
+#~ msgid "Kids"
+#~ msgstr "ملابس أطفال"
+
+#~ msgid "Negotiable?"
+#~ msgstr "قابل للتفاوض؟"
+
+#~ msgid "Category"
+#~ msgstr "فئة"
+
+#~ msgid "No category"
+#~ msgstr "لا فئة"
+
+#~ msgid "Categories"
+#~ msgstr "فئات"
+
+#~ msgid "The image size must be no more than 2MB"
+#~ msgstr "يجب ألا يزيد حجم الصورة عن 2 ميغا بايت"

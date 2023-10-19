@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="m-3 p-3" style="border-radius: 5px;background-color: var(--white);">
+    {% if LANGUAGE_CODE == "en" %}
+        <p>
+            Are you sure you want to report <strong>{{ owner.full_name|capfirst }}</strong> for reviewing?
+            We will look through his profile and tell you our response as soon as possible.
+            <br>
+            Thank you for helping making Ch7al machya a better place.
+        </p>
+    {% elif LANGUAGE_CODE == "fr" %}
+        <p>
+            Voulez-vous vraiment signaler <strong>{{ owner.full_name|capfirst }}</strong> pour examen ?
+            Nous allons parcourir son profil, et vous communiquer notre réponse dans les plus brefs délais.
+            <br>
+            Merci d'avoir contribué à faire de Ch7al machya un meilleur endroit.
+        </p>
+    {% elif LANGUAGE_CODE == "ar" %}
+        <p style="direction: rtl; text-align: right;">
+            هل أنت متأكد أنك تريد الإبلاغ عن <strong> {{owner.full_name | capfirst}} </strong> للمراجعة؟
+            سننظر في ملفه الشخصي ونخبرك بردنا في أقرب وقت ممكن.
+            <br>
+            شكرًا لك على المساعدة في جعل شحال ماشيا مكانًا أفضل.
+        </p>
+    {% endif %}
+    <div style="display: flex;">
+        <button class="btn btn-success m-2 ml-auto" onclick="window.location.href='{% url "profile" owner.id %}'">{% trans "I am wrong" %}</button>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger m-2" >{% trans "I am sure" %}</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load user_templates %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center p-0 m-0 col-12">
+             
+    <div class="col-md-12 col-l-9 p-0" >
+      <span style="position: absolute; top:10px; right: 10px;">
+        <button style="border: var(--transparent-dark) 2px solid; border-radius: 3px;padding:3px;  background-color: var(--white);" onclick="copylink(this)" >
+          <img src="https://img.icons8.com/ios-filled/50/null/link--v1.png" width="30" />
+        </button>
+      </span>
+      <div class="p-2 form-control" id="copy-link" style="visibility: hidden; line-break:anywhere; width:auto"></div>
+      <div class="cover" style="width: 100%; height:100px; background-color: var(--white)"></div>
+  
+      <div class="user text-center" style="margin-top: -72px;">
+  
+        <div class="profile">
+          <div style="width: 150px; height:150px; margin: auto;background: var(--white);border-radius: 50%;overflow: hidden;border: 1px #00000036 solid; display: flex;">
+            <img src="" alt="" id='owner_picture' style="max-width: 148px;max-height: 148px;width: auto;height: auto; margin: auto;">
+          </div>
+        </div>
+  
+    </div>
+  
+  
+      <div class="mt-2 text-center">
+  
+        <h4 class="mb-0" id="owner_name"></h4>
+
+        <span class="text-muted d-block" style="line-break: auto; width: 80%; margin: 10px auto 0 auto;" id='bio'></span>
+            <div style="display :flex; flex-wrap: wrap; justify-content: center; margin-top:15px" id='follow_message_report'>
+                
+            </div>
+  
+        <div class="d-flex align-items-center my-4 px-4" style="justify-content: space-evenly;">
+  
+          <div class="stats">
+            <h6 class="mb-0">{% trans "Followers" %}</h6>
+            <span id="followers_count"></span>
+  
+          </div>
+  
+  
+          <div class="stats">
+            <h6 class="mb-0">{% trans "Items" %}</h6>
+            <span id='products_count'></span>
+  
+          </div>
+  
+  
+          <div class="stats">
+            <h6 class="mb-0">{% trans "Feedback" %}</h6>
+              <span id='feedback'></span>
+         
+          </div>
+
+          <div class="stats">
+            <h6 class="mb-0">{% trans "Scoore" %}</h6>
+            <span id='scoore'></span>
+  
+          </div>
+
+          <div class="stats">
+            <h6 class="mb-0">{% trans "Rank" %}</h6>
+            <span id='rank'># </span>
+  
+          </div>
+          
+        </div>
+        
+      </div>
+      
+        <div class="mx-1 mx-sm-2 mx-md-3 mx-lg-4 mx-xl-5 p-lg-3 p-2" style="background-color: var(--white);">
+            <div class="row g-2" style="justify-content: space-evenly;" id='products_container'>
+              <div id="loading-animations">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; width: 50%; aspect-ratio: 1 / 1;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                  <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00b517">
+                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                  </g>
+                  <!-- [ldio] generated by https://loading.io/ -->
+                </svg>
+              </div>
+            </div>
+        </div>
+        <img src='/static/images/icons/go down.png' width='80' id='show_more' style='display:none; margin:20px auto' onclick>
+        <svg xmlns="http://www.w3.org/2000/svg" id="loading_svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: none; order:1; background: none; shape-rendering: auto; min-width: 80px; height:80px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <circle cx="50" cy="50" fill="none" stroke="var(--green)" stroke-width="10" r="40" stroke-dasharray="188.49555921538757 64.83185307179586">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+          </circle>
+        </svg>
+      </div>
+</div>
+<footer class="text-center col-12 mt-auto">
+  <div class="container py-3">
+    <section class="mtext-center">
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+        <img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+        <img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+        <img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+      </a>
+    </section>
+  </div>
+</footer>
+
+
+<link rel="stylesheet" href="/static/css/user/profile.css">
+
+<script>
+  var owner_id = '{{ owner_id }}'
+  var authentication = '{{ user.is_authenticated }}'
+  var user_id = '{{ user.id }}'
+  var token = '{% csrf_token %}'
+
+  var link_1 = "{% url 'ajax-profile-products' owner_id %}"
+  var link_2 = "{% static 'images/icons/view.png' %}"
+  var link_3 = "{% static 'images/icons/small-like.png' %}"
+  var link_4 = "{% url 'ajax-profile' owner_id %}"
+
+  var trans_1 = '{% trans "Price is unavailable" %}'
+  var trans_2 = "{% trans "User don't have any products yet" %}"
+  var trans_3 = '{% trans "Follow" %}'
+  var trans_4 = '{% trans "Unfollow" %}'
+  var trans_5 = '{% trans "Report" %}'
+  var trans_6 = '{% trans "Not yet" %}'
+
+</script>
+<script type="text/javascript" src="/static/js/user/profile.js">
+</script>
+
+{% endblock content %}

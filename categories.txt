@@ -1,0 +1,201 @@
+None |hijab|muslim fashion|women's fashion
+None |jilbab|muslim fashion|women's fashion
+None |khimar|muslim fashion|women's fashion
+1 |other muslim fashion|muslim fashion|women's fashion
+None |bikini|swimwears|women's fashion
+None |cover-ups|swimwears|women's fashion
+None |shirt|tops|women's fashion
+None |blouse|tops|women's fashion
+None |hoodie|tops|women's fashion
+None |sweatshirt|tops|women's fashion
+None |sweater|tops|women's fashion
+None |jacket|tops|women's fashion
+None |coat|tops|women's fashion
+None |tanks|tops|women's fashion
+None |turtle neck|tops|women's fashion
+None |bodysuits|full body|women's fashion
+None |dress|full body|women's fashion
+None |suit|full body|women's fashion
+None |tracksuit|full body|women's fashion
+None |other full body|full body|women's fashion
+None |legging|bottoms|women's fashion
+None |skirt|bottoms|women's fashion
+None |jeans|bottoms|women's fashion
+None |pants|bottoms|women's fashion
+None |shorts|bottoms|women's fashion
+None |capris|bottoms|women's fashion
+1 |other bottoms|bottoms|women's fashion
+None |pajama|underwears|women's fashion
+None |bra|underwears|women's fashion
+None |pantie|underwears|women's fashion
+None |sucks|underwears|women's fashion
+None |bra & brief sets|underwears|women's fashion
+None |other underwears|underwears|women's fashion
+None |hair accessories|accessories|women's fashion
+None |sunglasses|accessories|women's fashion
+None |hat|accessories|women's fashion
+None |hair band|accessories|women's fashion
+None |nacklace|accessories|women's fashion
+None |tie|accessories|women's fashion
+None |scarf|accessories|women's fashion
+None |earrings|accessories|women's fashion
+None |braclet|accessories|women's fashion
+None |ring|accessories|women's fashion
+None |watch|accessories|women's fashion
+None |gloves|accessories|women's fashion
+None |handbag|accessories|women's fashion
+None |purse|accessories|women's fashion
+None |ankle chain|accessories|women's fashion
+None |earrings|jewelry|women's fashion
+None |belt|accessories|women's fashion
+None |hair jewelry|jewelry|women's fashion
+None |necklace|jewelry|women's fashion
+None |piercing|accessories|women's fashion
+None |ring|jewelry|women's fashion
+None |piercing|jewelry|women's fashion
+1 |other accessories|accessories|women's fashion
+None |ankle chain|jewelry|women's fashion
+None |other jewelry|jewelry|women's fashion
+None |classic shoes|shoes|women's fashion
+None |sneakers|shoes|women's fashion
+None |loafer shoes|shoes|women's fashion
+None |boat shoes|shoes|women's fashion
+None |high heels|shoes|women's fashion
+None |low heels|shoes|women's fashion
+None |high knees|shoes|women's fashion
+None |ankle shoes|shoes|women's fashion
+None |wedge|shoes|women's fashion
+None |sport sneakers|shoes|women's fashion
+1 |other shoes|shoes|women's fashion
+None |other swimwears|swimwears|women's fashion
+None |collar|tops|women's fashion
+1 |other tops|tops|women's fashion
+None |thawb|muslim fashion|men's fashion
+None |serwal|muslim fashion|men's fashion
+None |turban|muslim fashion|men's fashion
+None |jabador|muslim fashion|women's fashion
+None |chachiya|muslim fashion|men's fashion
+None |other muslim fashion|muslim fashion|men's fashion
+None |koftan|traditional clothes|women's fashion
+None |barnos|traditional clothes|women's fashion
+None |hayak|traditional clothes|women's fashion
+None |jaba|traditional clothes|women's fashion
+None |jaba kabyle|traditional clothes|women's fashion
+None |other traditional clothes|traditional clothes|women's fashion
+None |barnos|traditional clothes|men's fashion
+None |kachabiya|traditional clothes|men's fashion
+None |other traditional clothes|traditional clothes|men's fashion
+None |gilet|tops|women's fashion
+0 |shirt|tops|men's fashion
+2 |t-shirt|tops|men's fashion
+1 |lacoste shirt|tops|men's fashion
+6 |hawaiian shirt|tops|men's fashion
+4 |polo shirt|tops|men's fashion
+5 |dress shirt|tops|men's fashion
+6 |turtle neck|tops|men's fashion
+7 |collar|tops|men's fashion
+7 |hoodie|tops|men's fashion
+8 |jacket|tops|men's fashion
+10 |lacoste jacket|tops|men's fashion
+11 |coat|tops|men's fashion
+12 |top coat|tops|men's fashion
+8 |sweater|tops|men's fashion
+8 |sweatshirt|tops|men's fashion
+8 |gilet|tops|men's fashion
+18 |other tops|tops|men's fashion
+None |short|bottoms|men's fashion
+None |lacoste short|bottoms|men's fashion
+None |short jeans|bottoms|men's fashion
+None |capris|bottoms|men's fashion
+None |jeans|bottoms|men's fashion
+None |lacoste pants|bottoms|men's fashion
+None |sport pant|bottoms|men's fashion
+None |tights|bottoms|women's fashion
+None |tights|bottoms|men's fashion
+None |other bottoms|bottoms|men's fashion
+None |boxer|underwears|men's fashion
+None |thong|underwears|men's fashion
+None |pajama|underwears|men's fashion
+3 |a-shirt|tops|men's fashion
+None |skin shirt|underwears|men's fashion
+None |a-shirt|tops|women's fashion
+None |sucks|underwears|men's fashion
+None |other underwears|underwears|men's fashion
+None |flip flops|shoes|women's fashion
+None |earrings|jewerly & accessories|men's fashion
+None |cap|jewerly & accessories|men's fashion
+None |hat|jewerly & accessories|men's fashion
+None |sunglesses|jewerly & accessories|men's fashion
+None |vision glasses|accessories|women's fashion
+None |vision glasses|jewerly & accessories|men's fashion
+None |mask|jewerly & accessories|men's fashion
+None |mask|accessories|women's fashion
+None |hair band|jewerly & accessories|men's fashion
+None |nacklace|jewerly & accessories|men's fashion
+None |tie|jewerly & accessories|men's fashion
+None |scarf|jewerly & accessories|men's fashion
+None |braclet|jewerly & accessories|men's fashion
+None |rings|jewerly & accessories|men's fashion
+None |watch|jewerly & accessories|men's fashion
+None |gloves|jewerly & accessories|men's fashion
+None |bag|jewerly & accessories|men's fashion
+None |belt|jewerly & accessories|men's fashion
+None |other jewelry & accessories|jewerly & accessories|men's fashion
+None |nike TN|shoes|men's fashion
+None |regular shoes|shoes|men's fashion
+None |sneakers|shoes|men's fashion
+None |classic shoes|shoes|men's fashion
+None |boat shoes|shoes|men's fashion
+None |boots|shoes|men's fashion
+None |boots|shoes|women's fashion
+None |soccer shoes|shoes|men's fashion
+None |sport shoes|shoes|men's fashion
+None |ardilette|shoes|men's fashion
+None |flip flops|shoes|men's fashion
+1 |other shoes|shoes|men's fashion
+None |lacoste tracksuit|full body|men's fashion
+None |classic custome|full body|men's fashion
+None |godasse|shoes|men's fashion
+None |godasse|shoes|women's fashion
+None |other full body|full body|men's fashion
+None |tops|girls|kids
+None |bottoms|girls|kids
+None |shoes|girls|kids
+None |accessories|girls|kids
+None |tops|boys|kids
+None |bottoms|boys|kids
+None |shoes|boys|kids
+None |accessories|boys|kids
+None |others|girls|kids
+None |others|boys|kids
+None |tops|below three|kids
+None |bottoms|below three|kids
+None |shoes|below three|kids
+None |accessories|below three|kids
+79 |others|below three|kids
+
+
+for line in lines:
+    line = line.split('|')
+    grand = GrandParentCategory.objects.get_or_create(name_en=line[3])[0]
+    parent = ParentCategory.objects.get_or_create(name_en=line[2], parent=grand)[0]
+    category = Category.objects.get_or_create(name_en=line[1], parent=parent)[0]
+    category.order = category.id
+    if line[0] != "None":
+        pass
+    try:
+        category.order = int(line[0])
+    except:
+        pass
+    category.slug = slugify(category.name_en)
+    parent.order = parent.id
+    parent.slug = slugify(parent.name_en)
+    grand.order = grand.id
+    grand.slug = slugify(grand.name_en)
+    category.save()
+    grand.save()
+    parent.save()
+    print(category.name_en)
+
+
+["None|hijab|muslim fashion|women's fashion", "None|jilbab|muslim fashion|women's fashion", "None|khimar|muslim fashion|women's fashion", "1|other muslim fashion|muslim fashion|women's fashion", "None|bikini|swimwears|women's fashion", "None|cover-ups|swimwears|women's fashion", "None|shirt|tops|women's fashion", "None|blouse|tops|women's fashion", "None|hoodie|tops|women's fashion", "None|sweatshirt|tops|women's fashion", "None|sweater|tops|women's fashion", "None|jacket|tops|women's fashion", "None|coat|tops|women's fashion", "None|tanks|tops|women's fashion", "None|turtle neck|tops|women's fashion", "None|bodysuits|full body|women's fashion", "None|dress|full body|women's fashion", "None|suit|full body|women's fashion", "None|tracksuit|full body|women's fashion", "None|other full body|full body|women's fashion", "None|legging|bottoms|women's fashion", "None|skirt|bottoms|women's fashion", "None|jeans|bottoms|women's fashion", "None|pants|bottoms|women's fashion", "None|shorts|bottoms|women's fashion", "None|capris|bottoms|women's fashion", "1|other bottoms|bottoms|women's fashion", "None|pajama|underwears|women's fashion", "None|bra|underwears|women's fashion", "None|pantie|underwears|women's fashion", "None|sucks|underwears|women's fashion", "None|bra & brief sets|underwears|women's fashion", "None|other underwears|underwears|women's fashion", "None|hair accessories|accessories|women's fashion", "None|sunglasses|accessories|women's fashion", "None|hat|accessories|women's fashion", "None|hair band|accessories|women's fashion", "None|nacklace|accessories|women's fashion", "None|tie|accessories|women's fashion", "None|scarf|accessories|women's fashion", "None|earrings|accessories|women's fashion", "None|braclet|accessories|women's fashion", "None|ring|accessories|women's fashion", "None|watch|accessories|women's fashion", "None|gloves|accessories|women's fashion", "None|handbag|accessories|women's fashion", "None|purse|accessories|women's fashion", "None|ankle chain|accessories|women's fashion", "None|earrings|jewelry|women's fashion","None|belt|accessories|women's fashion", "None|hair jewelry|jewelry|women's fashion", "None|necklace|jewelry|women's fashion", "None|piercing|accessories|women's fashion", "None|ring|jewelry|women's fashion", "None|piercing|jewelry|women's fashion", "1|other accessories|accessories|women's fashion", "None|ankle chain|jewelry|women's fashion", "None|other jewelry|jewelry|women's fashion", "None|classic shoes|shoes|women's fashion", "None|sneakers|shoes|women's fashion", "None|loafer shoes|shoes|women's fashion", "None|boat shoes|shoes|women's fashion", "None|high heels|shoes|women's fashion", "None|low heels|shoes|women's fashion", "None|high knees|shoes|women's fashion", "None|ankle shoes|shoes|women's fashion", "None|wedge|shoes|women's fashion", "None|sport sneakers|shoes|women's fashion", "1|other shoes|shoes|women's fashion", "None|other swimwears|swimwears|women's fashion", "None|collar|tops|women's fashion", "1|other tops|tops|women's fashion", "None|thawb|muslim fashion|men's fashion", "None|serwal|muslim fashion|men's fashion", "None|turban|muslim fashion|men's fashion", "None|jabador|muslim fashion|women's fashion","None|chachiya|muslim fashion|men's fashion", "None|other muslim fashion|muslim fashion|men's fashion", "None|koftan|traditional clothes|women's fashion", "None|barnos|traditional clothes|women's fashion", "None|hayak|traditional clothes|women's fashion", "None|jaba|traditional clothes|women's fashion", "None|jaba kabyle|traditional clothes|women's fashion", "None|other traditional clothes|traditional clothes|women's fashion", "None|barnos|traditional clothes|men's fashion", "None|kachabiya|traditional clothes|men's fashion", "None|other traditional clothes|traditional clothes|men's fashion", "None|gilet|tops|women's fashion","0|shirt|tops|men's fashion", "2|t-shirt|tops|men's fashion", "1|lacoste shirt|tops|men's fashion", "6|hawaiian shirt|tops|men's fashion", "4|polo shirt|tops|men's fashion", "5|dress shirt|tops|men's fashion", "6|turtle neck|tops|men's fashion", "7|collar|tops|men's fashion", "7|hoodie|tops|men's fashion", "8|jacket|tops|men's fashion", "10|lacoste jacket|tops|men's fashion", "11|coat|tops|men's fashion", "12|top coat|tops|men's fashion", "8|sweater|tops|men's fashion", "8|sweatshirt|tops|men's fashion", "8|gilet|tops|men's fashion", "18|other tops|tops|men's fashion", "None|short|bottoms|men's fashion", "None|lacoste short|bottoms|men's fashion", "None|short jeans|bottoms|men's fashion", "None|capris|bottoms|men's fashion", "None|jeans|bottoms|men's fashion", "None|lacoste pants|bottoms|men's fashion", "None|sport pant|bottoms|men's fashion", "None|tights|bottoms|women's fashion", "None|tights|bottoms|men's fashion", "None|other bottoms|bottoms|men's fashion", "None|boxer|underwears|men's fashion", "None|thong|underwears|men's fashion", "None|pajama|underwears|men's fashion", "3|a-shirt|tops|men's fashion", "None|skin shirt|underwears|men's fashion", "None|a-shirt|tops|women's fashion", "None|sucks|underwears|men's fashion", "None|other underwears|underwears|men's fashion", "None|flip flops|shoes|women's fashion", "None|earrings|jewerly & accessories|men's fashion", "None|cap|jewerly & accessories|men's fashion", "None|hat|jewerly & accessories|men's fashion", "None|sunglesses|jewerly & accessories|men's fashion", "None|vision glasses|accessories|women's fashion", "None|vision glasses|jewerly & accessories|men's fashion", "None|mask|jewerly & accessories|men's fashion", "None|mask|accessories|women's fashion", "None|hair band|jewerly & accessories|men's fashion", "None|nacklace|jewerly & accessories|men's fashion", "None|tie|jewerly & accessories|men's fashion", "None|scarf|jewerly & accessories|men's fashion", "None|braclet|jewerly & accessories|men's fashion", "None|rings|jewerly & accessories|men's fashion", "None|watch|jewerly & accessories|men's fashion", "None|gloves|jewerly & accessories|men's fashion", "None|bag|jewerly & accessories|men's fashion", "None|belt|jewerly & accessories|men's fashion", "None|other jewelry & accessories|jewerly & accessories|men's fashion", "None|nike TN|shoes|men's fashion", "None|regular shoes|shoes|men's fashion", "None|sneakers|shoes|men's fashion", "None|classic shoes|shoes|men's fashion", "None|boat shoes|shoes|men's fashion", "None|boots|shoes|men's fashion", "None|boots|shoes|women's fashion", "None|soccer shoes|shoes|men's fashion", "None|sport shoes|shoes|men's fashion", "None|ardilette|shoes|men's fashion", "None|flip flops|shoes|men's fashion", "1|other shoes|shoes|men's fashion", "None|lacoste tracksuit|full body|men's fashion", "None|classic custome|full body|men's fashion", "None|godasse|shoes|men's fashion", "None|godasse|shoes|women's fashion", "None|other full body|full body|men's fashion", 'None|tops|girls|kids', 'None|bottoms|girls|kids', 'None|shoes|girls|kids', 'None|accessories|girls|kids', 'None|tops|boys|kids', 'None|bottoms|boys|kids', 'None|shoes|boys|kids', 'None|accessories|boys|kids', 'None|others|girls|kids', 'None|others|boys|kids', 'None|tops|below three|kids', 'None|bottoms|below three|kids', 'None|shoes|below three|kids', 'None|accessories|below three|kids', '79|others|below three|kid']

@@ -1,0 +1,17 @@
+[multiple="multiple"]+.btn-group{
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background: var(--white);
+  width: 100%;
+  padding: 4px;
+}
+[multiple="multiple"]+.btn-group *{
+  text-align: left;
+}
+.multiselect-container{
+  width: 100%;
+}
+.multiselect-container li{
+  padding: 4Px 8px;
+  font-size: 1.2rem;
+}

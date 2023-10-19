@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load user_templates %}
+{% load static %}
+
+
+{% block content %}
+  <div class="container my-2" style="flex-grow: 1; display: flex;flex-direction: column;">
+    <div class="" style="max-height: 100%;flex-grow: 1; display: flex; flex-direction: column ;">
+      <div class="people-list">
+        <div style='display:flex; justify-content:center'>
+          <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer; transform: rotate(180deg);" width="60" alt="" id="show_later">
+        </div>
+        <div id="notifications_div">
+        </div>
+        <div style='display:flex; justify-content:center'>
+          <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer;" width="60" alt="" id="show_older">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <link rel="stylesheet" href="/static/css/notifications.css">
+  <script>
+    link_1 = "{% url 'ajax-load-notifications' %}"
+    text =  '{% csrf_token %}'
+    trans = '{% trans "No notifications yet" %}'
+  </script>
+  <script type="text/javascript" src="/static/js/notifications.js"></script>
+ 
+{% endblock content %}

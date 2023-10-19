@@ -1,0 +1,30 @@
+    .product-info{
+        display: flex;
+        flex-direction: column;
+    }
+    .list-group-item{
+        border: 1px solid rgba(0,0,0,.125) !important;
+    }
+    li:hover,
+    li:active{
+        border-color: #00b517 !important;
+    }
+    button{
+        background-color: transparent;
+        border: none;
+    }
+    a{
+        color: #27292A;
+    }
+    a:hover,
+    a:active{
+        color:white;
+    }
+    .row>*{
+        width: auto;
+    }
+
+    .pc-header,
+    .phone-header{
+        position: relative;
+    }

@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block link %}
+    {% if LANGUAGE_CODE == "ar" %}
+        <style>
+            .card-body *:not(.form-select, .form-select *, .btn){
+                text-align: right;
+            }
+            .form-select{
+                margin: 0 0 0 auto;
+            }
+        </style>
+    {% endif %}
+
+{% endblock link %}
+
+{% block content %}
+
+  <section class="section-content pt-5 m-2">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px;">
+            <article class="card-body">
+                {% include 'includes/alerts.html' %}
+                <h4 class="card-title">{% trans "Register" %}</h4>
+                <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        {% if LANGUAGE_CODE != "ar" %}
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label>{% trans "First name" %}</label>
+                                    {{ form.first_name }}
+                                    {{ form.first_name.errors }}
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                    <label>{% trans "Last name" %}</label>
+                                    {{ form.last_name }}
+                                    {{ form.last_name.errors }}
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row end.// -->
+                            <div class="form-group">
+                                <label>{% trans "Username" %}</label>
+                                <div class="d-flex">
+                                   <input type="text" name="username" required maxlength="50" class="form-control" id="id_username"> 
+                                   <img width="20" height="20" id="username_x" style="display: none;" class="my-auto ml-1" src="/static/images/icons/x.png" alt="">
+                                   <img width="20" height="20" id="username_tick" style="display: none;"  class="my-auto ml-1" src="/static/images/icons/tick.png" alt="">
+                                   <svg id="loading_animation" style="width: 40px; display: none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                    <g transform="rotate(0 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(30 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(60 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(90 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(120 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(150 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(180 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(210 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(240 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(270 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(300 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g><g transform="rotate(330 50 50)">
+                                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                                      </rect>
+                                    </g>
+                                    <!-- [ldio] generated by https://loading.io/ -->
+                                    </svg>
+                                </div>
+                                <div style="font-size: bold; color: var(--red);" id="username_wrong">
+                                    
+                                </div>
+                                
+                                
+                            </div> <!-- form-group end.// -->
+                            <div class="form-group">
+                                <label for="">{% trans "State" %}</label>
+                                <select name="state" id="" class="form-control col-6">
+                                    {% for state in states %}
+                                        <option value="{{ state.name }}">{{ state.code }} - {{ state.name|capfirst }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                                <input type="hidden" name="gender" value="male">
+                            <div class="form-row">
+                                <div class="form-group col-md-6 {% if form.password.errors %}error{% endif %}">
+                                    <label>{% trans "Create password" %}</label>
+                                    <input type="password" name="password"  placeholder="{% trans 'Password' %}" class="form-control" id="id_password">
+                                </div> <!-- form-group end.// --> 
+                                <div class="form-group col-md-6 {% if form.password.errors %}error{% endif %}">
+                                    <label>{% trans "Repeat password" %}</label>
+                                    <input class="form-control" type="password" name="confirm_password" id="id_confirm_password" placeholder="{% trans "Repeat password" %}">
+                                    {{ form.password.errors }}
+                                </div> <!-- form-group end.// -->  
+                            </div>
+                            <div class="mb-5"><strong style="color:#00b517;">{% trans "Passwords must have at least 8 characters" %}</strong></div>
+                        {% else %}
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label>{% trans "Last name" %}</label>
+                                    {{ form.last_name }}
+                                    {{ form.last_name.errors }}
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                    <label>{% trans "First name" %}</label>
+                                    {{ form.first_name }}
+                                    {{ form.first_name.errors }}
+                                </div> <!-- form-group end.// -->
+                               
+                            </div> <!-- form-row end.// -->
+                            <div class="form-group">
+                                <label>{% trans "Username" %}</label>
+                                <div class="d-flex">
+                                  <img width="20" height="20" id="username_x" style="display: none;" class="my-auto mr-1" src="/static/images/icons/x.png" alt="">
+                                  <img width="20" height="20" id="username_tick" style="display: none;"  class="my-auto mr-1" src="/static/images/icons/tick.png" alt="">
+                                  <svg id="loading_animation" style="width: 40px; display: none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                  <g transform="rotate(0 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(30 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(60 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(90 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(120 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(150 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(180 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(210 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(240 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(270 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(300 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g><g transform="rotate(330 50 50)">
+                                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#28a745">
+                                      <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                  </g>
+                                  <!-- [ldio] generated by https://loading.io/ -->
+                                  </svg>
+                                  <input type="text" name="username" required maxlength="50" class="form-control" id="id_username">
+                                </div>
+                                <div style="font-size: bold; color: var(--red);" id="username_wrong">
+                                    
+                                </div>
+                              </div> <!-- form-group end.// -->
+                            <div class="form-group">
+                                <label for="">{% trans "State" %}</label>
+                                <select name="state" id="" class="form-control col-6 ml-auto rtl">
+                                    {% for state in states %}
+                                        <option value="{{ state.name }}">{{ state.name|capfirst }} - {{ state.code }} </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                               
+                              
+                                    <input type="hidden" name="gender" value="male">
+                                
+                          
+                            <div class="form-row mb">
+                                <div class="form-group col-md-6 {% if form.password.errors %}error{% endif %}">
+                                    <label>{% trans "Repeat password" %}</label>
+                                    <input class="form-control" type="password" required id="id_confirm_password" name="confirm_password" placeholder="{% trans "Repeat password" %}">
+                                    {{ form.password.errors }}
+                                </div> <!-- form-group end.// -->  
+                                <div class="form-group col-md-6 {% if form.password.errors %}error{% endif %}">
+                                    <label>{% trans "Create password" %}</label>
+                                    <input type="password" name="password" class="form-control" required id="id_password" placeholder="{% trans 'Password' %}">
+                                </div> <!-- form-group end.// --> 
+                            </div>
+                            <div class="mb-5 text-right"><strong style="color:#00b517;">{% trans "Passwords must have at least 8 characters" %}</strong></div>
+                        {% endif %}
+                        <div class="form-group">
+                            <button type="submit" disabled id="submit_registration_button" class="btn btn-success btn-block"> {% trans "Register" %}  </button>
+                        </div> <!-- form-group// -->   
+                </form>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">{% trans "Have an account?" %} <a href="{% url 'login' %}" style="color:#00b517">{% trans "Login" %}</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    <footer class="text-center col-12 mt-auto">
+        <div class="container py-3">
+            <section class="text-center">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+                </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+                    <img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+                </a>
+            </section>
+        </div>
+    </footer>
+  <script>
+    id_password.setAttribute('type', 'password')
+  </script>
+  </section>
+  <style>
+    .pc-header,
+    .phone-header{
+        position: relative !important;
+    }
+  </style>
+  <!-- ========================= SECTION CONTENT END// ========================= -->
+  <script>
+    var trans_1  = "{% trans 'this username is taken'%}"
+    var trans_2  = '{% trans 'Your username should not be empty and only include letters, numbers and "_" '%}'
+  </script>
+  <script src="/static/js/register.js"></script>
+
+{% endblock content %}

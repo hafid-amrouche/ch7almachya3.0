@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+  {{ user.first_name|capfirst }} مرحبا
+
+  "أنا حفيظ من موقع "شحال ماشيا
+
+  اضغط على الرابط في الأسفل لتفعيل حسابك
+ 
+  http://{{ domain }}{% url 'confirm-activation' uidb64=uid token=token %}
+  
+
+{% endautoescape %}

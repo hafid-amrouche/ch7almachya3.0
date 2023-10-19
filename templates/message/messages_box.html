@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load user_templates %}
+{% load static %}
+
+
+{% block content %}
+<div class="chat-header clearfix p-2 pl-4" style="position: fixed; top: 0; width: 100%; z-index: 1; display: none; border-bottom: 1px solid var(--transparent-dark); background-color: var(--white);">
+  <div class="row">
+      <div class="col-lg-6 align-items-center p-0" style="display: flex;">
+        <a href="{% url 'messages-list' %}" id="go-left" class="messages_profile_pic_div mr-3" style="display: none;">
+          <img style="width: 40px; height: 40px;" src="{% static 'images/icons/arrow left.png' %}" alt="">                              
+        </a>
+        <a href="{% url 'profile' reciever.id %}" class="messages_profile_pic_div mr-2">
+            {% if reciever.profile.picture_150 %}
+              <img src="{{ reciever.profile.picture_150.url }}" alt="avatar" class="messages_profile_pic">
+            {% else %}
+              <img src="/static/images/letters/{{ reciever.first_name.0 }}.jpg" alt="avatar"  class="messages_profile_pic">
+              
+            {% endif %}
+          </a>
+          
+          <div class="chat-about">
+              <h6 class="mb-0">{{ reciever.full_name|capfirst }}</h6>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="pt-md-0" style="flex-grow: 1; display: flex;flex-direction: column; border-radius: 0; padding:56px 0 80px 0; background-color: var(--mygray);">
+  <div class="card chat-app" style="max-height: 100%;flex-grow: 1; display: flex; flex-direction: column ;">
+    <div class="people-list">
+      <div style='display:flex; justify-content:center'>
+        <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer; transform: rotate(180deg);" width="60" alt="" id="show_later">
+      </div>
+      <div id="plist_3">
+      </div>
+      <div style='display:flex; justify-content:center'>
+          <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer" width="60" alt="" id="show_older">
+      </div>
+    </div>
+    <div class="chat" id="chat" style="display: flex; flex-direction: column; flex-grow: 1;">
+      <div class="chat-header clearfix p-2 pl-4" id="chat-header-pc" style="width: 100%; z-index: 1;border-bottom: 1px solid var(--transparent-dark); background-color: var(--white);">
+        <div class="row">
+            <div class="col-lg-6 align-items-center p-0" style="display: flex;">
+              <a href="{% url 'profile' reciever.id %}" class="messages_profile_pic_div">
+                  {% if reciever.profile.picture_150 %}
+                    <img src="{{ reciever.profile.picture_150.url }}" alt="avatar" class="messages_profile_pic">
+                  {% else %}
+                    <img src="/static/images/letters/{{ reciever.first_name.0 }}.jpg" alt="avatar"  class="messages_profile_pic">
+                    
+                  {% endif %}
+                </a>
+                
+                <div class="chat-about">
+                    <h6 class="mb-0">{{ reciever.full_name|capfirst }}</h6>
+                </div>
+            </div>
+        </div>
+      </div>
+        <div class="chat-history pb-0" id="chat-history" style="height: calc(100vh - 340px); display: flex; flex-direction: column-reverse; flex-grow: 1; overflow-y: scroll; padding-bottom: 60px !important;">
+          
+        </div>
+        
+    </div>
+  </div>
+</div>
+<div class="chat-message clearfix send-message-box" style="position: fixed; bottom: 0; width: 100%; z-index: 1;">
+  <form style="background-color: var(--white);">
+    {% csrf_token %}
+    <div class="input-group mb-0 p-2">
+          <textarea type="text" rows=2 class="form-control" name='text' style="border-radius: 5px;" placeholder="{% trans 'Enter text here...' %}" required id="text-input"></textarea>
+          <div class="input-group-prepend" >
+            <span class="ml-2 p-0 " style=" border-radius:3px; cursor:pointer; display: flex; flex-direction: column;">
+              <img class="p-1" id="submi_button" style="border: 1px solid var(--green); border-radius: 3px;" width="45" src="https://img.icons8.com/ios-glyphs/70/40C057/filled-sent.png"/>
+            </span>
+          </div>
+    </div>
+  </form>
+</div>
+<script>
+  var ajax_save_link = "{% url 'ajax-save' reciever.id %}"
+  var ajax_load_link = "{% url 'ajax-load' reciever.id %}"
+  var ajax_messages_list_link = "{% url 'ajax-messages-list' %}"
+  var reciever_id = '{{ reciever.id }}'
+  var trans_1 = '{% trans "You:" %}'
+  var trans_2 = '{% trans "No messages yet" %}'
+</script>
+<script type="text/javascript" src='/static/js/message/messages_box.js'>
+</script>
+<link rel="stylesheet" href="/static/css/message/messages_box.css">
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section id='comment_container' class="m-3">
+    
+</section>
+<script>
+    var user_id = "{{ user.id }}"
+
+    var trans_1 = '{% trans "delete" %}'
+</script>
+
+<script type="text/javascript" src='{% static "js/product/single_comment.js" %}'></script>
+
+{% endblock content %}

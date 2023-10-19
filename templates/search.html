@@ -1,0 +1,613 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load user_templates %}
+
+
+{% block link %}
+
+{% if LANGUAGE_CODE == "ar" %}
+    <style>
+        .right-sidebar *:not(.text-center *, .btn, .btn-group *){
+            text-align: right;
+        }
+    </style>
+{% endif %}
+{% endblock link %}
+
+
+
+
+{% block content %}
+    <section >
+        <div style="background-color: var(--white); border-bottom: 1px solid var(--transparent-dark);" class="d-flex align-items-center justify-content-center">
+            <button class="btn btn-success m-2" style="width: 100px;" id="cars">{% trans "Cars" %}</button>
+            <button class="btn btn-outline-success m-2" style="width: 100px;" id="people">{% trans "People" %}</button>
+            <button class="btn btn-outline-success m-2" style="width: 100px;" id="companies">{% trans "Companies" %}</button>
+        </div>
+    </section>
+     <!-- ========================= SECTION ========================= -->
+     <div id="search_container">
+        <section id="cars_container">
+            <div style="background-color: var(--white); display: none;" id="filter-bar">
+                <select style="background-color:var(--white) !important; " name="type" onchange="location = this.value;" class="search_select p-2">
+                    <option value="{% url 'search' %}?type=best-match&keyword={{ keyword }}" {% if search_type == 'best-match' %}selected{% endif %}>{% trans "Best match" %}</option>
+                    <option value="{% url 'search' %}?type=most-viewed&keyword={{ keyword }}" {% if search_type == 'most-viewed' %}selected{% endif %}>{% trans "Most viewed first" %}</option>
+                    <option value="{% url 'search' %}?type=highest-rated&keyword={{ keyword }}" {% if search_type == 'highest-rated' %}selected{% endif %}>{% trans "Highest rated first" %}</option>
+                    <option value="{% url 'search' %}?type=cheapest-first&keyword={{ keyword }}" {% if search_type == 'cheapest-first' %}selected{% endif %}>{% trans "Cheapest first" %}</option>
+                    <option value="{% url 'search' %}?type=newest-first&keyword={{ keyword }}" {% if search_type == 'newest-first' %}selected{% endif %}>{% trans "Newest first" %}</option>
+                </select>
+                
+                <button class="float-right p-2 mt-1" onclick="toggleRightSidebar()">
+                    <span style="color: var(--green);">
+                        <img src="https://img.icons8.com/ios/40/28a745/filter--v1.png" width="24"/>
+                        {% trans "filter" %}
+                    </span>
+                </button>
+            </div>
+          
+                <div class="container p-0">
+                        <div id='products-container'>
+                            
+                        </div>
+                        <div class="col-12 text-center">
+                            <svg id="loading-animations" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: 16px auto auto auto; display: none; shape-rendering: auto;width: 50%; max-width: 200px; aspect-ratio: 1;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                              <g transform="rotate(0 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(30 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(60 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(90 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(120 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(150 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(180 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(210 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(240 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(270 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(300 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"/>
+                                </rect>
+                              </g><g transform="rotate(330 50 50)">
+                                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+                                </rect>
+                              </g>
+                              <!-- [ldio] generated by https://loading.io/ -->
+                          </svg> 
+                            
+                        </div>
+                        <div style='display: flex; flex-wrap: wrap; justify-content:center;align-items:center; margin-top:20px' id='pagination'>
+                                
+                        </div>
+                </div>
+               
+    
+          {% if LANGUAGE_CODE != 'ar' %}
+            <div class="right-sidebar"  id="rightSidebar">
+                <a class="closebtn" onclick="toggleRightSidebar()"><img width="40" src="https://img.icons8.com/fluency-systems-regular/48/00b517/close-window.png"></a>
+                <form id="SPForm" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "States" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes" multiple="multiple" class="form-control"  name="states">
+                                {% for state in states %}
+                                    <option value="{{ state.name_en }}" {% if state in search_parameters.states.all %}selected{% endif %}>{{ state.code }} - {{ state.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group mb-3 ml-3">
+                        <div>
+                            <label  class="form-label"><strong>{% trans "Brand" %}</strong></label>
+                        </div>
+                        <div>
+                          <select name="category" class="form-control">
+                            <option value="all_brands" {% if search_parameters.brand.name == "all_brands" %}selected{% endif %}>{% trans "All brands" %}</option>
+                              {% for parent in parent_categories|order_by:"-order" %}
+                                <option disabled style="color:var(--green); font-weight:900;">{{ parent.name|capfirst }}</option>
+                                  {% for category in parent.children.all|order_by:"-order" %}
+                                    <option value="{{ category.id }}" {% if category == search_parameters.brand %}selected{% endif %}>&ensp; &ensp;{{ category.name|capfirst }} </option>
+                                  {% endfor %}
+                              {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "Colors" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes_4" multiple="multiple" class="form-control"  name="colors">
+                                {% for color in colors %}
+                                    <option value="{{ color.id }}" {% if color in search_parameters.colors.all %}selected{% endif %}>{{ color.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "Documents" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes_5" multiple="multiple" class="form-control"  name="documents">
+                                {% for document in documents %}
+                                    <option value="{{ document.id }}" {% if document in search_parameters.documents.all %}selected{% endif %}>{{ document.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 style-1">
+                        <span ><strong>{% trans "Price" %}: </strong></span><input type="number" name="min" min="0" max="2147483647" placeholder="{% trans "min" %}" id="id_min_price" class="form-control p-1 ml-1" style="width: 80px;height: 33px; display: inline;"> - <input type="number" name="max" max="2147483647" min="0" id="id_max_price" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 100px;height: 33px; display: inline;"> Mi
+                    </div>
+                    <div class="form-group style-1 d-flex align-items-center ">
+                        <strong >{% trans "Hide cars with no price" %}</strong>
+                        <input class="nowrap" {% if not search_parameters.show_none_priced %}checked{% endif %}  type="checkbox" id="flexSwitchCheckChecked_3" name="hide_none_priced">
+                      </div>
+                    <hr>
+                    <div class="mt-2 mb-3 style">
+                        <span>
+                            <strong>
+                                {% trans "Kilometrage" %}: 
+                            </strong>
+                        </span>
+                        <input type="number" name="max-distance" max="2147483647" min="0" id="id_max_distance" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 120px;height: 33px; display: inline;">
+                    </div>
+                    <div class="mt-2 mb-3 style-1">
+                        <span><strong>{% trans "what year" %} </strong></span><input type="number" name="min-year" min="1900" max="2147483647"  placeholder="{% trans "min" %}" id="id_min_year" class="form-control p-1 ml-1" style="width: 70px;height: 33px; display: inline;"> - <input type="number" max="2147483647" min="0" name="max-year" id="id_max_year" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 70px;height: 33px; display: inline;">
+                    </div>
+                    
+                    <hr>
+                    <div class="ml-3">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "Car options" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes_1" multiple="multiple" class="form-control"  name="options">
+                                {% for option in options %}
+                                    <option value="{{ option.name_en }}" {% if option in search_parameters.options.all %}selected{% endif %}>{{ option.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-check my-4 pl-3 style-1 d-flex align-items-center ">
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            <strong>{% trans "All options only" %}</strong>
+                        </label>
+                        <input class="" type="checkbox" name="all_options" {% if search_parameters.all_options == True %}checked{% endif %}   id="flexRadioDefault4" >
+                    </div>
+                    <hr>
+    
+                    <div class="ml-3 mb-3">
+                        <div class="">
+                            <label class="form-label"><strong>{% trans "Fuel" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes_2" multiple="multiple" class="form-control"  name="fuels">
+                                {% for fuel in fuels %}
+                                    <option value="{{ fuel.name_en }}" {% if fuel in search_parameters.fuels.all %}selected{% endif %}>{{ fuel.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <div class="">
+                            <label class="form-label"><strong>{% trans "Gear Box" %} </strong></label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <select id="multiple-checkboxes_3" multiple="multiple" class="form-control"  name="gear_boxs">
+                                {% for gear_box in gear_boxs %}
+                                    <option value="{{ gear_box.name_en }}" {% if gear_box in search_parameters.gear_boxs.all %}selected{% endif %}>{{ gear_box.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="ml-3 my-4 style-1  d-flex align-items-center ">
+                        <strong>{% trans "Exchange only" %}</strong>
+                        <input class="nowrap" {% if search_parameters.exchange %}checked{% endif %} style=""  type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                      </div>
+                    <hr>
+                    <div class="pt-4">
+                        <span style="padding-left: 12px;">&nbsp;<strong>{% trans "Minimum rating" %}: </strong></span><input type="number" value="{{ search_parameters.minimum_rating }}" min="0" max="100" name="min-rating" class="form-control p-1 ml-1 text-center" style="width: 70px;height: 33px; display: inline;"> <span><img src="https://img.icons8.com/metro/18/28a745/percentage.png"/></span>
+                    </div>
+                    <div class="mt-4 ml-3"><strong>{% trans "Car condition" %}:</strong></div>
+                    <div class="d-flex align-items-center m-3"  style="margin-left: 30%!important" >
+                        <input  type="checkbox" name="used" id="flexRadioDefault4" {% if search_parameters.used == True %}checked{% endif %}>
+                        <label class="form-check-label pl-3" for="flexRadioDefault4">
+                            {% trans "Used" %}
+                        </label>
+                    </div>
+                    <div class="d-flex align-items-center m-3 " style="margin-left: 30%!important" >
+                        <input  type="checkbox"  name="new" id="flexRadioDefault5" {% if search_parameters.new == True %}checked{% endif %} >
+                        <label class="form-check-label pl-3" for="flexRadioDefault5">
+                            {% trans "New" %}
+                        </label>
+                    </div>
+                <button type="submit" style="display: none;" id="done" ></button>
+                </form>
+                <div style="position: sticky; bottom:0; display: flex;z-index: 1;">     
+                    <button class="btn btn-success col-12" id="doneClicker" onclick="done.click()" style="vertical-align: bottom;border-radius: unset;">{% trans "Done" %}</button>
+                </div>
+            </div>
+          {% else %}
+            <div class="right-sidebar"  id="rightSidebar">
+                <a class="closebtn" onclick="toggleRightSidebar()"><img width="40" src="https://img.icons8.com/fluency-systems-regular/48/00b517/close-window.png"></a>
+                <form id="SPForm" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "States" %} </strong></label>
+                        </div>
+                        <div class="">
+                            <select id="multiple-checkboxes" multiple="multiple" class="form-control"  name="states">
+                                {% for state in states %}
+                                    <option value="{{ state.name_en }}" {% if state in search_parameters.states.all %}selected{% endif %}>{{ state.name|capfirst }} - {{ state.code }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="mb-3 ml-3 mx-1">
+                        <label  class="col-form-label"><strong>العلامات</strong></label>
+                        <div class="ml-auto px-0">
+                        <select name="category" class="form-control">
+                            <option value="all_brands" {% if search_parameters.brand.name == "all_brands" %}selected{% endif %}>كل العلامات &ensp;</option>
+                            {% for parent in parent_categories|order_by:"-order" %}
+                                <option disabled style="color:var(--green); font-weight:900;">{{ parent.name|capfirst }} &ensp;</option>
+                                {% for category in parent.children.all|order_by:"-order" %}
+                                    <option value="{{ category.id }}" {% if category == search_parameters.brand %}selected{% endif %}>{{ category.name|capfirst }} &ensp; &ensp; &ensp;</option>
+                                {% endfor %}
+                            {% endfor %}
+                            <option value="none" {% if not search_parameters.brand %}selected{% endif %}>علامة أخرى  &ensp;</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "Colors" %} </strong></label>
+                        </div>
+                        <div class="">
+                            <select id="multiple-checkboxes_4" multiple="multiple" class="form-control"  name="colors">
+                                {% for color in colors %}
+                                    <option value="{{ color.id }}" {% if color in search_parameters.colors.all %}selected{% endif %}>{{ color.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ml-3 pb-2">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>{% trans "Documents" %} </strong></label>
+                        </div>
+                        <div class="">
+                            <select id="multiple-checkboxes_5" multiple="multiple" class="form-control"  name="documents">
+                                {% for document in documents %}
+                                    <option value="{{ document.id }}" {% if document in search_parameters.documents.all %}selected{% endif %}>{{ document.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 style-1 style-2">
+                        <span>الثمن</span>
+                        <input type="number" name="min" min="0" max="2147483647"  placeholder="{% trans "min" %}" id="id_min_price" class="form-control p-1 ml-1" style="width: 70px;height: 33px; display: inline;">
+                         - 
+                         <input type="number" name="max" id="id_max_price" max="2147483647" min="0" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 80px;height: 33px; display: inline;">
+    
+                         مليون
+    
+                    </div>
+                    <div class="form-group my-4 mr-3 style-1 style-2 d-flex align-items-center ">
+                        <strong>اخفاء السيارات بدون ثمن</strong>
+                        <input {% if not search_parameters.show_none_priced %}checked{% endif %}   type="checkbox" id="flexSwitchCheckChecked_3" name="hide_none_priced">
+    
+                    </div>
+                    <hr>
+                    <div class="mt-2 mb-3 style-1 style-2">
+                        <span><strong> : كيلومتراج </strong></span>
+                        <input type="number" name="max-distance" id="id_max_distance" max="2147483647" min="0" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 120px;height: 33px; display: inline;"> 
+    
+                    </div>
+                    <div class="mt-2 mb-3">
+                        <span><strong></strong></span>
+                        <input type="number" name="max-year" id="id_max_year" min="0" max="2147483647" placeholder="{% trans "max" %}" class="form-control p-1" style="width: 70px;height: 33px; display: inline;">
+                        - 
+                        <input type="number" name="min-year" min="1900" max="2147483647"  placeholder="{% trans "min" %}" id="id_min_year" class="form-control p-1 ml-1" style="width: 70px;height: 33px; display: inline;"> : السنة
+                         
+                    </div>
+                    
+                    <hr>
+                    <div class="ml-3">
+                        <div class="">
+                            <label for="customRange1" class="form-label"><strong>خيارات السيارة </strong></label>
+                        </div>
+                        <div class="style-1 style-2">
+                            <select id="multiple-checkboxes_1" multiple="multiple" class="form-control"  name="options">
+                                {% for option in options %}
+                                    <option value="{{ option.name_en }}" {% if option in search_parameters.options.all %}selected{% endif %}>{{ option.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-check my-4 pr-3 style-1 style-2 d-flex align-items-center ">
+    
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            <strong >لا توت أوبسيون فقط</strong>
+                        </label>
+                        <input  type="checkbox" name="all_options" {% if search_parameters.all_options == True %}checked{% endif %} id="flexRadioDefault4" >
+    
+                    </div>
+                    <hr>
+                    
+                    
+                    <div class="ml-3 mb-3">
+                        <div class="">
+                            <label class="form-label"><strong>الوقود </strong></label>
+                        </div>
+                        <div class="">
+                            <select id="multiple-checkboxes_2" multiple="multiple" class="form-control"  name="fuels">
+                                {% for fuel in fuels %}
+                                    <option value="{{ fuel.name_en }}" {% if fuel in search_parameters.fuels.all %}selected{% endif %}>{{ fuel.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <div class="">
+                            <label class="form-label"><strong> علبة السرعة </strong></label>
+                        </div>
+                        <div class="">
+                            <select id="multiple-checkboxes_3" multiple="multiple" class="form-control"  name="gear_boxs">
+                                {% for gear_box in gear_boxs %}
+                                    <option value="{{ gear_box.name_en }}" {% if gear_box in search_parameters.gear_boxs.all %}selected{% endif %}>{{ gear_box.name|capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group my-4 mr-3 style-1 style-2  d-flex align-items-center ">
+                        <strong >تبادل فقط</strong>
+    
+                        <input {% if search_parameters.exchange %}checked{% endif %}   type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                    </div>
+                    <hr>
+                    <div class="pt-4">
+                        <span style="padding-left: 12px;"><img src="https://img.icons8.com/metro/18/28a745/percentage.png"/><strong></strong></span><input type="number" value="{{ search_parameters.minimum_rating }}" min="0" max="100" name="min-rating" class="form-control p-1 ml-1 text-center" style="width: 70px;height: 33px; display: inline;"> &nbsp;<strong> : أقل تقييم </strong>
+                    </div>
+                    <div class="mt-4"><strong> : حالة السيارة</strong></div>
+                    <div class="form-check m-3 d-flex align-items-center" >
+                        <label class="form-check-label pr-3 ml-auto" for="flexRadioDefault4">
+                            سيارة مستعملة
+                        </label>
+                        <input type="checkbox" class="mr-auto" name="used"  id="flexRadioDefault4" {% if search_parameters.used == True %}checked{% endif %}>
+    
+                    </div>
+                    <div class="form-check m-3 d-flex align-items-center" >
+                        
+                        <label class="form-check-label pr-3  ml-auto" for="flexRadioDefault5">
+                            سيارة جديدة
+                        </label>
+                        <input class="mr-auto" type="checkbox"  name="new" id="flexRadioDefault5" {% if search_parameters.new == True %}checked{% endif %} >
+    
+                    </div>
+                <button type="submit" style="display: none;" id="done" ></button>
+                </form>
+                <div style="position: sticky; bottom:0; display: flex;z-index: 1;">     
+                    <button class="btn btn-success col-12" id="doneClicker" onclick="done.click()" style="vertical-align: bottom;border-radius: unset;">{% trans "Done" %}</button>
+                </div>
+            </div>
+          {% endif %}
+        </section>
+        <section id="people_block" style="display: none;">
+            <div id="people_container" class=" mt-3 mx-1">
+
+            </div>
+            <div class="col-12 text-center">
+                <svg id="loading-animations-people" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: none; shape-rendering: auto;width: 50%; max-width: 200px; aspect-ratio: 1;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <g transform="rotate(0 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(30 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(60 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(90 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(120 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(150 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(180 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(210 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(240 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(270 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(300 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(330 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                    <!-- [ldio] generated by https://loading.io/ -->
+                </svg> 
+                <div style='display:flex; justify-content:center'>
+                    <img src="{% static 'images/icons/go down.png' %}" style="cursor: pointer; margin-top: 15px; display: none;" width="60" alt="" id="show_more">
+                </div>
+            </div>
+        </section>
+        <section id="companies_block" style="display: none;">
+            <div id="companies_container" class=" mt-3 mx-1">
+
+            </div>
+            <div class="col-12 text-center">
+                <svg id="loading-animations-companies" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: none; shape-rendering: auto;width: 50%; max-width: 200px; aspect-ratio: 1;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <g transform="rotate(0 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(30 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(60 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(90 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(120 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(150 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(180 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(210 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(240 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(270 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(300 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"/>
+                      </rect>
+                    </g><g transform="rotate(330 50 50)">
+                      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                    <!-- [ldio] generated by https://loading.io/ -->
+                </svg> 
+                <div style='display:flex; justify-content:center'>
+                    <img src="{% static 'images/icons/go down.png' %}" style="cursor: pointer; margin-top: 15px; display: none;" width="60" alt="" id="show_more_companies">
+                </div>
+            </div>
+        </section>
+     </div>
+    <!-- ========================= SECTION  END// ========================= -->
+    <footer class="text-center col-12 mt-auto">
+        <div class="container py-3">
+            <section class="mtext-center">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+                    <img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+                </a>
+            </section>
+        </div>
+    </footer>
+    <!-- <script type="text/javascript" src='{% static "select/js/multiselect-dropdown.js" %}'>
+        
+    </script> -->
+    <script>
+        id_min_price.value = '{{ search_parameters.min_price }}';
+        id_max_price.value = '{{ search_parameters.max_price }}';
+        id_max_distance.value = '{{ search_parameters.max_distence }}';
+        id_min_year.value = '{{ search_parameters.min_year }}';
+        id_max_year.value = '{{ search_parameters.max_year }}';
+        var link_1 = '{% url "search-ajax" %}'
+        var link_3 = "{% static 'images/exchange.png' %}"
+        var link_4 = "{% static 'images/icons/view.png' %}"
+        var link_5 = "{% static 'images/icons/small-like.png' %}"
+        
+        var trans_1 = '{% trans "Price: " %}'
+        var trans_2 = '{% trans "Offered price: " %}'
+        var trans_3 = '{% trans "Price is unavailable" %}'
+        var trans_4 = '{% trans "All options" %}'
+        var trans_5 = '{% trans "Store" %}'
+        var trans_6 = "{% trans "No items were Found, try changing the search parameters." %}"
+        var transSO1 = "{% trans 'No company was found'  %}"
+        var transSO2 = "{% trans 'No person was found'  %}"
+        var text_1 = '{{ search_type }}'
+        var text_2 = '{{ search_parameters.id }}'
+
+        var keyword = '{{ keyword }}'
+        var LC ='{{ LANGUAGE_CODE }}'
+        
+
+    </script>
+    <script type="text/javascript" src='{% static "js/search.js" %}'>
+    </script>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <script type="text/javascript" src='{% static "js/search-only.js" %}'>
+        
+    </script>
+    <link rel="stylesheet" href="{% static "css/search-only.css" %}">
+{% endblock content %}

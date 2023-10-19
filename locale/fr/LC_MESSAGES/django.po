@@ -1,0 +1,1523 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-18 13:27+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\ch7almachya\views.py:48
+msgid "Latest"
+msgstr "Le plus récent"
+
+#: .\ch7almachya\views.py:164
+msgid "Welcome to your profile. Please remember your username \"{}\""
+msgstr ""
+"Bienvenue sur votre profil. N'oubliez pas votre nom d'utilisateur \"{}\""
+
+#: .\ch7almachya\views.py:172
+msgid "Something went wrong, please try to register again"
+msgstr "Quelque chose s'est mal passé, veuillez réessayer de vous inscrire"
+
+#: .\ch7almachya\views.py:180 .\templates\base.html:71 .\templates\log
+#: in.html:33 .\templates\register.html:26 .\templates\register.html:234
+msgid "Register"
+msgstr "S'inscrire"
+
+#: .\ch7almachya\views.py:181
+msgid "Register with us at ch7al machya and start selling vehicles"
+msgstr ""
+"Inscrivez-vous chez nous sur ch7al machya et commencez à vendre des véhicules"
+
+#: .\ch7almachya\views.py:191 .\templates\base.html:67 .\templates\log
+#: in.html:11 in.html:28 .\templates\register.html:239
+#: .\templates\settings\forgot_password.html:19
+#: .\templates\settings\forgot_password.html:35
+msgid "Login"
+msgstr "Connexion"
+
+#: .\ch7almachya\views.py:192
+msgid "Login to your account at Ch7al machya"
+msgstr "Connectez-vous à votre compte sur Ch7al machya"
+
+#: .\ch7almachya\views.py:208
+msgid "You are logged in."
+msgstr "Vous êtes connecté."
+
+#: .\ch7almachya\views.py:211
+msgid "Login Failed"
+msgstr "Échec de la connexion"
+
+#: .\ch7almachya\views.py:224
+msgid "You are logged out."
+msgstr "Vous êtes déconnecté."
+
+#: .\ch7almachya\views.py:1442
+msgid "Your message was sent successfully"
+msgstr "Votre message a bien été envoyé"
+
+#: .\ch7almachya\views.py:1448 .\templates\base.html:159
+#: .\templates\base.html:225
+msgid "Contact Us"
+msgstr "Contacter nous"
+
+#: .\ch7almachya\views.py:1449
+msgid ""
+"Contact our team at Ch7al machya for any information we will reply to you in "
+"less than a day"
+msgstr ""
+"Contactez notre équipe chez Ch7al machya pour toute information nous vous "
+"répondrons en moins d'une journée"
+
+#: .\ch7almachya\views.py:1533
+msgid "Notification"
+msgstr "Notification"
+
+#: .\dashboard\views.py:27 .\templates\base.html:104 .\templates\base.html:171
+msgid "Your items"
+msgstr "Vos articles"
+
+#: .\dashboard\views.py:64 .\templates\base.html:109 .\templates\base.html:175
+msgid "Saved posts"
+msgstr "Publications enregistrés"
+
+#: .\dashboard\views.py:148 .\dashboard\views.py:373
+msgid "Problem with registring the brand"
+msgstr "Problème d'enregistrement de la marque"
+
+#: .\dashboard\views.py:222 .\templates\dashboard\create_item.html:202
+#: .\templates\dashboard\create_item.html:430
+#: .\templates\dashboard\edit_item.html:212
+#: .\templates\dashboard\edit_item.html:498
+msgid "Your post must have at least 1 photo"
+msgstr "Votre article doit avoir au moins 1 photo"
+
+#: .\dashboard\views.py:254
+msgid "Your item was created succesfully"
+msgstr "Votre article a été créé avec succès"
+
+#: .\dashboard\views.py:260
+msgid "Your item was Not created"
+msgstr "Votre article n'a pas été créé"
+
+#: .\dashboard\views.py:274 .\templates\base.html:106 .\templates\base.html:173
+msgid "Create item"
+msgstr "Créer un articles"
+
+#: .\dashboard\views.py:423
+msgid "Your item was updated succesfully"
+msgstr "Votre article a été mis à jour avec succès"
+
+#: .\dashboard\views.py:428
+msgid "Your item was not updated"
+msgstr "Le profil n'a pas été mis à jour"
+
+#: .\dashboard\views.py:448
+msgid "Edit item"
+msgstr "Votre article n'a pas été mis à jour"
+
+#: .\funtions.py:19 .\user\templatetags\user_templates.py:35
+msgid " s"
+msgstr ""
+
+#: .\funtions.py:22 .\user\templatetags\user_templates.py:38
+msgid " m"
+msgstr ""
+
+#: .\funtions.py:25 .\user\templatetags\user_templates.py:41
+msgid "h"
+msgstr ""
+
+#: .\funtions.py:28 .\user\templatetags\user_templates.py:44
+msgid " d"
+msgstr " j"
+
+#: .\funtions.py:31 .\user\templatetags\user_templates.py:47
+msgid " w"
+msgstr " s"
+
+#: .\funtions.py:34 .\user\templatetags\user_templates.py:50
+msgid " y"
+msgstr " a"
+
+#: .\message\views.py:63 .\templates\base.html:102
+msgid "Messages"
+msgstr "Messages"
+
+#: .\product\views.py:72
+msgid "{} is selling a {} {}"
+msgstr "{} vend une {} {}"
+
+#: .\settings\views.py:57
+msgid "Profile picture was updated successfully"
+msgstr "La photo de profil a été mise à jour avec succès"
+
+#: .\settings\views.py:65
+msgid "Profile picture couldn't be updated"
+msgstr "La photo de profil n'a pas pu être mise à jour"
+
+#: .\settings\views.py:98
+msgid "Profile was updated successfully"
+msgstr "Le profil a été mise à jour avec succès"
+
+#: .\settings\views.py:100
+msgid "Profile was not updated"
+msgstr "Le profil n'a pas été mis à jour"
+
+#: .\settings\views.py:115
+msgid "Email added successfuly"
+msgstr "E-mail ajouté avec succès"
+
+#: .\settings\views.py:120 .\settings\views.py:150
+msgid "\"{}\" is not corret, make sure your email is written correctly"
+msgstr ""
+"\"{}\" n'est pas correct, assurez-vous que votre email est écrit correctement"
+
+#: .\settings\views.py:129
+msgid "the email \"{}\" is used too many times, please use a new email"
+msgstr ""
+"l'e-mail \"{}\" est utilisé trop de fois, veuillez utiliser un nouvel e-mail"
+
+#: .\settings\views.py:132
+msgid "New email is the same as the current email"
+msgstr "Le nouvel e-mail est le même que l'e-mail actuel"
+
+#: .\settings\views.py:139
+msgid "Email removed successfuly"
+msgstr "E-mail supprimé avec succès"
+
+#: .\settings\views.py:143
+msgid "Email updated successfuly"
+msgstr "E-mail mis à jour avec succès"
+
+#: .\settings\views.py:190
+msgid ""
+"Email verification  failed, please try again. If this problem still occurs "
+"please contact our customer service"
+msgstr ""
+"Échec de l'activation du compte, veuillez réessayer. Si ce problème "
+"persiste, veuillez contacter notre service client"
+
+#: .\settings\views.py:208
+msgid " Your email is verified "
+msgstr " Votre email est vérifié "
+
+#: .\settings\views.py:211
+msgid "Invalid link"
+msgstr "Lien d'activation invalide"
+
+#: .\settings\views.py:219 .\templates\base.html:118 .\templates\base.html:184
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: .\settings\views.py:227
+msgid "Your password must be longer than 8 characters"
+msgstr "Votre mot de passe doit comporter plus de 8 caractères"
+
+#: .\settings\views.py:230
+msgid "Your password was updated successfully"
+msgstr "Votre mot de passe a été mis à jour avec succès"
+
+#: .\settings\views.py:239
+msgid "New password and its confirmation does not match"
+msgstr "Le nouveau mot de passe et sa confirmation ne correspondent pas"
+
+#: .\settings\views.py:242
+msgid "Your current password is wrong"
+msgstr "Votre mot de passe actuel est erroné"
+
+#: .\settings\views.py:285
+msgid "Account does not exist"
+msgstr "Le compte n'existe pas"
+
+#: .\settings\views.py:287 .\templates\settings\forgot_password.html:12
+#: .\templates\settings\forgot_password.html:28
+msgid "Forgot Password ?"
+msgstr "mot de passe oublié?"
+
+#: .\settings\views.py:304
+msgid "This link has been expired"
+msgstr "Ce lien a expiré"
+
+#: .\settings\views.py:315 .\templates\settings\reset_password.html:13
+#: .\templates\settings\reset_password.html:15
+msgid "Reset Password"
+msgstr "Répéter le mot de passe"
+
+#: .\settings\views.py:323
+msgid "Password must have at least 8 characters"
+msgstr "Le mot de passe doit comporter au moins 8 caractères"
+
+#: .\settings\views.py:327
+msgid "Passwords must match"
+msgstr "Les mots de passe doivent correspondre"
+
+#: .\settings\views.py:337
+msgid "password has been updated successfully"
+msgstr "le mot de passe a été mis à jour avec succès"
+
+#: .\settings\views.py:350
+msgid "Your account have been deleted"
+msgstr "Votre compte a été supprimé"
+
+#: .\settings\views.py:353
+msgid "Wrong password"
+msgstr "Mauvais mot de passe"
+
+#: .\templates\404.html:5 .\templates\error.html:5
+msgid "Page was not found"
+msgstr "La page n'a pas été trouvée"
+
+#: .\templates\base.html:19
+msgid ""
+"Get the best deals on used and new cars and all other vehicles according to "
+"your tastes at ch7al machya."
+msgstr ""
+"Obtenez les meilleures offres sur les voitures d'occasion et neuves et tous "
+"les autres véhicules selon vos goûts chez ch7al machya"
+
+#: .\templates\base.html:25
+msgid "Ch7al machya | Sell & Buy cars"
+msgstr "Ch7al machya | Vente & Achat des automobiles"
+
+#: .\templates\base.html:96 .\templates\base.html:163
+msgid "My Account"
+msgstr "Mon compte"
+
+#: .\templates\base.html:99 .\templates\base.html:165
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: .\templates\base.html:103
+msgid "Notifications"
+msgstr "Notifications"
+
+#: .\templates\base.html:113 .\templates\base.html:178
+msgid "Settings"
+msgstr "Réglages"
+
+#: .\templates\base.html:116 .\templates\base.html:182
+#: .\templates\settings\profile.html:51 .\templates\settings\profile.html:121
+msgid "Profile"
+msgstr "Profil"
+
+#: .\templates\base.html:117 .\templates\base.html:183
+msgid "Manage email"
+msgstr "Gérer l'e-mail"
+
+#: .\templates\base.html:119 .\templates\base.html:185
+#: .\templates\settings\delete_account.html:17
+#: .\templates\settings\delete_account.html:32
+msgid "Delete account"
+msgstr "Supprimer le compte"
+
+#: .\templates\base.html:123 .\templates\base.html:189
+msgid "Language"
+msgstr "Langue"
+
+#: .\templates\base.html:139
+msgid "CARS"
+msgstr "VOITURES"
+
+#: .\templates\base.html:158 .\templates\base.html:224
+msgid "Useful Links"
+msgstr "Liens utiles"
+
+#: .\templates\base.html:233
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\templates\base.html:261 .\templates\base.html:289
+msgid "Search"
+msgstr "Recharche"
+
+#: .\templates\base.html:327
+msgid "0 selected"
+msgstr "0 sélectionnés"
+
+#: .\templates\base.html:328
+msgid "selected"
+msgstr "sélectionnés"
+
+#: .\templates\base.html:329
+msgid "All selected"
+msgstr "Tout sélectionnés"
+
+#: .\templates\base.html:330
+msgid " Select all"
+msgstr " Sélectionnés tout"
+
+#: .\templates\category.html:28 .\templates\search.html:35
+msgid "Best match"
+msgstr "Meilleure correspondance"
+
+#: .\templates\category.html:29 .\templates\search.html:36
+msgid "Most viewed first"
+msgstr "Le plus vu en premier"
+
+#: .\templates\category.html:30 .\templates\search.html:37
+msgid "Highest rated first"
+msgstr "Le mieux noté en premier"
+
+#: .\templates\category.html:31 .\templates\search.html:38
+msgid "Cheapest first"
+msgstr "Le moins cher en premier"
+
+#: .\templates\category.html:32 .\templates\search.html:39
+msgid "Newest first"
+msgstr "Le plus récent d'abord"
+
+#: .\templates\category.html:38 .\templates\search.html:45
+msgid "filter"
+msgstr "filtre"
+
+#: .\templates\category.html:117 .\templates\category.html:269
+#: .\templates\search.html:122 .\templates\search.html:274
+msgid "States"
+msgstr "États"
+
+#: .\templates\category.html:130 .\templates\dashboard\create_item.html:53
+#: .\templates\dashboard\create_item.html:279
+#: .\templates\dashboard\edit_item.html:59
+#: .\templates\dashboard\edit_item.html:343 .\templates\product\product.html:96
+#: .\templates\product\product.html:200 .\templates\search.html:135
+msgid "Brand"
+msgstr "Marque"
+
+#: .\templates\category.html:134 .\templates\search.html:139
+msgid "All brands"
+msgstr "Toutes les marques"
+
+#: .\templates\category.html:146 .\templates\category.html:297
+#: .\templates\search.html:151 .\templates\search.html:302
+msgid "Colors"
+msgstr "Couleurs"
+
+#: .\templates\category.html:158 .\templates\category.html:309
+#: .\templates\product\product.html:113 .\templates\product\product.html:219
+#: .\templates\search.html:163 .\templates\search.html:314
+msgid "Documents"
+msgstr "Papiers"
+
+#: .\templates\category.html:170 .\templates\product\product.html:126
+#: .\templates\product\product.html:235 .\templates\search.html:175
+msgid "Price"
+msgstr "Prix"
+
+#: .\templates\category.html:170 .\templates\category.html:186
+#: .\templates\category.html:322 .\templates\category.html:344
+#: .\templates\search.html:175 .\templates\search.html:191
+#: .\templates\search.html:327 .\templates\search.html:349
+msgid "min"
+msgstr "min"
+
+#: .\templates\category.html:170 .\templates\category.html:183
+#: .\templates\category.html:186 .\templates\category.html:324
+#: .\templates\category.html:337 .\templates\category.html:342
+#: .\templates\search.html:175 .\templates\search.html:188
+#: .\templates\search.html:191 .\templates\search.html:329
+#: .\templates\search.html:342 .\templates\search.html:347
+msgid "max"
+msgstr "max"
+
+#: .\templates\category.html:173 .\templates\search.html:178
+msgid "Hide cars with no price"
+msgstr "Masquer voitures sans prix"
+
+#: .\templates\category.html:180 .\templates\search.html:185
+msgid "Kilometrage"
+msgstr "Kilométrage"
+
+#: .\templates\category.html:186 .\templates\search.html:191
+msgid "what year"
+msgstr "quelle année"
+
+#: .\templates\category.html:192 .\templates\search.html:197
+msgid "Car options"
+msgstr "Options de voiture"
+
+#: .\templates\category.html:204 .\templates\search.html:209
+msgid "All options only"
+msgstr "juste la toutes options ?"
+
+#: .\templates\category.html:212 .\templates\dashboard\create_item.html:142
+#: .\templates\dashboard\create_item.html:366
+#: .\templates\dashboard\edit_item.html:153
+#: .\templates\dashboard\edit_item.html:438
+#: .\templates\product\product.html:143 .\templates\product\product.html:256
+#: .\templates\search.html:217
+msgid "Fuel"
+msgstr "Carburant"
+
+#: .\templates\category.html:224 .\templates\search.html:229
+msgid "Gear Box"
+msgstr "Boîte de vitesses"
+
+#: .\templates\category.html:236 .\templates\search.html:241
+msgid "Exchange only"
+msgstr "Juste l'échange"
+
+#: .\templates\category.html:241 .\templates\search.html:246
+msgid "Minimum rating"
+msgstr "Note minimale"
+
+#: .\templates\category.html:243 .\templates\dashboard\create_item.html:127
+#: .\templates\dashboard\create_item.html:351
+#: .\templates\dashboard\edit_item.html:133
+#: .\templates\dashboard\edit_item.html:418 .\templates\search.html:248
+msgid "Car condition"
+msgstr "État de la voiture"
+
+#: .\templates\category.html:247 .\templates\dashboard\create_item.html:130
+#: .\templates\dashboard\create_item.html:354
+#: .\templates\dashboard\edit_item.html:137
+#: .\templates\dashboard\edit_item.html:140
+#: .\templates\dashboard\edit_item.html:425
+#: .\templates\product\product.html:403 .\templates\search.html:252
+msgid "Used"
+msgstr "Utilisé"
+
+#: .\templates\category.html:253 .\templates\dashboard\create_item.html:131
+#: .\templates\dashboard\edit_item.html:138
+#: .\templates\dashboard\edit_item.html:141
+#: .\templates\product\product.html:404 .\templates\search.html:258
+msgid "New"
+msgstr "Nouvelle"
+
+#: .\templates\category.html:259 .\templates\category.html:425
+#: .\templates\search.html:264 .\templates\search.html:430
+msgid "Done"
+msgstr "fini"
+
+#: .\templates\category.html:461 .\templates\home.html:93
+#: .\templates\product\product.html:413 .\templates\search.html:590
+msgid "Price: "
+msgstr "Prix: "
+
+#: .\templates\category.html:462 .\templates\home.html:94
+#: .\templates\product\product.html:414 .\templates\search.html:591
+msgid "Offered price: "
+msgstr "Prix ​​offert: "
+
+#: .\templates\category.html:463 .\templates\dashboard\saved_posts.html:109
+#: .\templates\dashboard\your_items.html:119 .\templates\home.html:95
+#: .\templates\product\product.html:415 .\templates\search.html:592
+#: .\templates\user\profile.html:175
+msgid "Price is unavailable"
+msgstr "Prix non disponible"
+
+#: .\templates\category.html:464 .\templates\product\product.html:416
+#: .\templates\search.html:593
+msgid "All options"
+msgstr "toutes options"
+
+#: .\templates\category.html:465 .\templates\dashboard\create_item.html:355
+#: .\templates\dashboard\edit_item.html:423
+#: .\templates\dashboard\edit_item.html:426
+#: .\templates\product\product.html:417 .\templates\search.html:594
+msgid "Store"
+msgstr "la maison"
+
+#: .\templates\category.html:466 .\templates\search.html:595
+msgid "No items were Found, try changing the search parameters."
+msgstr ""
+"Aucun article n'a été trouvé, essayez de modifier les paramètres de "
+"recherche.Aucun élément n'a été trouvé, essayez de modifier les paramètres "
+"de recherche."
+
+#: .\templates\category.html:467 .\templates\search.html:596
+msgid "No company was found"
+msgstr "Aucune entreprise n'a été trouvée"
+
+#: .\templates\category.html:468 .\templates\search.html:597
+msgid "No person was found"
+msgstr "Aucune personne n'a été retrouvée"
+
+#: .\templates\contact_us.html:12 .\templates\settings\email.html:27
+#: .\templates\settings\email.html:62 .\templates\settings\email.html:87
+#: .\templates\settings\email.html:122
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\contact_us.html:17
+msgid "subject"
+msgstr "sujet"
+
+#: .\templates\contact_us.html:22
+msgid "message"
+msgstr "Message"
+
+#: .\templates\contact_us.html:28
+msgid "Send"
+msgstr "Envoyer"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "You have to confirm your email first to upload items. click"
+msgstr ""
+"Vous devez d'abord confirmer votre e-mail pour télécharger des éléments. "
+"Cliquez"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "here"
+msgstr "ici"
+
+#: .\templates\dashboard\cant_create_item.html:14
+msgid "to activate it"
+msgstr "pour l'activer"
+
+#: .\templates\dashboard\create_item.html:17
+#: .\templates\dashboard\create_item.html:243
+#: .\templates\dashboard\edit_item.html:18
+#: .\templates\dashboard\edit_item.html:301
+msgid "Item information"
+msgstr "Informations sur l'article"
+
+#: .\templates\dashboard\create_item.html:20
+#: .\templates\dashboard\create_item.html:246
+#: .\templates\dashboard\edit_item.html:27
+#: .\templates\dashboard\edit_item.html:310
+#: .\templates\product\product.html:271 .\templates\register.html:108
+#: .\templates\register.html:207 .\templates\settings\profile.html:81
+#: .\templates\settings\profile.html:153
+msgid "State"
+msgstr "Wilaya"
+
+#: .\templates\dashboard\create_item.html:28
+#: .\templates\dashboard\create_item.html:254
+#: .\templates\dashboard\edit_item.html:35
+#: .\templates\dashboard\edit_item.html:318
+#: .\templates\product\product.html:275 .\templates\settings\profile.html:91
+#: .\templates\settings\profile.html:163
+msgid "City"
+msgstr "Ville"
+
+#: .\templates\dashboard\create_item.html:30
+#: .\templates\dashboard\create_item.html:36
+#: .\templates\dashboard\create_item.html:42
+#: .\templates\dashboard\create_item.html:48
+#: .\templates\dashboard\create_item.html:109
+#: .\templates\dashboard\create_item.html:185
+#: .\templates\dashboard\create_item.html:256
+#: .\templates\dashboard\create_item.html:262
+#: .\templates\dashboard\create_item.html:268
+#: .\templates\dashboard\create_item.html:274
+#: .\templates\dashboard\create_item.html:334
+#: .\templates\dashboard\create_item.html:413
+msgid "You can keep this field empty"
+msgstr "Vous pouvez laisser ce champ vide"
+
+#: .\templates\dashboard\create_item.html:34
+#: .\templates\dashboard\create_item.html:40
+#: .\templates\dashboard\create_item.html:46
+#: .\templates\dashboard\edit_item.html:41
+#: .\templates\dashboard\edit_item.html:47
+#: .\templates\dashboard\edit_item.html:53 .\templates\product\product.html:174
+#: .\templates\product\product.html:291
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: .\templates\dashboard\create_item.html:66
+#: .\templates\dashboard\create_item.html:292
+#: .\templates\dashboard\edit_item.html:73
+#: .\templates\dashboard\edit_item.html:356
+msgid "Brand name"
+msgstr "Marque"
+
+#: .\templates\dashboard\create_item.html:70
+#: .\templates\dashboard\edit_item.html:77 .\templates\product\product.html:101
+#: .\templates\product\product.html:205
+msgid "Model"
+msgstr "modèle"
+
+#: .\templates\dashboard\create_item.html:72
+msgid "example : symbol"
+msgstr "exemple : symbol"
+
+#: .\templates\dashboard\create_item.html:77
+#: .\templates\dashboard\create_item.html:302
+#: .\templates\dashboard\edit_item.html:84
+#: .\templates\dashboard\edit_item.html:367
+#: .\templates\product\product.html:105 .\templates\product\product.html:209
+msgid "Year"
+msgstr "Année"
+
+#: .\templates\dashboard\create_item.html:87
+#: .\templates\dashboard\create_item.html:312
+#: .\templates\dashboard\edit_item.html:94
+#: .\templates\dashboard\edit_item.html:377
+#: .\templates\product\product.html:109 .\templates\product\product.html:214
+msgid "Color"
+msgstr "Couleur"
+
+#: .\templates\dashboard\create_item.html:97
+#: .\templates\dashboard\create_item.html:322
+#: .\templates\dashboard\edit_item.html:104
+#: .\templates\dashboard\edit_item.html:387
+msgid "Document"
+msgstr "Papiers"
+
+#: .\templates\dashboard\create_item.html:107
+#: .\templates\dashboard\create_item.html:332
+#: .\templates\dashboard\edit_item.html:114
+#: .\templates\dashboard\edit_item.html:397
+#: .\templates\product\product.html:118 .\templates\product\product.html:225
+msgid "Engine"
+msgstr "Moteur"
+
+#: .\templates\dashboard\create_item.html:114
+#: .\templates\dashboard\edit_item.html:121
+msgid "Price in millions"
+msgstr "Prix ​​en millions"
+
+#: .\templates\dashboard\create_item.html:120
+#: .\templates\dashboard\edit_item.html:127
+msgid "Offered price in millions"
+msgstr "Prix ​​offert en millions"
+
+#: .\templates\dashboard\create_item.html:136
+#: .\templates\dashboard\create_item.html:360
+#: .\templates\dashboard\edit_item.html:147
+#: .\templates\dashboard\edit_item.html:432
+msgid "Distance travelled in Kilo Meters"
+msgstr "kilométrage"
+
+#: .\templates\dashboard\create_item.html:152
+#: .\templates\dashboard\create_item.html:376
+#: .\templates\dashboard\edit_item.html:163
+#: .\templates\dashboard\edit_item.html:448
+#: .\templates\product\product.html:147 .\templates\product\product.html:261
+msgid "Gear box"
+msgstr "Boîte de vitesses"
+
+#: .\templates\dashboard\create_item.html:163
+#: .\templates\dashboard\create_item.html:390
+#: .\templates\dashboard\edit_item.html:174
+#: .\templates\dashboard\edit_item.html:460
+msgid "Open for exchange?"
+msgstr "Ouvert à l'échange?"
+
+#: .\templates\dashboard\create_item.html:168
+#: .\templates\dashboard\create_item.html:397
+#: .\templates\dashboard\edit_item.html:179
+#: .\templates\dashboard\edit_item.html:466
+msgid "All options car ?"
+msgstr "Voiture toutes options ?"
+
+#: .\templates\dashboard\create_item.html:172
+#: .\templates\dashboard\edit_item.html:183
+msgid "If not what are it's options then ?"
+msgstr "Si ce n’est pas le cas, quelles sont les options?"
+
+#: .\templates\dashboard\create_item.html:184
+#: .\templates\dashboard\create_item.html:412
+#: .\templates\dashboard\edit_item.html:195
+#: .\templates\dashboard\edit_item.html:481
+#: .\templates\product\product.html:409
+msgid "Description"
+msgstr "La description"
+
+#: .\templates\dashboard\create_item.html:200
+#: .\templates\dashboard\create_item.html:428
+#: .\templates\dashboard\edit_item.html:211
+#: .\templates\dashboard\edit_item.html:497
+msgid "Photos"
+msgstr "Photos"
+
+#: .\templates\dashboard\create_item.html:207
+#: .\templates\dashboard\create_item.html:435
+#: .\templates\dashboard\edit_item.html:218
+#: .\templates\dashboard\edit_item.html:505
+msgid "Click to upload images"
+msgstr "Cliquez pour télécharger des images"
+
+#: .\templates\dashboard\create_item.html:208
+msgid "upload up to 20 images"
+msgstr "Téléchargez jusqu'à 20 images"
+
+#: .\templates\dashboard\create_item.html:224
+#: .\templates\dashboard\create_item.html:452
+#: .\templates\dashboard\edit_item.html:236
+#: .\templates\dashboard\edit_item.html:524
+msgid ""
+"This operation might take some time according to your internet speed. So "
+"please be patient"
+msgstr ""
+"Cette opération peut prendre un certain temps selon votre Internet. Alors "
+"s'il vous plaît soyez patient"
+
+#: .\templates\dashboard\create_item.html:227
+#: .\templates\dashboard\create_item.html:455
+msgid "Create"
+msgstr "Créer"
+
+#: .\templates\dashboard\edit_item.html:21
+#: .\templates\dashboard\edit_item.html:304
+msgid "Creation date"
+msgstr "Date de création"
+
+#: .\templates\dashboard\edit_item.html:219
+msgid "upload up to "
+msgstr "Téléchargez jusqu'à "
+
+#: .\templates\dashboard\edit_item.html:219
+msgid " images"
+msgstr " images"
+
+#: .\templates\dashboard\edit_item.html:239
+#: .\templates\dashboard\edit_item.html:527
+#: .\templates\settings\change_password.html:28
+#: .\templates\settings\change_password.html:57
+msgid "Save"
+msgstr "sauvegarder"
+
+#: .\templates\dashboard\edit_item.html:281
+#: .\templates\dashboard\edit_item.html:567
+msgid "likes"
+msgstr "aime"
+
+#: .\templates\dashboard\edit_item.html:282
+#: .\templates\dashboard\edit_item.html:568
+msgid "dislikes"
+msgstr "aime pas"
+
+#: .\templates\dashboard\edit_item.html:283
+#: .\templates\dashboard\edit_item.html:569
+msgid "comments"
+msgstr "commentaires"
+
+#: .\templates\dashboard\edit_item.html:284
+#: .\templates\dashboard\edit_item.html:570
+msgid "views"
+msgstr "vues"
+
+#: .\templates\dashboard\edit_item.html:422
+msgid "used"
+msgstr "utilisée"
+
+#: .\templates\dashboard\saved_posts.html:141
+msgid "You have not save any post yet"
+msgstr "Vous n'avez encore enregistré aucun message"
+
+#: .\templates\dashboard\your_items.html:23
+msgid ""
+"You added more than 50 articles, for now that is the maximum number of "
+"artciles per user"
+msgstr ""
+"Vous avez ajouté plus de 50 articles, pour l'instant c'est le nombre maximum "
+"d'articles par utilisateur"
+
+#: .\templates\dashboard\your_items.html:157
+msgid "You don't have any products yet"
+msgstr "Vous n’avez pas encore de produits"
+
+#: .\templates\dashboard\your_items.html:172
+msgid "Are you sure you want to remove this item"
+msgstr "Voulez-vous vraiment supprimer cet Article ?"
+
+#: .\templates\log in.html:16 .\templates\register.html:43
+#: .\templates\register.html:144 .\templates\settings\profile.html:55
+#: .\templates\settings\profile.html:56 .\templates\settings\profile.html:125
+#: .\templates\settings\profile.html:126
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\templates\log in.html:19 .\templates\register.html:120
+#: .\templates\register.html:228 .\templates\settings\reset_password.html:21
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\templates\log in.html:24
+msgid "Forgot password?"
+msgstr "mot de passe oublié?"
+
+#: .\templates\log in.html:33
+msgid "Don't have account?"
+msgstr "Vous avez déjà un compte?"
+
+#: .\templates\message\messages_box.html:73
+msgid "Enter text here..."
+msgstr "Entrez le texte ici..."
+
+#: .\templates\message\messages_box.html:87
+#: .\templates\message\messages_list.html:30
+msgid "You:"
+msgstr "Toi:"
+
+#: .\templates\message\messages_box.html:88
+#: .\templates\message\messages_list.html:31
+msgid "No messages yet"
+msgstr "Aucun message pour le moment"
+
+#: .\templates\notifications.html:30
+msgid "No notifications yet"
+msgstr "Aucune notification pour le moment"
+
+#: .\templates\product\product.html:79
+msgid "Message"
+msgstr "Message"
+
+#: .\templates\product\product.html:122 .\templates\product\product.html:230
+msgid "Condition"
+msgstr "Condition"
+
+#: .\templates\product\product.html:130 .\templates\product\product.html:240
+msgid "Offered price"
+msgstr "Prix ​​offert"
+
+#: .\templates\product\product.html:134 .\templates\product\product.html:245
+msgid "Exchange"
+msgstr "échange"
+
+#: .\templates\product\product.html:139 .\templates\product\product.html:251
+msgid "Distance"
+msgstr "kilométrage"
+
+#: .\templates\product\product.html:151 .\templates\product\product.html:266
+msgid "All options ?"
+msgstr "Voiture toutes options ?"
+
+#: .\templates\product\product.html:319
+msgid "Type comment..."
+msgstr "commentez..."
+
+#: .\templates\product\product.html:320
+msgid "Comment"
+msgstr "Commentaire"
+
+#: .\templates\product\product.html:329
+msgid "Comments"
+msgstr "Commentaires"
+
+#: .\templates\product\product.html:346
+msgid "Similar offers:"
+msgstr "Offres similaires :"
+
+#: .\templates\product\product.html:400
+#: .\templates\product\single_comment.html:13
+msgid "delete"
+msgstr "supprimer"
+
+#: .\templates\product\product.html:401
+msgid "Call"
+msgstr "Appeler"
+
+#: .\templates\product\product.html:402
+msgid "Not given"
+msgstr "Pas donné"
+
+#: .\templates\product\product.html:405
+msgid "No offers yet"
+msgstr "Aucun offre pour le moment"
+
+#: .\templates\product\product.html:406
+msgid "yes"
+msgstr "Oui"
+
+#: .\templates\product\product.html:407
+msgid "No"
+msgstr "Non"
+
+#: .\templates\product\product.html:408
+msgid "Options"
+msgstr "Options"
+
+#: .\templates\product\product.html:410
+msgid "Seller provided no description"
+msgstr "Le vendeur n'a fourni aucune description"
+
+#: .\templates\product\product.html:411
+msgid "Just now"
+msgstr "Juste maintenant"
+
+#: .\templates\product\product.html:418
+msgid "No suggestions :("
+msgstr "Pas de suggestions :("
+
+#: .\templates\register.html:32 .\templates\register.html:137
+msgid "First name"
+msgstr "Prénom"
+
+#: .\templates\register.html:37 .\templates\register.html:132
+msgid "Last name"
+msgstr "Nom de famille"
+
+#: .\templates\register.html:119 .\templates\register.html:227
+msgid "Create password"
+msgstr "Créer un mot de passe"
+
+#: .\templates\register.html:123 .\templates\register.html:124
+#: .\templates\register.html:222 .\templates\register.html:223
+msgid "Repeat password"
+msgstr "Répéter le mot de passe"
+
+#: .\templates\register.html:128 .\templates\register.html:231
+#: .\templates\settings\reset_password.html:26
+msgid "Passwords must have at least 8 characters"
+msgstr "Le mot de passe doit comporter au moins 8 caractères"
+
+#: .\templates\register.html:239
+msgid "Have an account?"
+msgstr "Vous avez déjà un compte?"
+
+#: .\templates\register.html:269
+msgid "this username is taken"
+msgstr "ce nom d'utilisateur est pris"
+
+#: .\templates\register.html:270
+msgid ""
+"Your username should not be empty and only include letters, numbers and \"_"
+"\" "
+msgstr ""
+"Votre nom d'utilisateur ne doit pas être vide et n'inclure que des lettres, "
+"des chiffres et \"_\" "
+
+#: .\templates\search.html:25
+msgid "Cars"
+msgstr "Voitures"
+
+#: .\templates\search.html:26
+msgid "People"
+msgstr "Personnes"
+
+#: .\templates\search.html:27
+msgid "Companies"
+msgstr "Entreprises"
+
+#: .\templates\settings\activation_link_sent.html:23
+msgid ""
+"Thank you for registering with us. we have sent you the activation link to "
+"your email"
+msgstr ""
+"Merci de vous être inscrit chez nous. nous vous avons envoyé le lien "
+"d'activation sur votre email"
+
+#: .\templates\settings\change_email.html:13
+#: .\templates\settings\change_email.html:32
+msgid "Current email"
+msgstr "Email actuel"
+
+#: .\templates\settings\change_email.html:17
+#: .\templates\settings\change_email.html:36
+msgid "New email"
+msgstr "Nouveau email"
+
+#: .\templates\settings\change_email.html:18
+#: .\templates\settings\change_email.html:37
+msgid "Keep this empty to remove your email"
+msgstr "Gardez ce champ vide pour supprimer votre adresse e-mail"
+
+#: .\templates\settings\change_email.html:21
+#: .\templates\settings\change_email.html:40 .\templates\settings\email.html:66
+#: .\templates\settings\email.html:126
+#: .\templates\settings\forgot_password.html:22
+#: .\templates\settings\forgot_password.html:39
+#: .\templates\settings\reset_password.html:28
+msgid "Submit"
+msgstr "Soumettre"
+
+#: .\templates\settings\change_password.html:12
+#: .\templates\settings\change_password.html:41
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+#: .\templates\settings\change_password.html:17
+#: .\templates\settings\change_password.html:46
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: .\templates\settings\change_password.html:18
+#: .\templates\settings\change_password.html:47
+msgid "enter your current password"
+msgstr "Entrer votre mot de passe actuel"
+
+#: .\templates\settings\change_password.html:21
+#: .\templates\settings\change_password.html:50
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: .\templates\settings\change_password.html:22
+#: .\templates\settings\change_password.html:51
+msgid "enter your new password"
+msgstr "Entrez votre nouveau mot de passe"
+
+#: .\templates\settings\change_password.html:25
+#: .\templates\settings\change_password.html:54
+msgid "Confirm new password"
+msgstr "Changer le mot de passe"
+
+#: .\templates\settings\change_password.html:26
+#: .\templates\settings\change_password.html:55
+msgid "reenter your new password"
+msgstr "ressaisissez votre mot de passe"
+
+#: .\templates\settings\delete_account.html:13
+#: .\templates\settings\delete_account.html:28
+msgid "Write your password to delete your account"
+msgstr "Ecrivez votre mot de passe pour supprimer votre compte"
+
+#: .\templates\settings\delete_account.html:14
+#: .\templates\settings\delete_account.html:29
+msgid "password"
+msgstr "Mot de passe"
+
+#: .\templates\settings\email.html:28 .\templates\settings\email.html:63
+#: .\templates\settings\email.html:88 .\templates\settings\email.html:123
+msgid "enter your email"
+msgstr "entrer votre Email"
+
+#: .\templates\settings\email.html:33 .\templates\settings\email.html:93
+msgid "Verify your email to activate it your account"
+msgstr "Vérifiez votre e-mail pour l'activer dans votre compte"
+
+#: .\templates\settings\email.html:36 .\templates\settings\email.html:96
+msgid "Verify your email "
+msgstr "Vérifiez votre e-mail "
+
+#: .\templates\settings\email.html:41 .\templates\settings\email.html:101
+msgid "Change your email"
+msgstr "Modifiez votre adresse e-mail"
+
+#: .\templates\settings\forgot_password.html:16
+#: .\templates\settings\forgot_password.html:32
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+#: .\templates\settings\forgot_password.html:19
+#: .\templates\settings\forgot_password.html:36
+msgid "Remembered Password?"
+msgstr "Mémorisé le mot de passe ?"
+
+#: .\templates\settings\profile.html:30
+msgid "Change profile picture"
+msgstr "Modifier la photo de profil"
+
+#: .\templates\settings\profile.html:32
+msgid "Add profile picture"
+msgstr "Ajouter une photo de profil"
+
+#: .\templates\settings\profile.html:41 .\templates\settings\profile.html:111
+msgid "Bio"
+msgstr "bio"
+
+#: .\templates\settings\profile.html:59 .\templates\settings\profile.html:129
+msgid "First Name"
+msgstr "Prénom"
+
+#: .\templates\settings\profile.html:60 .\templates\settings\profile.html:130
+msgid "first name"
+msgstr "Prénom"
+
+#: .\templates\settings\profile.html:63 .\templates\settings\profile.html:133
+msgid "Family Name"
+msgstr "Nom de famille"
+
+#: .\templates\settings\profile.html:64 .\templates\settings\profile.html:134
+msgid "last name"
+msgstr "Nom de famille"
+
+#: .\templates\settings\profile.html:67 .\templates\settings\profile.html:138
+msgid "Gender"
+msgstr "Le genre"
+
+#: .\templates\settings\profile.html:70 .\templates\settings\profile.html:73
+#: .\templates\settings\profile.html:141 .\templates\settings\profile.html:144
+msgid "Male"
+msgstr "Mâle"
+
+#: .\templates\settings\profile.html:71 .\templates\settings\profile.html:74
+#: .\templates\settings\profile.html:142 .\templates\settings\profile.html:145
+msgid "Female"
+msgstr "Femelle"
+
+#: .\templates\settings\profile.html:92 .\templates\settings\profile.html:164
+msgid "Put your city here"
+msgstr "Mettez votre ville ici"
+
+#: .\templates\settings\profile.html:97 .\templates\settings\profile.html:169
+msgid "Remove profile picture"
+msgstr "Supprimer la photo de profil"
+
+#: .\templates\settings\profile.html:102 .\templates\settings\profile.html:174
+msgid "Company profile"
+msgstr "Profil d'une entreprise"
+
+#: .\templates\settings\profile.html:181 .\templates\settings\profile.html:195
+msgid "Save Profile"
+msgstr "sauvegarder"
+
+#: .\templates\settings\profile.html:186
+msgid "View your profile"
+msgstr "Afficher votre profil"
+
+#: .\templates\settings\reset_password.html:24
+msgid "Confirm Password"
+msgstr "Confirmez le mot de passe"
+
+#: .\templates\user\profile.html:44
+msgid "Followers"
+msgstr "abonnés"
+
+#: .\templates\user\profile.html:51
+msgid "Items"
+msgstr "Articles"
+
+#: .\templates\user\profile.html:58
+msgid "Feedback"
+msgstr "avis positif"
+
+#: .\templates\user\profile.html:64
+msgid "Scoore"
+msgstr "Scoore"
+
+#: .\templates\user\profile.html:70
+msgid "Rank"
+msgstr "Rank"
+
+#: .\templates\user\profile.html:176
+msgid "User don't have any products yet"
+msgstr "L’utilisateur n’a pas encore de produits"
+
+#: .\templates\user\profile.html:177
+msgid "Follow"
+msgstr "abbone"
+
+#: .\templates\user\profile.html:178
+msgid "Unfollow"
+msgstr "disabbone"
+
+#: .\templates\user\profile.html:179 .\user\views.py:116
+msgid "Report"
+msgstr "Signaler"
+
+#: .\templates\user\profile.html:180
+msgid "Not yet"
+msgstr "Pas encore"
+
+#: .\templates\user\report.html:28
+msgid "I am wrong"
+msgstr "je me trompe"
+
+#: .\templates\user\report.html:31
+msgid "I am sure"
+msgstr "Je suis sûr"
+
+#: .\user\templatetags\user_templates.py:12
+msgid " seconds ago"
+msgstr " secondes"
+
+#: .\user\templatetags\user_templates.py:15
+msgid " minutes ago"
+msgstr " minutes"
+
+#: .\user\templatetags\user_templates.py:18
+msgid "less than "
+msgstr "il y a moins de "
+
+#: .\user\templatetags\user_templates.py:18
+msgid " hours ago"
+msgstr " heures"
+
+#: .\user\templatetags\user_templates.py:77
+msgid "{} seconds ago"
+msgstr "Il y a {} seconds"
+
+#: .\user\templatetags\user_templates.py:80
+msgid "{} minutes ago"
+msgstr "Il y a {} minutes"
+
+#: .\user\templatetags\user_templates.py:83
+msgid "{} hours ago"
+msgstr "Il y a {} heures"
+
+#: .\user\templatetags\user_templates.py:86
+msgid "{} days ago"
+msgstr "il y a {} jours"
+
+#: .\user\templatetags\user_templates.py:89
+msgid "{} weeks ago"
+msgstr "il y a {} semaines"
+
+#: .\user\templatetags\user_templates.py:92
+msgid "{} years ago"
+msgstr "il y a {} ans"
+
+#: .\user\views.py:32
+msgid "welcome to {} profile at Ch7al machya"
+msgstr "bienvenue dans le profil de {} sur Ch7al machya"
+
+#: .\user\views.py:111
+msgid "Your Report was submited"
+msgstr "Votre rapport a été soumis"
+
+#~ msgid ""
+#~ "You added 50 articles, for now that is the maximum number of artciles per "
+#~ "user"
+#~ msgstr ""
+#~ "Vous avez ajouté plus de 50 articles, pour l'instant c'est le nombre "
+#~ "maximum d'articles par utilisateur"
+
+#~ msgid "{} Sent a message"
+#~ msgstr "{} a envoyé un message"
+
+#~ msgid "Go to message {}:"
+#~ msgstr "Aller au message {} :"
+
+#~ msgid "{} said"
+#~ msgstr "{} dit"
+
+#~ msgid "{} Commented"
+#~ msgstr "{} a commenté"
+
+#~ msgid "Go to post {}"
+#~ msgstr "Aller au publication {}"
+
+#~ msgid "{} has commented on your post '{}':"
+#~ msgstr "{} a commenté votre publication '{}' :"
+
+#~ msgid "store"
+#~ msgstr "la maison"
+
+#, fuzzy
+#~| msgid "If not what are it's options then ?"
+#~ msgid "If it's not all options, what are it's options then ?"
+#~ msgstr "Si ce n’est pas le cas, quelles sont les options?"
+
+#~ msgid "Add more images"
+#~ msgstr "ajouter plus d'images"
+
+#~ msgid ""
+#~ "\"{ email }\" is not corret, make sure your email is written correctly"
+#~ msgstr ""
+#~ "\"{ email }\" n'est pas correct, assurez-vous que votre email est "
+#~ "correctement écrit"
+
+#~ msgid "Mobile Number"
+#~ msgstr "Numéro"
+
+#~ msgid "enter phone number"
+#~ msgstr "entrez le numéro de téléphone"
+
+#~ msgid "Welcome to your dashboard"
+#~ msgstr "Bienvenue sur votre tableau de bord"
+
+#~ msgid "Did you forget your password? Click on 'Forget password?' down below"
+#~ msgstr ""
+#~ "Avez-vous oublié votre mot de passe? Cliquez sur 'Mot de passe oublié ?' "
+#~ "en bas"
+
+#~ msgid "User does not exist"
+#~ msgstr "L'utilisateur n'existe pas"
+
+#~ msgid "Other "
+#~ msgstr "Autre "
+
+#~ msgid "Go back to your profile"
+#~ msgstr "Retournez à votre profil"
+
+#~ msgid "Number"
+#~ msgstr "Numéro"
+
+#~ msgid "This email is already used"
+#~ msgstr "Cet e-mail est déjà pris"
+
+#~ msgid "Passwords do not match."
+#~ msgstr "Les mots de passe ne correspondent pas."
+
+#~ msgid "If you add a vedio it will take a bit longer to upload"
+#~ msgstr ""
+#~ "Si vous ajoutez une vidéo, le téléchargement prendra un peu plus de temps"
+
+#~ msgid "The vedio size must be no more than 10MB"
+#~ msgstr "La taille de la vidéo ne doit pas dépasser 10 Mo"
+
+#~ msgid "Add a vedio"
+#~ msgstr "Ajouter une vidéo"
+
+#~ msgid "The vedio size must be no more than 10 MB"
+#~ msgstr "La taille de la vidéo ne doit pas dépasser 10 Mo"
+
+#~ msgid "Details: "
+#~ msgstr "Détails: "
+
+#~ msgid "Title"
+#~ msgstr "Titre"
+
+#~ msgid "example : alloy wheels color"
+#~ msgstr "exemple : couleur de jantes alliage"
+
+#~ msgid "Detail"
+#~ msgstr "Détail"
+
+#~ msgid "example : black"
+#~ msgstr "exemple : noir"
+
+#~ msgid "Add a detail"
+#~ msgstr "Ajouter un détail"
+
+#~ msgid "Seller provided no video"
+#~ msgstr "Le vendeur n'a fourni aucune vidéo"
+
+#~ msgid "city"
+#~ msgstr "Ville"
+
+#~ msgid "Options :"
+#~ msgstr "Options :"
+
+#, fuzzy
+#~| msgid "Not given"
+#~ msgid "No given"
+#~ msgstr "Pas donné"
+
+#~ msgid "Deletion refused, your items must have at least one image"
+#~ msgstr "Suppression refusée, vos articles doivent avoir au moins une image"
+
+#~ msgid "Used and new {} cars and vehicles"
+#~ msgstr "Voitures et véhicules {} d'occasion et neufs"
+
+#~ msgid ""
+#~ "You have selected no state in the search parameters, add more states to "
+#~ "see results."
+#~ msgstr ""
+#~ "Vous n'avez sélectionné aucun état dans les paramètres de recherche, "
+#~ "ajoutez d'autres états pour voir les résultats."
+
+#~ msgid "Previous"
+#~ msgstr "Précédent"
+
+#~ msgid "Next"
+#~ msgstr "Prochain"
+
+#~ msgid "Active"
+#~ msgstr "Online"
+
+#~ msgid "Last seen"
+#~ msgstr "Dernière fois"
+
+#~ msgid "load older"
+#~ msgstr "charger plus"
+
+#~ msgid "report"
+#~ msgstr "signaler"
+
+#~ msgid "Only people who wants to exchange"
+#~ msgstr "juste qui veulent échanger"
+
+#~ msgid "Photos ordering starts from left to right"
+#~ msgstr "L'ordre des photos commence de gauche à droite"
+
+#~ msgid "Distance travelled in Kilo Meters:"
+#~ msgstr "kilométrage:"
+
+#~ msgid "Distance travelled in thousand KM:"
+#~ msgstr "kilométrage:"
+
+#~ msgid "Name"
+#~ msgstr "Modéle"
+
+#~ msgid "Link copied"
+#~ msgstr "Lien copié"
+
+#~ msgid "Reset"
+#~ msgstr "réinitialiser"
+
+#~ msgid "About Us"
+#~ msgstr "À propos de nous"
+
+#~ msgid "Terms Of Service"
+#~ msgstr "Conditions d'utilisation"
+
+#~ msgid "Second hand"
+#~ msgstr "Deuxième main"
+
+#~ msgid ", you can put items for sale."
+#~ msgstr ", vous pouvez mettre des objets en vente."
+
+#~ msgid "Other Brand"
+#~ msgstr "Autre marque"
+
+#~ msgid "Other Brand "
+#~ msgstr "Autre marque"
+
+#~ msgid "Categories:"
+#~ msgstr "Catégories:"
+
+#~ msgid "Seller provided no categories"
+#~ msgstr "Le vendeur n'a fourni aucune catégorie"
+
+#~ msgid "Distance:"
+#~ msgstr "kilométrage"
+
+#~ msgid "Price:"
+#~ msgstr "Prix"
+
+#~ msgid "DA"
+#~ msgstr "DA"
+
+#~ msgid "Negotiable"
+#~ msgstr "Négociable"
+
+#~ msgid "Condtion"
+#~ msgstr "Condition"
+
+#~ msgid "Seller provided no other details"
+#~ msgstr "Le vendeur n'a fourni aucun autre détail"
+
+#~ msgid "Gasoline"
+#~ msgstr "essence"
+
+#~ msgid "diesel"
+#~ msgstr "diesel"
+
+#~ msgid "liquefied petroleum gas"
+#~ msgstr "GPL"
+
+#~ msgid "Manual"
+#~ msgstr "Manuel"
+
+#~ msgid "Semi automatic"
+#~ msgstr "Semi-automatique"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatique"
+
+#~ msgid "Men's Fashion"
+#~ msgstr "La mode des hommes"
+
+#~ msgid "Women's Fashion"
+#~ msgstr "La mode des femmes"
+
+#~ msgid "Kids"
+#~ msgstr "Enfants"
+
+#~ msgid "Negotiable?"
+#~ msgstr "Négociable"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "No category"
+#~ msgstr "Aucune catégorie"
+
+#~ msgid "Categories"
+#~ msgstr "Catégories"
+
+#~ msgid "Dernier"
+#~ msgstr "États"
+
+#~ msgid "The image size must be no more than 2MB"
+#~ msgstr "La taille de l'image ne doit pas dépasser 2 Mo"
+
+#~ msgid "Set"
+#~ msgstr "Mettre"

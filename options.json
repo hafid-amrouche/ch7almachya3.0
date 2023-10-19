@@ -1,0 +1,203 @@
+{
+    "type": "table",
+    "database": null,
+    "name": "product_option",
+    "withoutRowId": true,
+    "ddl": "CREATE TABLE \"product_option\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(30) NULL, \"name_ar\" varchar(30) NULL, \"name_en\" varchar(30) NULL, \"name_fr\" varchar(30) NULL, \"order\" integer NOT NULL);",
+    "columns": [
+        {
+            "name": "id",
+            "type": "integer",
+            "constraints": [
+                {
+                    "type": "NOT NULL",
+                    "definition": "NOT NULL "
+                },
+                {
+                    "type": "PRIMARY KEY",
+                    "definition": "PRIMARY KEY AUTOINCREMENT"
+                }
+            ]
+        },
+        {
+            "name": "name",
+            "type": "varchar",
+            "constraints": [
+                {
+                    "type": null,
+                    "definition": "NULL"
+                }
+            ]
+        },
+        {
+            "name": "name_ar",
+            "type": "varchar",
+            "constraints": [
+                {
+                    "type": null,
+                    "definition": "NULL"
+                }
+            ]
+        },
+        {
+            "name": "name_en",
+            "type": "varchar",
+            "constraints": [
+                {
+                    "type": null,
+                    "definition": "NULL"
+                }
+            ]
+        },
+        {
+            "name": "name_fr",
+            "type": "varchar",
+            "constraints": [
+                {
+                    "type": null,
+                    "definition": "NULL"
+                }
+            ]
+        },
+        {
+            "name": "order",
+            "type": "integer",
+            "constraints": [
+                {
+                    "type": "NOT NULL",
+                    "definition": "NOT NULL"
+                }
+            ]
+        }
+    ],
+    "rows": [
+        [
+            1,
+            "AC",
+            "مكيف هواء",
+            "AC",
+            "climatiseur",
+            100
+        ],
+        [
+            2,
+            "sunroof",
+            "الطوى",
+            "sunroof",
+            "toit ouvrant",
+            98
+        ],
+        [
+            3,
+            "airbags",
+            "وسائد هوائية",
+            "airbags",
+            "airbags",
+            99
+        ],
+        [
+            4,
+            "feux du jour",
+            "ضوء النهار",
+            "day time lights",
+            "feux du jour",
+            90
+        ],
+        [
+            5,
+            "phares au xénon",
+            "اضائة xénon",
+            "xenon headlights",
+            "phares au xénon",
+            89
+        ],
+        [
+            6,
+            "ESP system",
+            "نظام ESP",
+            "ESP system",
+            "système ESP",
+            0
+        ],
+        [
+            7,
+            "radar de recul",
+            "رادار خلفي",
+            "parking radar",
+            "radar de recul",
+            84
+        ],
+        [
+            8,
+            "power steering",
+            "مقود مساعد",
+            "power steering",
+            "direction assistée",
+            95
+        ],
+        [
+            9,
+            "retrouviseurs électrique",
+            "مرايا كهربائية",
+            "electric mirrors",
+            "retrouviseurs électrique",
+            93
+        ],
+        [
+            10,
+            "phase anibrouillard",
+            "اضاءة الضباب",
+            "fog lights",
+            "phase anibrouillard",
+            85
+        ],
+        [
+            11,
+            "système d'alarme",
+            "جهاز انذار",
+            "alarm system",
+            "système d'alarme",
+            92
+        ],
+        [
+            12,
+            "allow wheels",
+            "جونت أليياج",
+            "allow wheels",
+            "jantes alliage",
+            0
+        ],
+        [
+            13,
+            "autoradio CD",
+            "مذياع CD",
+            "CD radio",
+            "autoradio CD",
+            80
+        ],
+        [
+            14,
+            "electric windows",
+            "نوافذ كهربائية",
+            "electric windows",
+            "vitres électriques",
+            0
+        ],
+        [
+            15,
+            "autoradio à écran tactile",
+            "راديو شاشة لمس",
+            "touch screen stereo",
+            "autoradio à écran tactile",
+            81
+        ],
+        [
+            16,
+            "autre option",
+            "خيار أخر",
+            "other option",
+            "autre option",
+            -1
+        ]
+    ]
+}

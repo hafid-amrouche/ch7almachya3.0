@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+{% load user_templates %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="col-12">
+      {% include "includes/alerts.html" %}
+    </div>
+    <div style="display: flex; flex-wrap:wrap; flex-direction: row-reverse;">
+      <section class="p-2 col-md-6 col-lg-6 mx-auto">
+        <div>
+              <div class="card text-black">
+                <div class="card-body py-1" style="border-bottom: solid var(--transparent-dark) 1px;">
+                    <div class="text-left d-flex justify-content-between">
+                        <a href="" id='product_owner_link' class="mt-2" style="display:flex">
+                          <div class="profile_pic_div">
+                            <img src="" id="profile_pic">
+                          </div>
+                            <div style="display:flex; flex-direction: column;" id="ownerdiv">
+                                <strong id='full_name'></strong>
+                                <p class="mb-1" style="display: inline; color:grey; font-size: 0.8rem;" id='creation_date'></p>
+                            </div>
+                        </a>
+                        <div class="p-2 form-control" id="copy-link" style="visibility: hidden;line-break:anywhere; width:auto; z-index: 1;"></div>
+                        <button style="float: right; height: fit-content; padding: 5px; margin :5px 0; border: var(--transparent-dark) 2px solid;; border-radius: 3px; margin-left: auto;" onclick="copylink(this)" id="">
+                          <img src="https://img.icons8.com/ios-filled/50/null/link--v1.png" width="30" />
+                        </button>
+                        {% if user_id == product_owner_id %}
+                          <button style="float: right; height: fit-content; padding: 5px; margin :5px 0; border: var(--transparent-dark) 2px solid;; border-radius: 3px; margin-left: 15px;" onclick="window.location.href='{{ edit_item_link }}'" id="">
+                            <img src="https://img.icons8.com/ios/50/edit--v1.png" width="30" />
+                          </button>
+                          <button style="float: right; height: fit-content; padding: 5px; margin :5px 0; border: var(--transparent-dark) 2px solid;; border-radius: 3px; margin-left: 15px; display: none;" id="save-item">
+                            <img width="30" height="30" saved="false" id="save-item-icon"/>
+                          </button>
+                        {% elif user.is_authenticated %}
+                        <button style="float: right; height: fit-content; padding: 5px; margin :5px 0; border: var(--transparent-dark) 2px solid;; border-radius: 3px; margin-left: 15px;" id="save-item">
+                          <img width="30" height="30" saved="false" id="save-item-icon"/>
+                        </button>
+                        {% endif %}
+                        
+                    </div>
+                  </div>
+                <div class="slideshow-container" id="slideshow-container">
+                </div>
+                <div style="position: relative; display: flex; justify-content: center; border-top: solid var(--transparent-dark) 1px; align-items: center;">
+                  <a class="prev" onclick="plusSlides(-1)"><img  style="width: 30px; rotate: 90deg;" src="{% static "images/icons/go down.png" %}" alt=""></a>
+                  <span class="m-2" style="font-weight: bold; font-size: 1.2rem;">
+                    <span id="current-image-number"></span> / <span id="total-images-number"></span>
+                  </span>
+                  <a class="next" onclick="plusSlides(1)"><img  style="width: 30px; rotate: 270deg;" src="{% static "images/icons/go down.png" %}" alt=""></a>
+
+                </div>
+          </div>
+          
+        </div>
+        <div class=" mt-2">
+          <div class="card text-black p-3">
+            <div class="pl-0" style="display: flex;flex-wrap: wrap;">
+              <span style="position:absolute; top:-90px;" id="like_section"></span>
+              <div  style="width:fit-content">
+                  <button>
+                      <img src="{% static 'images\icons\empty like.png' %}" class="mr-1" height=30 width=30 id="like_image">
+                  </button>
+                <span id="like_count"></span>
+                &nbsp;&nbsp;&nbsp;
+                  <button>
+                      <img src="{% static 'images\icons\empty dislike.png' %}" class="mr-1" height=30 width=30 id="dislike_image">
+                  </button>
+                <span id="dislike_count"></span>
+              </div>
+            </div>
+          </div>
+        </div> 
+        {% if product_owner_id != user_id and user.is_authenticated %}
+          <div class="py-2">
+            <div class="card text-black p-3 call flex-wrap" style="gap: 15px; justify-content: center;" id='contact-seller'>
+              
+                <button type="button" class="btn btn-primary" onclick="window.location.href = '{% url 'messages-box' product_owner_id %}';" ><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-messenger.png" style="width:24px"; /> {% trans "Message" %}</button>
+              
+            </div>
+          </div> 
+          {% endif %}
+        
+      </section>
+  
+      {% if LANGUAGE_CODE == "ar" %}
+        <section class="p-2 col-md-6 col-lg-6 mx-auto">
+          <div >
+            <div class="justify-content-center">
+                <div class="card text-black p-3">
+                  <table class="table " style="max-width: 600px; margin: auto;">
+                    <tbody>
+                      <tr>
+                        <td id='brand_box'></td>
+                        <th scope="row ">{% trans "Brand" %}</th>
+
+                      </tr>
+                      <tr>
+                        <td id='model_box'></td>
+                        <th scope="row ">{% trans "Model" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='year_box'></td>
+                        <th scope="row ">{% trans "Year" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='color_box'></td>
+                        <th scope="row ">{% trans "Color" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='document_box'></td>
+                        <th scope="row ">{% trans "Documents" %}</th>
+                      </tr>
+  
+                      <tr>
+                        <td id='engine_box'></td>
+                        <th scope="row ">{% trans "Engine" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='condition_box'></td>
+                        <th scope="row">{% trans "Condition" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='price_box'></td>
+                        <th scope="row ">{% trans "Price" %}</th>
+                      </tr>
+                        <tr>
+                          <td id='offered_price_box'></td>
+                          <th scope="row">{% trans "Offered price" %}</th>
+                        </tr>
+                      <tr>
+                        <td id='exchange_box'></td>
+                        <th scope="row">{% trans "Exchange" %}</th>
+
+                      </tr>
+                      <tr>
+                        <td id='distance_box'></td>
+                        <th scope="row">{% trans "Distance" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='fuel_box'></td>
+                        <th scope="row">{% trans "Fuel" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='gear_box_box'></td>
+                        <th scope="row">{% trans "Gear box" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='all_options_box'></td>
+                        <th scope="row">{% trans "All options ?" %}</th>
+                      </tr>
+                      <tr>
+                        <td id='state_box'></td>
+                        <th scope="row ">الولاية</th>
+                      </tr>
+                        <tr>
+                          <td id='city_box'></td>
+                          <th scope="row ">المدينة</th>
+                        </tr>
+                    </tbody>
+                  </table>
+                  
+                </div>
+            </div>
+          </div>
+          <div  class="mt-2">
+            <div id='options_container' class="card text-black pb-3 px-2 mt-2" >
+                      
+            </div>
+          </div>
+          <div class="justify-content-center mt-2" id="phone-number_container">
+            <div class="card text-black p-3">
+              <h4 class="text-right">{% trans "Phone number" %}</h4>
+              <div id="phone_box" class="text-right">
+
+              </div>
+              
+              
+            </div>
+          <div class="justify-content-center mt-2">
+            
+              <div class="card text-black p-3" id="description_container">
+                
+              </div>
+            
+          </div>
+        </section>
+        
+        
+      {% else %}
+        <section class="p-2 col-md-6 col-lg-6 mx-auto">
+          <div class="">
+            <div class="justify-content-center">
+                <div class="card text-black p-3">
+                  <table class="table " style="max-width: 600px; margin: auto;">
+                    <tbody>
+                      <tr>
+                        
+                        <th scope="row ">{% trans "Brand" %}</th>
+                        <td id='brand_box'></td>
+                      </tr>
+                      <tr>
+                        
+                        <th scope="row ">{% trans "Model" %}</th>
+                        <td id='model_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row ">{% trans "Year" %}</th>
+                        <td id='year_box'></td>
+
+                      </tr>
+                      <tr>
+                        <th scope="row ">{% trans "Color" %}</th>
+
+                        <td id='color_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row ">{% trans "Documents" %}</th>
+
+                        <td id='document_box'></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row ">{% trans "Engine" %}</th>
+
+                        <td id='engine_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">{% trans "Condition" %}</th>
+
+                        <td id='condition_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row ">{% trans "Price" %}</th>
+
+                        <td id='price_box'></td>
+                      </tr>
+                        <tr>
+                          <th scope="row">{% trans "Offered price" %}</th>
+
+                          <td id='offered_price_box'></td>
+                        </tr>
+                      <tr>
+                        <th scope="row">{% trans "Exchange" %}</th>
+
+                        <td id='exchange_box'></td>
+
+                      </tr>
+                      <tr>
+                        <th scope="row">{% trans "Distance" %}</th>
+
+                        <td id='distance_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">{% trans "Fuel" %}</th>
+
+                        <td id='fuel_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">{% trans "Gear box" %}</th>
+                        <td id='gear_box_box'></td>
+
+                      </tr>
+                      <tr>
+                        <th scope="row">{% trans "All options ?" %}</th>
+
+                        <td id='all_options_box'></td>
+                      </tr>
+                      <tr>
+                        <th scope="row ">{% trans "State" %}</th>
+                        <td id='state_box'></td>
+                      </tr>
+                        <tr>
+                          <th scope="row ">{% trans "City" %}</th>
+
+                          <td id='city_box'></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+          <div class="mt-2">
+            <div class="card text-black pb-3 px-2"  id='options_container'>
+                      
+            </div>
+          </div>
+          <div class="justify-content-center mt-2" id="phone-number_container">
+            <div class="card text-black p-3">
+              <h4>{% trans "Phone number" %}</h4>
+              <div id="phone_box">
+
+              </div>
+            </div>
+        </div>
+          <div class="justify-content-center mt-2">
+            
+              <div class="card text-black p-3" id="description_container">
+                
+              </div>
+            
+          </div>
+        
+          
+          
+        </section>
+        
+      {% endif %}
+     
+  
+      <section id="comments_section" class="col-12 p-2">
+          <div>
+              <div class="card text-black p-3">
+                  {% if user.is_authenticated %}
+                    <form action="comment/" method="POST" id="comment-form">
+                      {% csrf_token %}
+                      <div class="form-outline mb-4">
+                          <textarea type="text" id="comment-input" class="form-control" placeholder="{% trans "Type comment..." %}" / name="comment" required></textarea>
+                          <button  class="btn btn-success mt-2" id="comment_button">{% trans "Comment" %}</button>
+                      </div>
+                    </form>
+                  {% endif %}
+                    <div class="p-2">
+                    </div>
+                    <div>
+                      
+                    </div>
+                    <h4 class="mb-3 {% if LANGUAGE_CODE == "ar" %}text-right{% endif %}">{% trans "Comments" %}</h4>
+                    <div style="display: flex; flex-wrap:nowrap; overflow-x:auto" id='comments_container'>
+                      
+                      <img src="{% static 'images/icons/add.png' %}" width="50" height="50" class="mb-4" style="align-self:center; display: none; order:1" id='load_more_comments' onclick='load_comments()'>
+                      <svg xmlns="http://www.w3.org/2000/svg" id="loading_svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='mb-4' style="align-self:center; display: none; order:1; background: none; shape-rendering: auto; min-width: 50px; height:50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <circle cx="50" cy="50" fill="none" stroke="#0a0a0a" stroke-width="10" r="40" stroke-dasharray="188.49555921538757 64.83185307179586">
+                          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+                        </circle>
+                      </svg>
+                    </div>
+                    
+                    
+              </div>
+          </div>
+      </section>
+      <hr class="col-12">
+      <div class="px-3 py-3 pt-4 col-12 {% if LANGUAGE_CODE == "ar" %}text-right{% endif %}">
+        <h3>{% trans "Similar offers:" %}</h3>
+      </div>
+      <section class="col-12 m-auto" id="suggesions-continer" style="display: flex;flex-wrap: wrap;padding: 0;">
+        <div class="text-center col-12" id="loading-suggestions">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='mb-4' style="align-self:center; order:1; background: none; shape-rendering: auto; min-width: 150px; height:150px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <circle cx="50" cy="50" fill="none" stroke="var(--green)" stroke-width="10" r="40" stroke-dasharray="188.49555921538757 64.83185307179586">
+              <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+            </circle>
+          </svg>
+        </div>
+      </section>
+    </div>
+    <footer class="text-center col-12 mt-auto">
+			<div class="container py-3">
+				<section class="mtext-center">
+					<a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+						<img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+					</a>
+					<a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+						<img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+					</a>
+          <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+						<img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+					</a>
+				</section>
+			</div>
+		</footer>
+    <link rel="stylesheet" href='{% static "css/product/product.css" %}'> 
+  
+    <script>
+      var product_id = {{ product_id }}
+      var user_id = "{{ user_id }}"
+      var user_full_name = '{{ user.full_name }}'
+      var product_owner_id = '{{ product_owner_id }}'
+
+      var text_1 = '{{ keyword }}'
+      
+      var link_1 = "{% url 'ajax-get-comments' %}"
+      var link_2 = "{% url 'product-ajax' %}"
+      var link_3 = "{% url 'like' product_owner_id 0 product_id %}"
+      var link_4 = "{% url 'dislike' product_owner_id 0 product_id %}"
+      {% if user.profile.picture_150 %} 
+        var link_5 = "{{ user.profile.picture_150.url }}"
+      {% else  %}
+        var link_5 = "/static/images/letters/{{ user.first_name.0 }}.jpg"      
+      {% endif %} 
+      var link_6= "{% url 'unsave-product' product_owner_id 0 product_id  %}"
+      var link_7 = "{% url 'save-product' product_owner_id 0 product_id  %}"
+      var link_8 = "{% static "images/icons/unsave.png" %}"
+      var link_9 = "{% static "images/icons/save.png" %}"
+      var s_link_3 = "{% static 'images/exchange.png' %}"
+      var s_link_4 = "{% static 'images/icons/view.png' %}"
+      var s_link_5 = "{% static 'images/icons/small-like.png' %}"
+
+      var trans_1 = '{% trans "delete" %}'
+      var trans_2 = '{% trans "Call" %}'
+      var trans_3 = '{% trans "Not given" %}'
+      var trans_4 = '{% trans "Used" %}'
+      var trans_5 = '{% trans "New" %}'
+      var trans_6 = "{% trans "No offers yet" %}"
+      var trans_7 = '{% trans "yes" %}'
+      var trans_8 = '{% trans "No" %}'
+      var trans_9 = '{% trans "Options" %}'
+      var trans_10 = '{% trans "Description" %}'
+      var trans_11 = "{% trans "Seller provided no description" %}"
+      var trans_12 = '{% trans "Just now" %}'
+      
+      var s_trans_1 = '{% trans "Price: " %}'
+      var s_trans_2 = '{% trans "Offered price: " %}'
+      var s_trans_3 = '{% trans "Price is unavailable" %}'
+      var s_trans_4 = '{% trans "All options" %}'
+      var s_trans_5 = '{% trans "Store" %}'
+      var s_trans_6 = '{% trans "No suggestions :(" %}'
+
+      var LC ='{{ LANGUAGE_CODE }}'
+
+      
+      var authentication = '{{user.is_authenticated}}'
+    </script>
+    <script type="text/javascript" src='{% static "js/product/product.js" %}'></script>
+    {% if LANGUAGE_CODE == "ar" %}
+      <style>
+        .table td, .table th {
+          text-align: right;
+        }
+      </style>
+    {% endif %}
+
+ 
+
+    
+{% endblock content %}

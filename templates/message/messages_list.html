@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load user_templates %}
+{% load static %}
+
+
+{% block content %}
+  <div class="container my-2" style="flex-grow: 1; display: flex;flex-direction: column;">
+    <div class="" style="max-height: 100%;flex-grow: 1; display: flex; flex-direction: column ;">
+      <div class="people-list">
+        <div style='display:flex; justify-content:center'>
+          <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer; transform: rotate(180deg);" width="60" alt="" id="show_later">
+        </div>
+        <div id="plist_3">
+        </div>
+        <div style='display:flex; justify-content:center'>
+            <img src="{% static 'images/icons/go down.png' %}" style="display:none; cursor: pointer" width="60" alt="" id="show_older">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <link rel="stylesheet" href='{% static "css/message/messages_list.css" %}'> 
+
+  <script>
+    var link_1 = "{% url 'ajax-messages-list' %}"
+    var trans_1 = "{% trans 'You:' %}"
+    var trans_2 = '{% trans "No messages yet" %}'
+  </script>
+  <script type="text/javascript" src='{% static "js/message/messages_list.js" %}'></script>
+  
+{% endblock content %}

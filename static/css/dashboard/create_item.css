@@ -1,0 +1,53 @@
+.img-fluid:not([src="https://img.icons8.com/ios/100/000000/add--v1.png"]){
+  width : 100%;
+}
+.multiselect-container.dropdown-menu{
+  width: -webkit-fill-available;
+  min-width: max-content;
+  padding-right: 20px;
+  max-height: 50vh;
+  overflow-y: scroll;
+  border: 1px solid #00000042;
+}
+.btn-group {
+  border: 1px solid #00000042;
+  border-radius: 5px;
+}
+.image-container{
+  flex-shrink: 0;
+}
+.multiple-uploader {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  justify-content: unset;
+}
+.mup-msg{
+  margin: auto;
+}
+
+
+.pc-header,
+.phone-header{
+    position: relative !important;
+}
+
+.img-container{
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  overflow-x: auto;
+  
+}
+.img-container > div{
+  margin: 10px;
+  width: 100px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+}
+#detail_div{
+  display:none !important;
+}
+

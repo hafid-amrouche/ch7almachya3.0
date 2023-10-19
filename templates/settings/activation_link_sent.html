@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block link %}
+    <style>
+        a{
+            color:#00b517;
+        }
+        .container{
+            background-color: var(--white) !important;
+            border: none;
+        }
+    </style>
+{% endblock link %}
+
+{% block content %}
+
+<section class="section-content pt-5" style="min-height:84vh">
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+    
+      <div class="container mx-auto alert text col-sm-10 col-md-9 col-lg-6" id="container" role="alert" style="max-width: 83%;">
+        {% trans "Thank you for registering with us. we have sent you the activation link to your email" %} <strong>{{ user.email }}</strong>.
+        <br>
+      </div>
+    
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+
+  </section>
+    
+{% endblock content %}
+
+    

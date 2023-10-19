@@ -1,0 +1,10 @@
+
+  #copy-link{
+    position: absolute;
+    height: fit-content;
+    right: 7px;
+    top: 63px;
+    max-width: 300px;
+    border: solid #0000003b 2px;
+    
+  }

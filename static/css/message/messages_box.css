@@ -1,0 +1,191 @@
+    .pc-header, .phone-header {
+      position: relative !important;
+    }
+    footer{
+      display: none;
+    }
+    .card{
+        background: var(--mygray);
+        transition: .5s;
+        border: 0;
+        border-radius: .55rem;
+        position: relative;
+        width: 100%;
+        /* box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%); */
+    }
+    .chat-app .people-list {
+        width: 422px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 7
+    }
+    
+    .chat-app .chat {
+        margin-left: 422px;
+        border-left: 1px solid var(--transparent-dark);
+    }
+    
+    .people-list .chat-list li {
+        padding: 10px 15px;
+        list-style: none;
+        border-radius: 3px
+    }
+    
+
+    
+    .people-list .chat-list li .name {
+        font-size: 15px
+    }
+    
+    
+    .people-list .about {
+        float: left;
+        padding-left: 8px
+    }
+    
+    .people-list .status {
+        color: #999;
+        font-size: 13px
+    }
+    
+    .chat .chat-header {
+        padding: 15px 20px;
+        border-bottom: 2px solid #f4f7f6
+    }
+    
+    
+    .chat .chat-header .chat-about {
+        float: left;
+        padding-left: 10px
+    }
+    
+    .chat .chat-history {
+        padding: 5px;
+        /* border-bottom: 2px solid #fff; */
+        overflow-x:auto;
+    }
+    
+    .chat .chat-history ul {
+        padding: 0
+    }
+    
+    .chat .chat-history ul li {
+        list-style: none;
+        margin-bottom: 30px
+    }
+    
+    .chat .chat-history ul li:last-child {
+        margin-bottom: 0px
+    }
+    
+    .chat .chat-history .message-data {
+        margin-bottom: 15px
+    }
+    
+    .chat .chat-history .message-data img {
+        border-radius: 40px;
+        width: 40px
+    }
+    
+    .chat .chat-history .message-data-time {
+        color: #434651;
+        padding-left: 6px
+    }
+    
+    .chat .chat-history .message {
+        cursor: pointer;
+        color: var(--white);
+        padding: 6px 9px;
+        line-height: 26px;
+        font-size: 14px;
+        border-radius: 7px;
+        display: inline-block;
+        position: relative;
+        max-width: 80%;
+        border: 1px solid var(--green);
+    }
+    
+    
+    .chat .chat-history .my-message {
+        background: #efefef
+    }
+    
+   
+    
+    .chat .chat-history .other-message {
+        background: var(--green);
+    }
+    
+    
+    .chat .chat-message {
+        padding: 20px
+    }
+
+    .send-message-box{
+        padding-left: 422px;
+        /* border-left: 1px solid var(--transparent-dark); */
+        height: 80px;
+    }
+    .send-message-box form{
+        border-left: 1px solid var(--transparent-dark);
+    }
+    
+    @media (max-width: 768px) {
+        #chat-header-pc{
+            display: none !important;
+        }
+        .send-message-box{
+            padding-left: 0px;
+        }
+        .send-message-box form{
+            border-left: none;
+        }
+        .chat-app .people-list {
+            height: 100%;
+            width: 100%;
+            overflow-x: auto;
+            background: #fff;
+            left: -400px;
+            display: none
+        }
+        #go-left{
+          display: inline-flex !important;
+        }
+        .chat-app .people-list.open {
+            left: 0
+        }
+        .chat-app .chat {
+            margin: 0;
+            border: none
+        }
+        .chat-app .chat .chat-header {
+            border-radius: 0.55rem 0.55rem 0 0
+        }
+        .chat-app .chat-history {
+            height: 300px;
+        }
+        .chat-header{
+            display: block !important;
+        }
+        .phone-header{
+            display: none !important;
+          }
+    }
+
+    .messages_profile_pic_div{
+			overflow: hidden;
+			border: 1px #0000004f solid;
+			display: inline-flex;
+			border-radius: 50%;
+			border: none;
+			float: left;
+		}
+    .messages_profile_pic{
+        border-radius: 0;
+        width: 33px;
+        height: 33px;
+        margin: auto;
+    }
+    
+

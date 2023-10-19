@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+<section style="background-color: #eee;min-height:65vh">
+    <div class="container py-2">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-9 ">
+          <div class="card text-black">
+              <div class="col-12">
+                <div class="container p-3">
+                  <p class="m-0 text-center">{% trans "You have to confirm your email first to upload items. click" %} <a href="{% url 'activate-account' %}" style="font-size: 1.2rem; color: #00b517;">{% trans "here" %}</a> {% trans "to activate it" %}</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

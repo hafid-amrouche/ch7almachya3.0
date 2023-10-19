@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+  Hi, {{ user.first_name|capfirst }}
+
+  I am hafid from "Ch7al machya"
+
+  Please click the link below to confirm your registration
+
+  http://{{ domain }}{% url 'confirm-activation' uidb64=uid token=token %}
+  
+
+{% endautoescape %}

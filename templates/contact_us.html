@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <section class="m-3 p-3 mx-auto border" style="border-radius: 10px; background-color: var(--white); max-width: 400px;">
+        <div>
+            {% include 'includes/alerts.html' %}
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <strong class="m-2 mt-4" style="display: block;">{% trans "Email" %}</strong>
+            <div class="{% if form.email.errors %}error{% endif %}">
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <strong class="m-2 mt-4" style="display: block;">{% trans "subject" %}</strong>
+            <div class="{% if form.subject.errors %}error{% endif %}">
+                {{ form.subject }}
+                {{ form.subject.errors }}
+            </div>
+            <strong class="m-2 mt-4" style="display: block;">{% trans "message" %}</strong>
+            <div class="{% if form.text.errors %}error{% endif %}">
+                {{ form.text }}
+                {{ form.text.errors }}
+            </div>
+            
+            <button class="btn btn-success m-3">{% trans "Send" %}</button>
+        </form>
+        
+    </section>
+    <footer class="text-center col-12 mt-auto">
+        <div class="container py-3">
+            <section class="text-center">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+                </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+                    <img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+                </a>
+            </section>
+        </div>
+    </footer>
+    {% if LANGUAGE_CODE == "ar" %}
+        <style>
+            * {
+                text-align: right;
+            }
+        </style>
+    {% endif %}
+{% endblock content %}

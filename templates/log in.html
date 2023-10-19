@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load static %}
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-conten pt-5">
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+        <div class="card mx-auto" style="max-width: 380px;">
+          <div class="card-body">
+          <h4 class="card-title mb-4 {% if LANGUAGE_CODE == "ar" %}text-right{% endif %}">{% trans "Login" %}</h4>
+          {% include 'includes/alerts.html' %}
+          <form action="{% url 'login' %}">
+                <input type="hidden" name="POST" value="1">
+              <div class="form-group">
+                 <input class="form-control" placeholder="{% trans "Username" %}" name="username">
+              </div> <!-- form-group// -->
+              <div class="form-group" style="position: relative;">
+                <input type="password" id="id_password" class="form-control" placeholder="{% trans "Password" %}" name="password">
+                <span style="position: absolute; {% if LANGUAGE_CODE == "ar" %}left{% else %}right{% endif %}: 10px; top: 4px;" ><img onclick id="show_password"  width="30" src="{% static "images/icons/eye-crossed.png" %}" alt=""></span>
+              </div> <!-- form-group// -->
+              
+              <div class="form-group text-right">
+                  <a href="{% url 'forget_password' %}" style="color:var(--green)">{% trans "Forgot password?" %}</a> 
+               
+              </div> <!-- form-group form-check .// -->
+              <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-block"> {% trans "Login" %}  </button>
+              </div> <!-- form-group// -->    
+          </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// --> 
+         <p class="text-center mt-4">{% trans "Don't have account?" %} <a href="{% url 'register' %}" style="color:var(--green)">{% trans "Register" %}</a></p>
+         <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+    
+    <footer class="text-center col-12 mt-auto">
+        <div class="container py-3">
+            <section class="text-center">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+                    <img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+                    <img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+                </a>
+            </section>
+        </div>
+    </footer>
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <style>
+        .pc-header,
+        .phone-header{
+            position: relative !important;
+        }
+      </style>
+      <script>
+        show_password.addEventListener('click', ()=>{
+                if( id_password.type === 'password' ){
+                    id_password.type = 'text'
+                    show_password.setAttribute('src', '{% static "images/icons/eye.png" %}')
+                }else{
+                    id_password.type = 'password'
+                    show_password.setAttribute('src', '{% static "images/icons/eye-crossed.png" %}')
+                }
+        })
+      </script>
+{% endblock content %}

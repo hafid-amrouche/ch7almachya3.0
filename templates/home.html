@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load user_templates %}
+
+
+{% block content %}
+
+    <!-- ========================= SECTION ========================= -->
+  
+    
+  <div class="pl-2 pr-0 pb-4 col-12 mx-auto">
+        <div class="col-12 p-0" id='products-container'>
+        </div>
+        <div class="col-12 text-center">
+          <svg id="loading-animations" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+              <g transform="rotate(0 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(30 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(60 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(90 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(120 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(150 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(180 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(210 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(240 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(270 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(300 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"/>
+                </rect>
+              </g><g transform="rotate(330 50 50)">
+                <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="var(--green)">
+                  <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+                </rect>
+              </g>
+          </svg>
+          
+        </div>
+  </div>
+  
+   
+		<footer class="text-center col-12 mt-auto">
+			<div class="container py-3">
+				<section class="text-center">
+					<a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ch7al_machya/" role="button" target="_blank">
+						<img src="https://img.icons8.com/ios-glyphs/100/00b517/instagram-new.png" width="50"/>
+					</a>
+					<a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/people/Ch7al-Machya/100088106987711/" role="button" target="_blank">
+						<img src="https://img.icons8.com/ios-glyphs/100/00b517/facebook-new.png" width="50"/>
+					</a>
+          <a class="btn btn-outline-light btn-floating m-1" href="mailto:ch7almachya@gmail.com" role="button">
+						<img src="https://img.icons8.com/ios-filled/100/40C057/gmail.png" width="50"/>
+					</a>
+				</section>
+			</div>
+		</footer>
+		<!-- Footer -->
+		<!-- ========================= FOOTER END // ========================= -->
+    <link rel="stylesheet" href='{% static "css/home.css" %}'>
+    <script>
+      var LC = "{{LANGUAGE_CODE}}"
+      var home_ajax_link = '{% url "home-ajax" %}'
+      var trans_1 =  "{% trans 'Price: ' %}"
+      var trans_2 = '{% trans "Offered price: " %}'
+      var trans_3 = '{% trans "Price is unavailable" %}'
+      var src_1 = "{% static 'images/exchange.png' %}"
+      var src_2 = "{% static 'images/icons/view.png' %}"
+      var src_3 = "{% static 'images/icons/small-like.png' %}"
+    </script>
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+{% endblock content %}
+
+
+

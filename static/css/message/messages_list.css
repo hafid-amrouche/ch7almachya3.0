@@ -1,0 +1,23 @@
+.pc-header, .phone-header {
+position: relative !important;
+}
+footer{
+display: none;
+}
+
+
+.messages_profile_pic_div{
+        overflow: hidden;
+        border: 1px #0000004f solid;
+        display: inline-flex;
+        border-radius: 50%;
+        border: none;
+        float: left;
+        
+    }
+.messages_profile_pic{
+    border-radius: 0;
+    width: 33px;
+    height: 33px;
+    margin: auto;
+}

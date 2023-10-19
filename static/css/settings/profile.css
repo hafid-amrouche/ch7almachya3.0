@@ -1,0 +1,49 @@
+
+label{
+    margin-top: 15px!important;
+}
+input[type="file"]{
+    height: auto;
+}
+@media (min-width:768px){
+    .border-right,
+    .border-left{
+        padding-top:50px;
+        padding-bottom:50px;
+    }
+}
+
+.form-check-input{
+    width: 20px;
+    height: 20px;
+}
+.form-check-label{
+    margin-left: 10px;
+}
+.label-1:not(.first-name){
+    font-size: 1.2rem;
+}
+#activate-label{
+    margin-top: 5px !important;
+}
+#activate-label a{
+    color: #00b517;
+}
+
+.blah-div{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px #00000036 solid;
+    display: flex;
+}
+#blah{
+    max-width: 148px;
+    max-height: 148px;
+    width: auto;
+    height: auto;
+    margin: auto;
+    border-radius: 0 !important;
+}

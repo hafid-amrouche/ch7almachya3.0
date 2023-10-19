@@ -1,0 +1,642 @@
+{% extends 'base.html' %}
+{% load user_templates %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+{% include 'includes/alerts.html' %}
+  {% if LANGUAGE_CODE != "ar" %}
+  <section>
+  </section>
+    <form action="{% url 'edit-item' product.id %}" method="POST" enctype="multipart/form-data" id="my-form">
+      {% csrf_token %}
+      <section style="" class="comments">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card  p-3">
+                      <img width="40" class="ml-auto" onclick='delete_product(this)' src="https://img.icons8.com/sf-black-filled/30/FA5252/trash.png"/>
+                  <div class="container pl-0">
+                    <h4>{% trans "Item information" %}</h4>
+                  </div>
+                  <div class="form-group" >
+                    <label for="inputCD" class="form-label">{% trans "Creation date" %}</label>
+                    <div >
+                      <input type="text" class="form-control" id="inputCD" disabled value="{{ product.created_date }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="form-label pl-0">{% trans "State" %}</label>
+                    <select class="form-control " name="state">
+                      {% for state in states %}
+                        <option value="{{state.id}}" {% if state == product.state %}selected{% endif %}>{{ state.code }} - {{ state.name|capfirst }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "City" %}</label>
+                    <div >
+                      <input type="text" name="city" class="form-control" value="{{ product.city }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "Phone number" %} 1</label>
+                    <div >
+                      <input type="tel" name="phone_number" id="phone_number" maxlength="20" class="form-control" value="{{phone_numbers.0 }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "Phone number" %} 2</label>
+                    <div >
+                      <input type="tel" name="phone_number2" id="phone_number2" maxlength="20" class="form-control" value="{{ phone_numbers.1 }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "Phone number" %} 3</label>
+                    <div >
+                      <input type="tel" name="phone_number3" id="phone_number3" maxlength="20" class="form-control" value="{{ phone_numbers.2 }}">
+                    </div>
+                  </div>
+                  <div class="form-group mb-3 pl-0">
+                    <label  class=" form-label">{% trans "Brand" %}</label>
+                    <div >
+                      <select name="category" id="category-select" class="form-control">
+                          {% for parent in parent_categories|order_by:"-order" %}
+                            <option disabled style="color:var(--green); font-weight:900;">{{ parent.name|capfirst }}</option>
+                              {% for category in parent.children.all|order_by:"-order" %}
+                                <option value="{{ parent.name_en }}|{{ category.name_en }}" {% if product.category == category %}selected{% endif %}> &ensp; &ensp;{{ category.name|capfirst }}</option>
+                              {% endfor %}
+                          {% endfor %}
+                          <option disabled></option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3"  id="id_new_category_div" style="display: none;">
+                    <input type="text" name="new-brand" id="id_new_category" style="border: 2px var(--red) solid;" maxlength="50" class="form-control" placeholder="{% trans "Brand name" %}">
+                    <hr>
+                  </div>
+                  <div class="form-group {% if form.name.errors %}error{% endif %}">
+                    <label  class=" form-label">{% trans "Model" %}  (*)</label>
+                    <div >
+                      <textarea type="text" name="name" maxlength="200" rows="1" class="form-control" required id="id_name">{{ product.name }}</textarea>
+                      {{ form.name.errors }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_year" class=" form-label">{% trans "Year" %}  </label>
+                    <div >
+                     <select name="year" id="id_year" class="form-control" required>
+                      {% for year in years %}
+                        <option value="{{year}}" {% if product.year == year %}selected{% endif %}>{{year}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Color" %}</label>
+                    <div >
+                     <select name="color" id="" class="form-control" required>
+                      {% for color in colors %}
+                        <option value="{{ color.id }}" {% if color == product.color %}selected{% endif %}>{{color.name|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Document" %}</label>
+                    <div >
+                     <select name="document" id="" class="form-control" required>
+                      {% for document in documents %}
+                        <option value="{{ document.id }}" {% if document == product.document %}selected{% endif %}>{{document.name|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "Engine" %}</label>
+                    <div >
+                      <input type="text" value="{{ product.engine }}" name="engine" maxlength="30" class="form-control">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <label for="id_price" class="form-label">{% trans "Price in millions" %}</label>
+                      <div class="">
+                        <input type="number" placeholder="You can keep this field empty" name="price" class="form-control" id="id_price">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_given_price" class="form-label">{% trans "Offered price in millions" %}</label>
+                      <div class="">
+                        <input type="number" name="given_price" placeholder="You can keep this field empty" class="form-control" id="id_given_price">
+                      </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="contion" class="form-label">{% trans "Car condition" %}  </label>
+                    <div >
+                      <select name="condition" id="" class="form-control">
+                        {% if product.used == True %}
+                          <option value="used" selected>{% trans "Used" %}</option>
+                          <option value="new">{% trans "New" %}</option>
+                        {% else %}
+                          <option value="used">{% trans "Used" %}</option>
+                          <option value="new" selected>{% trans "New" %}</option>
+                        {% endif %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="id_distance" class=" form-label">{% trans "Distance travelled in Kilo Meters" %}  (*)</label>
+                    <div >
+                      <input type="number" name="distance" max="99999999" class="form-control" required id="id_distance" value="{{ product.destance }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Fuel" %} </label>
+                    <div >
+                     <select name="fuel" id="" class="form-control" required>
+                      {% for fuel in fuels %}
+                        <option value="{{ fuel.name_en }}" {% if fuel == product.fuel %}selected{% endif %}>{{fuel|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_gear" class="form-label">{% trans "Gear box" %}  </label>
+                    <div >
+                     <select name="gear" id="id_gear" class="form-control" required>
+                        {% for gear_box in gear_boxs %}
+                          <option value="{{ gear_box.name_en }}" {% if gear_box == product.gear_box %}selected{% endif %}>{{ gear_box.name }}</option>
+                        {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group d-flex my-2 align-items-center">
+                    <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "Open for exchange?" %}</strong>
+                    <input class="mx-3 form-check-input" {% if product.exchange %}checked{% endif %} style=""  type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                  </div>
+                <hr>
+                <div class="form-group d-flex mb-3 align-items-center">
+                  <strong style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "All options car ?" %}</strong>
+                  <input class="mx-3 form-check-input" style="" {% if product.is_all_options %}checked{% endif %} type="checkbox" id="flexSwitchCheckChecked" name="all_options">
+                </div>
+                <div class="form-group mt-4 mb-3" id="options-div">
+                  <strong class="form-label" style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;">{% trans "If not what are it's options then ?" %}</strong>
+                  <div class="col-12 mt-3" id="select-div">
+                      <select id="multiple-checkboxes" class="form-control" multiple="multiple" name="options">
+                          {% for option in options %}
+                              <option value="{{ option.id }}" {% if option in product.options.all %}selected{% endif %}>{{ option.name|capfirst }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                </div>
+                  <hr>
+                  <div class="form-group">
+                    <div class=" p-2">
+                      <label class=" form-label pl-0">{% trans "Description" %}:</label>
+                      <textarea type="text" class="form-control" name="description" rows="6" id="description">{{ product.description }}</textarea>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="" id="photos_section">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card ">
+                  <div class="col-12">
+                    <div class="container pt-3">
+                      <h4>{% trans "Photos" %}  </h4>
+                      <strong>{% trans "Your post must have at least 1 photo" %}</strong>
+                    </div>
+                    
+                    
+                      <div class="multiple-uploader" {% if image_range == 0 %} style="display: none;" {% endif %} id="multiple-uploader">
+                        <div class="mup-msg">
+                            <span class="mup-main-msg" style="color :var(--green);">{% trans "Click to upload images" %}</span>
+                            <div class="mup-msg" style="color :var(--green); flex-direction: row; flex-wrap: wrap;"><span  class="mup-msg" style="color :var(--green);">{% trans "upload up to " %}</span> <span id="images_range_int"  class="mup-msg" style="color :var(--green); margin-left: 2px; margin-right: 4px;" ></span> <span   class="mup-msg"  style="color :var(--green);">{% trans " images" %} </span></div>
+                        </div>
+                      </div>
+                    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card p-3">
+                <p class="text-center mb-3">
+                  <strong>
+                    {% trans "This operation might take some time according to your internet speed. So please be patient" %}
+                  </strong>
+                </p>
+                <button class="btn btn-success m-2" id="load_button" onclick="load(this)">{% trans "Save" %}</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card ">
+                  <div class="col-12">
+                    <div class="swiper-container loco_cat__carousel" data-slides-per-view="6" data-space-between="12" data-loop="true" data-free-mode="true" data-click="false" data-center-xs-slide="false" data-spvxs="2" data-spvsm="3" data-spvmd="4" data-spvlg="5" data-spvxl="6">
+                          <div class="swiper-wrapper pb-3">
+                              <div class="img-container">
+                                {% for image in product.images.all %}
+                                      <div class="text-right">
+                                        <a href="{% url 'delete-image' product.id image.id %}" id="delete_image_button_{{ image.id }}" class="delete-image-button"><img style="padding:6px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAChElEQVRIia2WPWgUQRiG33duNlckpLleQdFCJIqFVjZ2YjDZWSIRUUIQBTEYiYmFiocRNCqms4hW4g/kuECKmMLmKgu7hBP0UppUgaQSsru381nkbr3seT+aTDcvs8/zzcfMMpSRkXR5dXXUkj0QUdiDQaWEIkWdSk3rYG1tnOQkAYDcCz4gAgEQRFGXVsBxqebkFwIrsPa/2RY4oMjTlekJbQFFAJYspPP5MwSkGaBl8QAD110geZaAinuurP1WhQvALdc93C50y/MOCbDdZUCUUsWYG68iY3joutOK/BEYM90K7huTVSKl0HXfSDZbd0jqgqCv7yjIW5XpaGDMi2ZwAg8rBQ6Xl5ZOtRR0zM8XQb6uicZ8z3veFL493mutv7YUEBAnn78O4FWcidwJPO9lQ7jIrLOxMcRcLkrydDKoSqSnZyRcXu4AcLUCue17XgSRXwn4R0fryywU6uANBQDAbNYKcC00JgBwo7qTHYtEZp3NzSuN4MBfWpTciTM3dxM17UrAL7FQKDdjtPz3EBCSP+v4wEoreFuC0JgxEXlSJybv+cZM7UoQuu5dAeJ7QHIOIu/iOTDhGzP5X4LQmDEhn9bCdSYz6Gg9BOBtjeS+77rP/kkQGjORrFxnMoOcmQmZy0VOKjW8YyfkuG/Mo7YE/sDAEQHi3tbC4yyXixythxLtehD0959sKehYXy+RnG8EbyL57Pj+UksBC4WyVuqCAnobwZMSRZ5zurvPc3HRT66JbzKV2lfzYQBgoRE4KQHwqTYTYH+dQKztDTzvA6Oo1A640bDkQYh4fwRkCSIAoCByUdTuHhaJZ8N33ZFOT4W+32WtPaa4N88KC0ABRaez8/FvX/sUdQgbJDgAAAAASUVORK5CYII="/></a>
+                                        <div style="width: 100%; aspect-ratio:1/1; background-image: url('{{ image }}');background-repeat: no-repeat !important; background-position: center !important; background-size: contain !important;border: 1px solid grey;">
+                                        </div>
+                                      </div>
+                                {% endfor %}
+                                
+                              </div>
+                          </div>
+                    </div>
+                    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card text-center p-3">
+                <table class="table table-borderless mb-0">
+                  <tbody>
+                    <tr>
+                      <td>{{ product.likes.all.count }} {% trans "likes" %}</td>
+                      <td>{{ product.dislikes.all.count }} {% trans "dislikes" %}</td>
+                      <td>{{ product.comments.all.count }} {% trans "comments" %}</td>
+                      <td>{{ product.views }} {% trans "views" %}</td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  {% else %}
+    <form action="{% url 'edit-item' product.id %}" method="POST" enctype="multipart/form-data" id="my-form">
+      {% csrf_token %}
+      <section style="" class="comments text-right">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card p-3">
+                <img width="40" onclick='delete_product(this)' src="https://img.icons8.com/sf-black-filled/30/FA5252/trash.png"/>
+                  <div class="container mr-0">
+                    <h4>{% trans "Item information" %}</h4>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputCD" class="form-label">{% trans "Creation date" %}</label>
+                    <div class="">
+                      <input type="text" class="form-control" id="inputCD" disabled value="{{ product.created_date }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="form-label pr-0"> {% trans "State" %}</label>
+                    <select class="form-control text-right" name="state">
+                      {% for state in states %}
+                        <option value="{{state.id}}" {% if product.state == state %}selected{% endif %}>{{ state.code }} - {{ state.name|capfirst }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">{% trans "City" %}</label>
+                    <div class="">
+                      <input type="text" placeholder="You can keep this field empty" name="city" class="form-control" value="{{ product.city }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">رقم الهاتف 1</label>
+                    <div class="">
+                      <input type="tel" placeholder="You can keep this field empty" value="{{ phone_numbers.0 }}" name="phone_number" id="phone_number"  maxlength="20"  class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">رقم الهاتف 2</label>
+                    <div class="">
+                      <input type="tel" placeholder="You can keep this field empty" value="{{ phone_numbers.1 }}" name="phone_number2" id="phone_number2" maxlength="20"  class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class=" form-label">رقم الهاتف 3</label>
+                    <div class="">
+                      <input type="tel" placeholder="You can keep this field empty" value="{{ phone_numbers.2 }}" name="phone_number3" id="phone_number3" maxlength="20" class="form-control">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <label  class="form-label"> {% trans "Brand" %}</label>
+                    <div class="">
+                      <select name="category" id="category-select" class="form-control text-right">
+                          {% for parent in parent_categories|order_by:"-order" %}
+                            <option disabled style="color:var(--green); font-weight:900;">{{ parent.name|capfirst }}&ensp;&ensp;</option>
+                              {% for category in parent.children.all|order_by:"-order" %}
+                                <option value="{{ parent.name_en }}|{{ category.name_en }}" {% if product.category == category %}selected{% endif %}>{{ category.name|capfirst }} &ensp; &ensp; &ensp;&ensp;</option>
+                              {% endfor %}
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3"  id="id_new_category_div" style="display: none;">
+                    <input type="text" name="new-brand" id="id_new_category" style="border: 2px var(--red) solid;" maxlength="50" class="form-control" placeholder="{% trans "Brand name" %}">
+                    <hr>
+                  </div>
+                  <div class="form-group {% if form.name.errors %}error{% endif %}">
+                    <label  class="form-label">(*) اسم السيارة</label>
+                    <div class="">
+                      <textarea type="text" name="name" rows="1" maxlength="200" class="form-control" required="" id="id_name" placeholder="مثال : symbol">{{ product.name }}</textarea>
+                      {{ form.name.errors }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_year" class=" form-label"> {% trans "Year" %}</label>
+                    <div class="">
+                     <select name="year" id="id_year" class="form-control text-right" required>
+                      {% for year in years %}
+                        <option value="{{year}}" {% if product.year == year %}selected{% endif %}>{{year}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Color" %}</label>
+                    <div class="">
+                     <select name="color" id="" class="form-control text-right" required>
+                      {% for color in colors %}
+                        <option value="{{ color.id }}">{{color.name|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Document" %}</label>
+                    <div class="">
+                     <select name="document" id="" class="form-control text-right" required>
+                      {% for document in documents %}
+                        <option value="{{ document.id }}">{{document.name|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="form-label">{% trans "Engine" %}</label>
+                    <div class="">
+                      <input type="text"  name="engine" value="{{ product.engine }}" maxlength="30" class="form-control">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group {% if form.price.errors %}error{% endif %}">
+                    <label for="id_price" class="form-label">الثمن بالمليون سنتيم</label>
+                    <div class="">
+                      <input type="number" placeholder="You can keep this field empty" name="price" max="999999" class="form-control" id="id_price">
+                    </div>
+                  </div>
+                  <div class="form-group {% if form.given_price.errors %}error{% endif %}">
+                    <label for="id_given_price" class="form-label">شحال عطاوك بالملون سنتيم</label>
+                      <div class="">
+                        <input type="number" name="given_price" placeholder="You can keep this field empty" max="999999" class="form-control" id="id_given_price">
+                      </div>
+                    </div>
+                  
+                  <hr>
+                  <div class="form-group mb-3">
+                    <label for="contion" class="form-label"> {% trans "Car condition" %}</label>
+                    <div class="">
+                      <select name="condition" id="" class="form-control text-right">
+                        {% if product.used == True %}
+                          <option value="used" selected>{% trans "used" %}</option>
+                          <option value="new">{% trans "Store" %}</option>
+                        {% else %}
+                          <option value="used">{% trans "Used" %}</option>
+                          <option value="new" selected>{% trans "Store" %}</option>
+                        {% endif %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="id_distance" class=" form-label">(*) {% trans "Distance travelled in Kilo Meters" %}</label>
+                    <div class="">
+                      <input type="number" name="distance" max="99999999" value="{{ product.destance }}" class="form-control" required id="id_distance">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_fuel" class="form-label">{% trans "Fuel" %}</label>
+                    <div class="">
+                     <select name="fuel" id="" class="form-control text-right" required>
+                      {% for fuel in fuels %}
+                        <option value="{{ fuel.name_en }}" {% if fuel == product.fuel %}selected{% endif %}>{{fuel|capfirst}}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_gear" class="form-label"> {% trans "Gear box" %}</label>
+                    <div class="">
+                     <select name="gear" id="id_gear" class="form-control text-right" required>
+                      {% for gear_box in gear_boxs %}
+                        <option value="{{ gear_box.name_en }}" {% if gear_box == product.gear_box %}selected{% endif %}>{{ gear_box.name }}</option>
+                      {% endfor %}
+                     </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group d-flex my-2 align-items-center">
+                    <input class="mr-3 ml-auto" {% if product.exchange %}checked{% endif %} style=""  type="checkbox" id="flexSwitchCheckChecked_2" name="exchange">
+                    <strong style="font-size: 1.2rem;">{% trans "Open for exchange?" %}</strong>
+
+                  </div>
+                <hr>
+                <div class="form-group d-flex my-2 align-items-center">
+                    <input class="mr-3 ml-auto" style="" {% if product.is_all_options %}checked{% endif %}  {% if product.is_all_options %}checked{% endif %} type="checkbox" id="flexSwitchCheckChecked" name="all_options">
+                  <strong style="font-size: 1.2rem;">{% trans "All options car ?" %}</strong>
+                </div>
+                <div class="form-group mt-4 mb-3" id="options-div">
+                  <strong class="form-label" style="vertical-align: -webkit-baseline-middle; font-size: 1.2rem;margin-left: auto;">اذا لم تكن كذالك ماهي خياراتها اذا ؟</strong>
+                  <div class="col-12 mt-3" id="select-div">
+                      <select id="multiple-checkboxes"  class="form-control text-right" multiple="multiple" name="options">
+                          {% for option in options %}
+                              <option value="{{ option.id }}"  {% if option in product.options.all %}selected{% endif %}>{{ option.name|capfirst }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                </div>  
+                  <hr>
+                  <div class="form-group">
+                    <div class=" p-2">
+                      <label class=" form-label pl-0">{% trans "Description" %}</label>
+                      <textarea type="text" placeholder="You can keep this field empty" class="form-control text-right" name="description" id="description" rows="6">{{ product.description }}</textarea>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="" id="photos_section">
+        <div class="container py-2 text-right">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card ">
+                  <div class="col-12">
+                    <div class="container pt-3">
+                      <h4> {% trans "Photos" %}</h4>
+                      <strong>{% trans "Your post must have at least 1 photo" %}</strong>
+                    </div>
+                    <div class="swiper-container loco_cat__carousel" data-slides-per-view="6" data-space-between="12" data-loop="true" data-free-mode="true" data-click="false" data-center-xs-slide="false" data-spvxs="2" data-spvsm="3" data-spvmd="4" data-spvlg="5" data-spvxl="6">
+                          
+                          {% if image_range > 0 %}
+                            <div class="multiple-uploader" id="multiple-uploader">
+                              <div class="mup-msg">
+                                  <span class="mup-main-msg" style="color :var(--green);">{% trans "Click to upload images" %}</span>
+                                  <div class="mup-msg" style="color :var(--green); flex-direction: row-reverse;"> <span   style="color :var(--green);" class="mup-msg"> يمكنك تحميل </span> <span  style="color :var(--green); "  class="mup-msg" id="images_range_int" ></span> <span  style="color :var(--green);" class="mup-msg"> صورة </span></div>
+                              </div>
+                            </div>
+                          {% endif %}
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="">
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card  p-3">
+                <p class="text-center mb-4">
+                  <strong>
+                    {% trans "This operation might take some time according to your internet speed. So please be patient" %}
+                  </strong>
+                </p>
+                <button class="btn btn-success m-2" id="load_button" onclick="load(this)">{% trans "Save" %}</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container py-2 text-right">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card ">
+                  <div class="col-12">
+                    <div class="swiper-container loco_cat__carousel" data-slides-per-view="6" data-space-between="12" data-loop="true" data-free-mode="true" data-click="false" data-center-xs-slide="false" data-spvxs="2" data-spvsm="3" data-spvmd="4" data-spvlg="5" data-spvxl="6">
+                          <div class="swiper-wrapper pb-3">
+                              <div class="img-container" style="flex-direction:row-reverse">
+                                {% for image in product.images.all %}
+                                  <div class="text-right">
+                                    <a href="{% url 'delete-image' product.id image.id %}" id="delete_image_button_{{ image.id }}" class="delete-image-button"><img style="padding:6px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAChElEQVRIia2WPWgUQRiG33duNlckpLleQdFCJIqFVjZ2YjDZWSIRUUIQBTEYiYmFiocRNCqms4hW4g/kuECKmMLmKgu7hBP0UppUgaQSsru381nkbr3seT+aTDcvs8/zzcfMMpSRkXR5dXXUkj0QUdiDQaWEIkWdSk3rYG1tnOQkAYDcCz4gAgEQRFGXVsBxqebkFwIrsPa/2RY4oMjTlekJbQFFAJYspPP5MwSkGaBl8QAD110geZaAinuurP1WhQvALdc93C50y/MOCbDdZUCUUsWYG68iY3joutOK/BEYM90K7huTVSKl0HXfSDZbd0jqgqCv7yjIW5XpaGDMi2ZwAg8rBQ6Xl5ZOtRR0zM8XQb6uicZ8z3veFL493mutv7YUEBAnn78O4FWcidwJPO9lQ7jIrLOxMcRcLkrydDKoSqSnZyRcXu4AcLUCue17XgSRXwn4R0fryywU6uANBQDAbNYKcC00JgBwo7qTHYtEZp3NzSuN4MBfWpTciTM3dxM17UrAL7FQKDdjtPz3EBCSP+v4wEoreFuC0JgxEXlSJybv+cZM7UoQuu5dAeJ7QHIOIu/iOTDhGzP5X4LQmDEhn9bCdSYz6Gg9BOBtjeS+77rP/kkQGjORrFxnMoOcmQmZy0VOKjW8YyfkuG/Mo7YE/sDAEQHi3tbC4yyXixythxLtehD0959sKehYXy+RnG8EbyL57Pj+UksBC4WyVuqCAnobwZMSRZ5zurvPc3HRT66JbzKV2lfzYQBgoRE4KQHwqTYTYH+dQKztDTzvA6Oo1A640bDkQYh4fwRkCSIAoCByUdTuHhaJZ8N33ZFOT4W+32WtPaa4N88KC0ABRaez8/FvX/sUdQgbJDgAAAAASUVORK5CYII="/></a>
+                                    <div style="width: 100%; aspect-ratio:1/1; background-image: url('{{ image }}');background-repeat: no-repeat !important; background-position: center !important; background-size: contain !important;border: 1px solid grey;">
+                                    </div>
+                                  </div>
+                                {% endfor %}
+                              </div>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container py-2">
+          <div class="justify-content-center">
+            <div class="">
+              <div class="card text-center p-3">
+                <table class="table table-borderless mb-0">
+                  <tbody>
+                    <tr>
+                      <td>{{ product.likes.all.count }} <br> {% trans "likes" %}</td>
+                      <td>{{ product.dislikes.all.count }} <br> {% trans "dislikes" %}</td>
+                      <td>{{ product.comments.all.count }} <br> {% trans "comments" %}</td>
+                      <td>{{ product.views }} <br> {% trans "views" %}</td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  {% endif %}
+
+
+  <link rel="stylesheet" href='{% static "css/dashboard/create_item.css" %}'> 
+  <script >
+    id_name.value = "{{ product.name }}";
+    id_price.value = "{{ product.price }}";
+    id_given_price.value = "{{ product.given_price }}";
+  </script>
+  <link href="{% static 'images_uploader/css/main.css' %}" rel="stylesheet" type="text/css">
+  <script src="{% static 'images_uploader/js/multiple-uploader.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/dashboard/edit_item.js' %}"></script>
+
+<script>
+  images_range_int.innerHTML = " {{ image_range }} ";
+  delete_buttons = document.getElementsByClassName('delete-image-button')
+  if (delete_buttons.length == 1){
+    delete_buttons[0].style.display = 'none';
+  }
+  {% for image in product.images.all %}
+    delete_image_button_{{ image.id }}.addEventListener("click", function(event){
+      event.preventDefault()
+      $.ajax({
+        type: 'GET',
+        url: delete_image_button_{{ image.id }}.getAttribute('href'),
+        data:{
+          csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+        },
+      });
+      delete_image_button_{{ image.id }}.parentNode.remove()
+      if (delete_buttons.length == 1){
+        delete_buttons[0].style.display = 'none';
+      }
+        document.getElementById('multiple-uploader').style.display = "flex";
+        images_range_int.innerHTML = Number(images_range_int.innerHTML) + 1
+    })
+  {% endfor %}
+
+  function delete_product(button){
+        var result =  confirm('{% trans "Are you sure you want to remove this item" %}')
+        
+        
+        if (result){
+            $.ajax({
+                url: '/product/{{ user.id }}/{{ product.slug }}-{{ product.id }}/delete/'
+            })
+            window.location.href = '{% url "your-items" %}'
+        }
+    }
+  
+</script>
+
+{% if product.other_category %}
+  <script>
+      id_new_category_div.style.display = 'block'
+      id_new_category.value = '{{ product.other_category }}'
+      id_new_category.style.border = ''
+  </script>
+{% endif %}
+
+{% endblock content %}
