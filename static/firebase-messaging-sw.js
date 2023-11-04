@@ -69,3 +69,4 @@ const updateNMCount = (payload)=>{
                 
 }
 
+console.log(ServiceWorkerClients.matchAll({includeUncontrolled: true, type: 'window'}))
