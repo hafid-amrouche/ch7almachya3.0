@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from . import views, settings, scrape
+from . import notification_sending_management, token_management, views, settings, scrape
 from product.views import product_ajax, delete_comment
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
@@ -16,13 +16,14 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('admin-room/', admin.site.urls),
+    path('send/', notification_sending_management.send, name='send-notification'),
     path('', views.home, name='home'), 
+    path('update-notifications-token-list', token_management.update_notifications_token_list, name='update-notifications-token-list'),
     path('simular-products/', views.simular_products, name='simular-products'),
     path('home-ajax/', views.home_ajax, name='home-ajax'),
     path('get-people/', views.get_people, name='get-people'),
     path('get-companies/', views.get_companies, name='get-companies'),
     path('scrape/', scrape.scrape, name='scrape'),
-    path('browser-notifications', views.browser_notifications, name='browser-notifications'),
     path('activate-dark-mode/', views.activate_dark_mode, name='activate-dark-mode'), 
     path('deactivate-dark-mode/', views.deactivate_dark_mode, name='deactivate-dark-mode'), 
     path('check-username/', views.check_username, name='check-username'),

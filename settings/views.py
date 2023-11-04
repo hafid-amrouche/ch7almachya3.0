@@ -101,6 +101,7 @@ def settings_profile(request):
   context={
     'states' : State.objects.all().order_by('code'),
     'title' : request.user.full_name,
+    'get_or_update_token' : 'true'
   }
   return render(request, 'settings/profile.html', context)
 

@@ -186,7 +186,12 @@ var button = document.getElementById('copy-link')
           feedback.innerHTML = trans_6
         }
         scoore.innerHTML = data['scoore']
-        rank.innerHTML = data['rank']
+        if (data['rank'] == '0'){
+          rank.innerHTML = '/'
+        }
+        else {
+          rank.innerHTML = data['rank']
+        }
 
         load_products()
       }

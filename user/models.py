@@ -1,6 +1,9 @@
 
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from ch7almachya.notification_sending_management import send
+import json
 
 
 # Create your models here.
@@ -111,6 +114,18 @@ class Profile(models.Model):
   def __str__(self):
     return self.user.full_name()
 
+
+
+def send_push_notification(self):
+  try :
+    icon = self.notifier.profile.picture_150
+    first_name = self.notifier.first_name
+    if not icon :
+      icon =  f'/static/images/letters/{first_name[0]}.jpg'
+    send(self.notified, first_name, self.text, self.url, icon, type=self.type)
+  except:
+    pass
+ 
 class Notification(models.Model):
   notifier = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name="notifications")
   notified = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name="notified_notifications")
@@ -123,6 +138,11 @@ class Notification(models.Model):
   is_acknowleged = models.BooleanField(default=False)
   is_acknowleged_by_browser = models.BooleanField(default=False)
   is_acknowleged_by_android = models.BooleanField(default=False)
+
+  def save(self, *args, **kwargs):
+      send_push_notification(self)
+      super(Notification, self).save(*args, **kwargs)
+
 
   def __str__(self):
         return str(self.type) + " | " + str(self.notifier)
@@ -234,12 +254,17 @@ class SearchWords(models.Model):
   text = models.CharField(max_length=50)
   times = models.IntegerField(default=1)
 
-
 class SavedItem(models.Model):
   user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='saved_item')
   item = models.ForeignKey('product.Product', on_delete=models.CASCADE)
   saved_at = models.DateTimeField(auto_now=True)
 
+class NotificationsToken(models.Model):
+  user = models.OneToOneField(Account, on_delete=models.CASCADE, related_name='notifications_token')
+  tokens_list = models.TextField(default=json.dumps([]))
 
-
-
+class TokenSessionId(models.Model):
+  last_used = models.DateTimeField(auto_now=True)
+  user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, related_name='token_session_ids')
+  token = models.CharField(max_length=256)
+  session_id = models.CharField(max_length=256)

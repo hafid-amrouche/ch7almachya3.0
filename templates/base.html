@@ -12,7 +12,6 @@
 		<link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
 		<meta http-equiv="cache-control" content="max-age=604800" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6526457297514391" crossorigin="anonymous"></script>
 		
 		{% if description %}
 			<meta name="description" content="{{ description }}">
@@ -39,9 +38,9 @@
 				}
 			</style>
 		{% endif %}
-			<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 			<link rel='stylesheet' href='{% static "css/bootstrap/bootstrap.min.css" %}'>
 			<link rel="stylesheet" href='{% static "css/base.css" %}'> 
+			<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 			<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
 		{% block link %}
 		{% endblock link %}
@@ -229,7 +228,7 @@
 				
 				{% if user.is_authenticated %}
 					<hr>
-					<a href="{% url 'logout' %}" class="main-anchor">
+					<a href="{% url 'logout' %}" id="logout-a" class="main-anchor">
 						<img src="https://img.icons8.com/ios/50/28A745/exit.png" id="logout-icon" class="p-1" width="30" />
 							{% trans "Logout" %}
 					</a>
@@ -310,7 +309,31 @@
 	</body>
 	<script src='{% static "js/base.js" %}'></script>
 	{% if user.is_authenticated %}
-		<script src='{% static "js/base2.js" %}' type="text/javascript"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    	<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-messaging.js"></script>
+		<script>
+			getOrUpdateToken = '{{ get_or_update_token}}'
+		</script>
+		<script src='{% static "js/base2.js" %}' type="module"></script>
+		<script>
+			document.getElementById('logout-a').onclick = (event)=>{
+				event.preventDefault()
+				if ('serviceWorker' in navigator) {
+					navigator.serviceWorker.getRegistrations().then(function(registrations) {
+						for (let registration of registrations) {
+						registration.unregister().then(function(success) {
+							console.log('Service Worker unregistered:', success);
+						}).catch(function(error) {
+							console.error('Service Worker unregistration failed:', error);
+						});
+						}
+					});
+				}
+				window.location.href = document.getElementById('logout-a').getAttribute('href')
+			}
+			
+		</script>
+		
 	{% endif %}
 	{% if not is_old_user %}
 			<script>
@@ -352,6 +375,7 @@
 			
 		})
 	</script>
+	
 	
 </html>
 

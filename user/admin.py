@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account, FriendList, State, Profile, Notification, LastMessage, FollowersList, SearchParameters, MessageToAdmin, ContactUS, SearchWords, SavedItem
+from .models import Account, FriendList, State, Profile, Notification, LastMessage, FollowersList, SearchParameters, MessageToAdmin, ContactUS, SearchWords, SavedItem, NotificationsToken, TokenSessionId
 from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
@@ -36,3 +36,5 @@ admin.site.register(State, StateAdmin)
 admin.site.register(ContactUS)
 admin.site.register(SearchWords)
 admin.site.register(SavedItem)
+admin.site.register(NotificationsToken)
+admin.site.register(TokenSessionId)

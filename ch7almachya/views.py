@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from product.models import Product, Option, Category, GearBox, Fuel, ParentCategory, Color, Document, Comment
 from user.forms import AccountForm, ContactUsForm
-from user.models import FollowersList, FriendList, Profile, Account, SearchParameters, State, SearchWords
+from user.models import FollowersList, FriendList, Profile, Account, SearchParameters, State, SearchWords, NotificationsToken, TokenSessionId
 import requests
 import datetime 
 import re
@@ -33,6 +33,17 @@ def authenticate(request, username=None, password=None):
         return None
     except :
         return None
+
+def delete_old_token(request):
+    try:
+        TokenSessionId.objects.get(user=request.user, session_id = request.session.session_key).delete()
+        tokens = TokenSessionId.objects.filter(user=request.user)
+        tokens_list = list(tokens.values_list('token', flat=True))
+        request.user.notifications_token.tokens_list = json.dumps(tokens_list)
+        request.user.notifications_token.save()
+    except:
+        pass
+
 
 def home(request):
     context = {
@@ -141,6 +152,9 @@ def register(request):
                 FollowersList.objects.create(
                     user=user
                 )
+                NotificationsToken.objects.create(
+                    user=user
+                )
                 search_parameters = SearchParameters.objects.create(
                     user = user,
                 )
@@ -214,9 +228,11 @@ def login(request):
     else:
         return redirect(reverse('home'))
 
+
 @login_required(login_url = 'login')
 def logout(request):
   dark_mode = request.session.get('dark_mode')
+  delete_old_token(request)
   auth.logout(request)
   request.session['dark_mode'] = dark_mode
   request.session['is_old_user'] = True
@@ -1516,53 +1532,6 @@ def auto_complete_suggestions(request):
 
     return HttpResponse(json.dumps(suggesstions))
 
-def browser_notifications(request):
-    try:
-        notifications = request.user.notified_notifications.filter(is_acknowleged_by_browser = False, is_acknowleged = False).order_by("-id")
-        messages = request.user.last_messages.filter(is_acknowleged_by_browser = False, is_acknowleged = False).order_by("-id")
-        notifications_list = []
-
-        for notification in notifications:
-            try:
-                image_url = notification.notifier.profile.picture_150.url
-            except:
-                image_url = "/static/images/letters/" +  notification.notifier.first_name[0] + ".jpg"
-
-            notifications_list.append(
-                {
-                    'title' : gettext('Notification'),
-                    'url' : notification.url,
-                    'image_url' : image_url,
-                    'text' : notification.text,
-                }
-            )
-        
-        for notification in messages:
-            try:
-                image_url = notification.friend.profile.picture_150.url
-            except:
-                image_url = "/static/images/letters/" +  notification.friend.first_name[0] + ".jpg"
-
-            
-
-            notifications_list.append(
-                {
-                    'title' : notification.friend.full_name(),
-                    'url' : '/messages/' + str(notification.friend.id),
-                    'image_url' : image_url,
-                    'text' : notification.message.text,
-                }
-            )
-        
-        notifications.update(is_acknowleged_by_browser = True)
-        messages.update(is_acknowleged_by_browser = True)
-
-        return HttpResponse(json.dumps(notifications_list))
-    except:
-        return HttpResponse(json.dumps(False))
-            
-    
-
 def get_people(request):
     keywords =  re.split(' |-', request.GET.get('keyword').lower().strip())
     ids = request.GET.getlist('ids[]') or []
@@ -1938,3 +1907,5 @@ def simular_products(request):
     products = products[:20]
     return  HttpResponse(json.dumps([list(products)])) 
     
+
+
