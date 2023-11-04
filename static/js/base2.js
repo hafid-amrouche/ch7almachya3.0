@@ -130,25 +130,28 @@ const getToken = (registration)=>{
 
 $('document').ready(function(){
     load_unseen()
-
-    if ('Notification' in window) {
-        // Request permission to show notifications
-        if (Notification.permission !== 'granted') {
-            Notification.requestPermission().then((permission) => {
-                // If the user accepts, let's create a notification
-                if (permission === "granted") {
-                    activateSW()
-                }
-                else{
-                    console.log('Notifications permission not granted!!!')
-                }
-              });;
-        }
-        
-    } 
-
 })
 
+if ('Notification' in window) {
+    // Request permission to show notifications
+
+    if (Notification.permission !== 'granted') {
+        Notification.requestPermission().then((permission) => {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+               console.log('Permission granted')
+                activateSW()
+            }
+            else{
+                console.log('Permission not granted!!!')
+            }
+          });;
+    }else{
+        activateSW()
+        console.log('Permission already granted')
+    }
+    
+} 
 
 
 
