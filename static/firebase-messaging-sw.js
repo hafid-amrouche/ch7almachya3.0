@@ -58,6 +58,7 @@ self.addEventListener('message', function(event) {
 
 const updateNMCount = (payload)=>{
     let NMCount = JSON.parse(payload.data.NMCount)
+    console.log(self.clients)
     self.clients.matchAll().then(clients => {
         clients.forEach(client => {
             client.postMessage(()=>{
