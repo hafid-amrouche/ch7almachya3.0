@@ -18,7 +18,8 @@ const showNotification = (payload)=>{
     self.registration.showNotification(payload.notification.title, {
         body: payload.notification.body,
         icon: payload.notification.icon,
-        data : payload.data
+        data : payload.data,
+        tag : payload.data.type
     });
 }
 
