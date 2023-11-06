@@ -8,13 +8,20 @@ def last_active(request):
         request.user.profile.last_active = dt.now(timezone.utc)
         request.user.profile.save()
 
+def user_is_active(user, delta_max):
+        delta = dt.now(timezone.utc) - user.profile.last_active 
+        return delta.total_seconds() < delta_max 
+
+
 def get_ip_address(request):
     return request.session.session_key
 
 def substract_time_messages(value1, value2):
     if not value2:
         value2 = dt.now(timezone.utc)
-    delta = mktime( value1.timetuple()) - mktime(value2.timetuple())
+    delta = value1 - value2
+    delta = delta.total_seconds()
+    print(delta)
     if delta <60:
         delta = str(int(delta)) + gettext(" s")
     elif 60 <= delta and delta < 3600:
@@ -36,7 +43,9 @@ def substract_time_messages(value1, value2):
 
 def sub_time(request, cd):
     ct = dt.now(timezone.utc)
-    delta = mktime( ct.timetuple()) - mktime(cd.timetuple())
+    delta = ct - cd
+    delta = delta.total_seconds()
+    
     if request.LANGUAGE_CODE == 'en':
         if delta <60:
             delta = 'Just now'

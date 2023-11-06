@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from ch7almachya.notification_sending_management import send
 import json
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from ch7almachya.user_interface_RT_updating import update_NCount
 
 
 # Create your models here.
@@ -105,6 +108,9 @@ class Profile(models.Model):
   password = models.CharField(null=True, blank=True, max_length=50)
   picture_150 = models.ImageField(blank=True, null=True,)
   last_active = models.DateTimeField(blank=True, null=True,)
+  last_active_in_notifications_list = models.DateTimeField(blank=True, null=True,)
+  last_active_in_messages_list = models.DateTimeField(blank=True, null=True,)
+  last_active_in_messages_box = models.DateTimeField(blank=True, null=True,)
   count = models.IntegerField(default=0)
   email_comments = models.BooleanField(default=True)
   email_messages = models.BooleanField(default=True)
@@ -114,17 +120,7 @@ class Profile(models.Model):
   def __str__(self):
     return self.user.full_name()
 
-
-
-def send_push_notification(self):
-  try :
-    icon = self.notifier.profile.picture_150
-    first_name = self.notifier.first_name
-    if not icon :
-      icon =  f'/static/images/letters/{first_name[0]}.jpg'
-    send(self.notified, first_name, self.text, self.url, icon, type=self.type)
-  except:
-    pass
+  
  
 class Notification(models.Model):
   notifier = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name="notifications")
@@ -139,18 +135,35 @@ class Notification(models.Model):
   is_acknowleged_by_browser = models.BooleanField(default=False)
   is_acknowleged_by_android = models.BooleanField(default=False)
 
-  def save(self, *args, **kwargs):
-      send_push_notification(self)
-      super(Notification, self).save(*args, **kwargs)
-
-
   def __str__(self):
         return str(self.type) + " | " + str(self.notifier)
+  
   def user(self):
     try:
       return self.product.user
     except:
       return self.notified
+  
+  def delete(self):
+    super(Notification, self).delete()
+    update_NCount(self.notified)
+
+
+
+@receiver(post_save, sender=Notification)
+def send_push_notification(instance, created, **kwargs):
+    if created:
+        try :
+          icon = instance.notifier.profile.picture_150
+          first_name = instance.notifier.first_name
+          if not icon :
+            icon =  f'/static/images/letters/{first_name[0]}.jpg'
+          send(instance.notified, first_name, instance.text, instance.url, icon, type=f"{instance.type}-{instance.notifier.first_name}", notification_category = 'notification')
+        except:
+          print('ERROR AT user.models.send_push_notification')
+
+  
+
 
 class FriendList(models.Model):
   user = models.OneToOneField('Account', on_delete = models.CASCADE)
@@ -172,8 +185,6 @@ class LastMessage(models.Model):
   friend = models.ForeignKey('Account', on_delete = models.CASCADE, blank=True, null=True)
   is_seen = models.BooleanField(default=False)
   is_acknowleged = models.BooleanField(default=False)
-  is_acknowleged_by_browser = models.BooleanField(default=False)
-  is_acknowleged_by_android = models.BooleanField(default=False)
 
 class FollowersList(models.Model):
   user = models.OneToOneField('Account', on_delete = models.CASCADE, related_name = "followers_list")

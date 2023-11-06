@@ -14,7 +14,7 @@ import json
 import re
 import os, unicodedata
 from ch7almachya.settings import BASE_DIR
-import urllib.request
+from funtions import last_active
 # Create your views here.
 
 def toNormalForm(text):
@@ -22,6 +22,7 @@ def toNormalForm(text):
 
 @login_required(login_url = 'login')
 def your_items(request):
+  last_active(request)
   cond = request.user.products.all().count() > 50
   context = {
     'title' : gettext("Your items"),
@@ -59,7 +60,7 @@ def your_items_ajax(request):
 
 @login_required(login_url = 'login')
 def saved_posts(request):
-  
+  last_active(request)
   context = {
     'title' : gettext("Saved posts")
   }
@@ -99,6 +100,7 @@ def check_name(name):
 
 @login_required(login_url = 'login')
 def create_item(request): 
+  last_active(request)
   cond = request.user.products.all().count() > 50
   if cond :
     return redirect('home')
@@ -280,7 +282,7 @@ def create_item(request):
 
 @login_required(login_url = 'login')
 def edit_item(request, product_id):
-  
+  last_active(request)
   allStates = State.objects.all().order_by('code')
   allColors = Color.objects.all()
   allDocuments = Document.objects.all()

@@ -5,14 +5,16 @@ from .models import Like, Dislike, Comment
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext
 from django.http import HttpResponse
-from funtions import sub_time
+from funtions import sub_time, last_active
 import json
 from django.db.models import Q, F
 import datetime, re, funtions
 
+
 last_year = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=365)
 
 def save_product(request, user_id, slug, product_id):
+    last_active(request)
     product = Product.objects.get(id=product_id)
     SavedItem.objects.get_or_create(
         user = request.user,
@@ -21,6 +23,7 @@ def save_product(request, user_id, slug, product_id):
     return HttpResponse('')
 
 def unsave_product(request, user_id, slug, product_id):
+    last_active(request)
     try:
         product = Product.objects.get(id=product_id)
         SavedItem.objects.get(
@@ -32,7 +35,8 @@ def unsave_product(request, user_id, slug, product_id):
     return HttpResponse('')
 
 
-def product(request, user_id, slug, product_id):    
+def product(request, user_id, slug, product_id):
+    last_active(request)    
     try :
         owner = Account.objects.get(id=user_id)
         product = owner.products.get(id=product_id, slug=slug)
@@ -98,6 +102,7 @@ def ajax_single_comment(request, user_id, slug, product_id, comment_id):
     return HttpResponse(json.dumps(comment_info))
 
 def single_comment(request, user_id, slug, product_id, comment_id):
+    last_active(request)
     return render(request, 'product/single_comment.html')
 
 def product_ajax(request):
@@ -166,7 +171,7 @@ def delete_product(request, user_id, slug ,product_id):
 
 @login_required(login_url = 'login')
 def like(request, user_id, slug, product_id):
-    
+    last_active(request)
     if request.method == "POST" :
         owner = Account.objects.get(id=user_id)
         product = owner.products.get(id=product_id)
@@ -251,7 +256,7 @@ def like(request, user_id, slug, product_id):
 
 @login_required(login_url = 'login')
 def dislike(request, user_id, slug, product_id):
-    
+    last_active(request)
     if request.method == "POST" :
         owner = Account.objects.get(id=user_id)
         product = owner.products.get(id=product_id)
@@ -335,7 +340,7 @@ def dislike(request, user_id, slug, product_id):
 
 @login_required(login_url = 'login')
 def comment(request, user_id, slug, product_id):
-    
+    last_active(request)
     owner = Account.objects.get(id=user_id)
     if request.method == 'POST' :
         if request.POST.get('comment').strip():
@@ -369,7 +374,7 @@ def comment(request, user_id, slug, product_id):
 
 @login_required(login_url = 'login')
 def delete_comment(request):
-    
+    last_active(request)
     comment = Comment.objects.get(id=request.GET.get('comment_id'))
     comment_owner = comment.user
     product_owner = comment.product.user

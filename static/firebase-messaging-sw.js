@@ -1,3 +1,17 @@
+///////////////////////////////////
+// ON SW ACTIVATION
+//////////////////////////////////
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        ////////////////
+        self.clients.claim()
+    );
+    
+  });
+
+///////////////////////////////////
+// FIREBASE INITIATION
+//////////////////////////////////
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
 
@@ -12,7 +26,52 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
 
+///////////////////////////////////
+// USE FIREBASE MESSAGES
+///////////////////////////////////
+
+self.addEventListener('push', (event) => {
+    const payload = event.data.json();
+    if (payload.data.FCM_type === 'Notification'){
+        showNotification(payload)
+        updateNMCount(payload)
+    }else if (payload.data.FCM_type === 'NMCount'){
+        updateNMCount(payload) 
+    }
+    
+    self.registration
+});
+
+////////////////////////////////////
+// HANDLE NOTIFICATIONS CLICK
+///////////////////////////////////
+
+self.addEventListener('notificationclick', function(event) {
+    event.notification.close();
+    let link = event.notification.data.link
+    event.waitUntil(clients.matchAll({
+        type: "window"
+    }).then(function(clientList) {return clients.openWindow(link);}));
+});
+
+////////////////////////////////
+// LISTEN TO MESSAGE FROM CLIENT
+///////////////////////////////
+
+self.addEventListener('message', (event) => {
+    if (event.data.deleteToken) {
+        console.log('TRYING')
+        try {deleteToken(messaging)}
+        catch(err) {console.log('TOKEN NOT DELETED :', err)}
+    }
+  });
+
+
+/////////////////////////////////
+// FUNCTIONS
+////////////////////////////////
 
 const showNotification = (payload)=>{
     self.registration.showNotification(payload.notification.title, {
@@ -23,50 +82,64 @@ const showNotification = (payload)=>{
     });
 }
 
-self.addEventListener('push', (event) => {
-    const payload = event.data.json();
-    if (payload.data.FCM_type === 'Notification'){
-        showNotification(payload)
-        updateNMCount(payload)
-    }
-    
-    self.registration
-});
-
-self.addEventListener('notificationclick', function(event) {
-    event.notification.close();
-    let link = event.notification.data.link
-    event.waitUntil(clients.matchAll({
-        type: "window"
-    }).then(function(clientList) {return clients.openWindow(link);}));
-});
-
-
-self.addEventListener('activate', function(event) {
-    event.waitUntil(
-      self.clients.claim() // Activate the service worker immediately.
-    );
-});
-
-self.addEventListener('message', function(event) {
-    // Data to be sent to the web page's JavaScript
-    var dataToSend = { key1: 'value1', key2: 'value2' };
-  
-    // Use postMessage to send the data to the web page
-    event.source.postMessage(dataToSend);
-  });
-
+//////////////////////
+// BORADCAST A UI UPADTE FOR NMCount
+/////////////////////
 const updateNMCount = (payload)=>{
     let NMCount = JSON.parse(payload.data.NMCount)
-    console.log(self.clients)
-    self.clients.matchAll().then(clients => {
-        clients.forEach(client => {
-            client.postMessage(()=>{
-                return { NMCount: NMCount, type : 'NMCount' }
-            });
-        });
-    });
-                
+    sendMessage({type : 'NMCount', NMCount : NMCount})
 }
 
-console.log(ServiceWorkerClients.matchAll({includeUncontrolled: true, type: 'window'}))
+
+const sendMessage = async (msg) =>{
+    allClients = await clients.matchAll({includeUncontrolled:true})
+    return Promise.all(
+        allClients.map(client=>{
+            return client.postMessage(msg)
+        })
+        
+    )
+}
+
+
+const deleteToken = (messaging)=>{
+    messaging.deleteToken().then(function() {
+        console.log('Token deleted successfully');
+      }).catch(function(error) {
+        if (error.code === 'messaging/token-not-found') {
+          // The token doesn't exist, which is expected.
+          console.log('Token not found; it may have already been deleted.');
+        } else {
+          // Handle other errors gracefully.
+          console.error('Error deleting token:', error);
+        }
+      });
+}
+
+/////////////////////////////
+// CONNECT CURRENT SEESION ID WITH A NEW TOKEN
+////////////////////////////
+const refreshTokenInServer = (token)=>{
+
+    fetch('/refresh-token', {
+        method: 'GET', // You can specify the HTTP method you need (e.g., 'POST', 'GET', etc.)
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded', // Set the content type as needed
+        },
+        body: `token=${token}`,
+    })
+    .then((response) => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then((data) => {
+        // Handle the JSON response data
+        console.log(data);
+    })
+    .catch((error) => {
+        console.warn('Fetch request error:', error);
+    });
+
+}

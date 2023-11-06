@@ -192,3 +192,4 @@ document.getElementById('search-form-2').addEventListener('submit', (e)=>{
 document.getElementById('search-form-1').addEventListener('submit', (e)=>{
 	store_search(document.getElementById('search-input-1').value)
 })
+

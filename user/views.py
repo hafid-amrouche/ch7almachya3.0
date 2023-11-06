@@ -11,7 +11,7 @@ import json
 from funtions import last_active
 
 def profile(request, user_id):
-    
+    last_active(request)
     try:
         owner = Account.objects.get(id=user_id)
     except:
@@ -101,6 +101,7 @@ def ajax_products(request, user_id):
 
 @login_required(login_url = 'login')
 def report(reqeust, user_id):
+    last_active(request)
     if reqeust.method == "POST" :
         MessageToAdmin.objects.create(
             type = "report",
@@ -118,7 +119,7 @@ def report(reqeust, user_id):
 
 
 def follow_unfollow(request, user_id):
-    
+    last_active(request)
     if request.method == 'POST' :
         owner = Account.objects.raw(f'SELECT {user_id} AS id')[0]
         if owner.followers_list.is_follower(request.user):

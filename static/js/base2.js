@@ -1,65 +1,20 @@
+///////////////////////////////////
+//FUNCTIONS
+///////////////////////////////////
+
 function load_unseen(){
     $.ajax({
         url: '/NM-count',
         success: function(data){
-            data = JSON.parse(data);
-            if (data){
-                if (data[0] != 0){
-                    
-                    document.getElementById('notificationsCountHtml').className = 'btn btn-success rounded-circle'
-                    document.getElementById('notificationsCountHtml').innerHTML = data[0]
-                    
-                }else{
-                    document.getElementById('notificationsCountHtml').innerHTML = ""
-                    document.getElementById('notificationsCountHtml').className = ''
-                }
-                if (data[1] != 0){
-                    document.getElementById('messagesCountHtml').className = 'btn btn-success rounded-circle'
-                    document.getElementById('messagesCountHtml').innerHTML  = data[1]
-                    
-                }else{
-                    document.getElementById('messagesCountHtml').innerHTML  = ""
-                    document.getElementById('messagesCountHtml').className = ''
-                }
-                
-
-                var count = Number(data[0]) + Number(data[1])
-                if( count ){
-                    all_counts.style.display='block'
-                    all_counts.innerHTML = count
-                    all_counts_2.style.display='block'
-                    all_counts_2.innerHTML = count
-                }
-                else{
-                    all_counts_2.style.display='none'
-                    all_counts.style.display='none'
-                }
-            }
-            
+            let NMCount = JSON.parse(data)
+            broadcastChannel.postMessage({ NMCount : NMCount, type : 'NMCountDisplay' });
+            NMCountUIUpdater(NMCount)
         }
     });
-}
-const activateSW = ()=>{
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/static/firebase-messaging-sw.js')
-            .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-            if (getOrUpdateToken){
-                getToken(registration)
-            }
-           
-            })
-            
-            .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-            });
-    }
+
 }
 
-
-
-
-const updateTokenList =(token)=>{
+const updateTokenListInServer =(token)=>{
     $.ajax({
         url : '/update-notifications-token-list',
         data : {
@@ -71,23 +26,7 @@ const updateTokenList =(token)=>{
     })
 }
 
-
-var getTokenTries = 0
-const getTokenGetToken =(messaging)=>{
-    if (getTokenTries > 100) {return}
-    getTokenTries += 1
-    
-    messaging.usePublicVapidKey("BGM30SVq4D5Dh6nLQC3OW1MmMxIgZOu92a0FOeQHNqgq7URJl0gvUkX-JqzJKNJu6n5Cob_d0Hhsx9mnd7Ly-NM");
-    // Subscribe to the registration token
-    messaging.getToken({ vapidKey: "BGM30SVq4D5Dh6nLQC3OW1MmMxIgZOu92a0FOeQHNqgq7URJl0gvUkX-JqzJKNJu6n5Cob_d0Hhsx9mnd7Ly-NM" }).then((currentToken) => {
-        console.log("Current token:", currentToken);
-        updateTokenList(currentToken)
-        // Send this token to your server for later use when sending notifications.
-    }).catch((err) => {
-        console.log("An error occurred while getting the token:", err);
-        getTokenGetToken(messaging)
-    });
-    // Listen for messages
+const listenToFBMessages =(messaging)=>{
     messaging.onMessage((payload) => {
         console.log("Message received:", payload);
         // Create and display a notification
@@ -102,14 +41,34 @@ const getTokenGetToken =(messaging)=>{
         notif.onclick = (event)=>{
             notif.close()
             window.open(payload.data['link'], '_blank')
-            
         }
     });
 }
 
+/////////////////////////////////////////////
+//
+/////////////////////////////////////////////
+
+const getTokenGetToken =(messaging)=>{
+ 
+
+    messaging.getToken().then((currentToken) => {
+        console.log("Current token:", currentToken);
+        updateTokenListInServer(currentToken) // Send this token to your server for later use when sending notifications.
+
+    }).catch((err) => {
+        console.log("An error occurred while getting the token:", err);
+        //getTokenGetToken(messaging)
+    });
+    //////////////////// Listen for messages
+    listenToFBMessages(messaging)
+}
+
+//////////////////////////////////
+//
+//////////////////////////////////
 const getToken = (registration)=>{
    
-    console.log(getTokenTries)
     const firebaseConfig = {
         apiKey: "AIzaSyCvQPhgNrO3VqmOLTNG-K3IIdu_n00q9u4",
         authDomain: "ch7al-machya-web-fcm.firebaseapp.com",
@@ -123,14 +82,76 @@ const getToken = (registration)=>{
     firebase.initializeApp(firebaseConfig);
     
     const messaging = firebase.messaging();
+    messaging.usePublicVapidKey("BGM30SVq4D5Dh6nLQC3OW1MmMxIgZOu92a0FOeQHNqgq7URJl0gvUkX-JqzJKNJu6n5Cob_d0Hhsx9mnd7Ly-NM");
     messaging.useServiceWorker(registration);
-    //
     getTokenGetToken(messaging)
 }
 
-$('document').ready(function(){
-    load_unseen()
-})
+var NCount = 0
+var MCount = 0
+var count = 0
+
+const NMCountUIUpdater = (NMCount)=>{
+    NMCount[0] >= 0 ? NCount = NMCount[0] : null
+
+    NMCount[1] >= 0 ? MCount = NMCount[1] : null
+    
+    if (NCount > 0){
+        
+        document.getElementById('notificationsCountHtml').className = 'btn btn-success rounded-40'
+        document.getElementById('notificationsCountHtml').innerHTML = NCount
+        
+    }else if (NCount === 0){
+        document.getElementById('notificationsCountHtml').innerHTML = ""
+        document.getElementById('notificationsCountHtml').className = ''
+    }
+    if (MCount > 0){
+        document.getElementById('messagesCountHtml').className = 'btn btn-success rounded-40'
+        document.getElementById('messagesCountHtml').innerHTML  = MCount
+        
+    }else if (MCount === 0){
+        document.getElementById('messagesCountHtml').innerHTML  = ""
+        document.getElementById('messagesCountHtml').className = ''
+    }
+    
+    count = NCount + MCount
+    if( count ){
+        all_counts.style.display='block'
+        all_counts.innerHTML = count
+        all_counts_2.style.display='block'
+        all_counts_2.innerHTML = count
+    }
+    else{
+        all_counts_2.style.display='none'
+        all_counts.style.display='none'
+    }
+}
+
+const listenToClientsMessages =()=>{
+    navigator.serviceWorker.addEventListener("message", ({data}) => {
+        if (data.type === 'NMCount'){
+            // Handle the received data
+            var NMCount = data.NMCount;
+            NMCountUIUpdater(NMCount)
+        }
+    });
+}
+
+////////////////////////////////////////
+// BROADCASTING SOME VARIABLES UPDATE TO ALL TABS
+///////////////////////////////////////
+const broadcastChannel = new BroadcastChannel('count_channel');
+broadcastChannel.onmessage = (event) => {
+    if (event.data.type === 'NMCountDisplay'){
+        let NMCount = event.data.NMCount
+        NMCountUIUpdater(NMCount) 
+    }  
+  };
+
+
+///////////////////////////////////
+// LOADING SW FILE TO BROSER
+///////////////////////////////////
 
 if ('Notification' in window) {
     // Request permission to show notifications
@@ -140,63 +161,67 @@ if ('Notification' in window) {
             // If the user accepts, let's create a notification
             if (permission === "granted") {
                console.log('Permission granted')
-                activateSW()
             }
             else{
                 console.log('Permission not granted!!!')
             }
           });;
     }else{
-        activateSW()
         console.log('Permission already granted')
     }
     
 } 
 
 
-
-
-
-window.addEventListener('message', function(event) {
-
-    // Ensure the message is coming from the service worker
-    if (event.source && event.source instanceof ServiceWorker) {
-        console.log('NMCount')
-        if (event.data.type === 'NMCount'){
-            // Handle the received data
-            var NMCount = event.data.NMCount;
-            if (NMCount [0] != 0){
-            
-                document.getElementById('notificationsCountHtml').className = 'btn btn-success rounded-circle'
-                document.getElementById('notificationsCountHtml').innerHTML = data[0]
-                
-            }else{
-                document.getElementById('notificationsCountHtml').innerHTML = ""
-                document.getElementById('notificationsCountHtml').className = ''
-            }
-            if (NMCount [1] != 0){
-                document.getElementById('messagesCountHtml').className = 'btn btn-success rounded-circle'
-                document.getElementById('messagesCountHtml').innerHTML  = data[1]
-                
-            }else{
-                document.getElementById('messagesCountHtml').innerHTML  = ""
-                document.getElementById('messagesCountHtml').className = ''
-            }
-            
-            var count = NMCount [0] + data[1]
-            if( count ){
-                all_counts.style.display='block'
-                all_counts.innerHTML = count
-                all_counts_2.style.display='block'
-                all_counts_2.innerHTML = count
-            }
-            else{
-                all_counts_2.style.display='none'
-                all_counts.style.display='none'
-            }
-        }
-      
+////////////////////////////////////
+//
+///////////////////////////////////
+const deleteToken= ()=>{
+    if ('serviceWorker' in navigator) {
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage({deleteToken : true});
+          } else {
+            console.warn('Service worker is not controlling the page.');
+          }
+        
     }
-});
+}
+
+///////////////////////////////////
+// ACTIVATING SERVICE WORKER
+//////////////////////////////////
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw.js', {scope : ''})
+        .then((registration) => {
+            listenToClientsMessages()
+            console.log('Service Worker registered with scope:', registration.scope);
+            if (getOrUpdateToken){
+                getToken(registration)
+            }
+       
+        })
+        .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+        });
+}
 
 
+
+
+//////////////////////////////////
+// AFTER HTML LOADING
+/////////////////////////////////
+
+$('document').ready(function(){
+    load_unseen()
+})
+
+
+/////////////////////////////////////
+//
+/////////////////////////////////////
+document.getElementById('logout-a').onclick = (event)=>{
+    event.preventDefault()
+    deleteToken()
+    //window.location.href = document.getElementById('logout-a').getAttribute('href')
+}

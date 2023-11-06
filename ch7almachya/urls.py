@@ -6,19 +6,24 @@ from product.views import product_ajax, delete_comment
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.utils import timezone
+from .files_render import firebase_messaging_sw
 
 
 last_modified_date = timezone.now()
 
 urlpatterns = [
+    path('firebase-messaging-sw.js', firebase_messaging_sw, name='firebase-messaging-sw-file'),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
+
+
 
 urlpatterns += i18n_patterns(
     path('admin-room/', admin.site.urls),
     path('send/', notification_sending_management.send, name='send-notification'),
     path('', views.home, name='home'), 
     path('update-notifications-token-list', token_management.update_notifications_token_list, name='update-notifications-token-list'),
+    path('refresh-token', token_management.refresh_token, name='refresh-token'),
     path('simular-products/', views.simular_products, name='simular-products'),
     path('home-ajax/', views.home_ajax, name='home-ajax'),
     path('get-people/', views.get_people, name='get-people'),

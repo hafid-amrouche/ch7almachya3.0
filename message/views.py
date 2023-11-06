@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Message
-from user.models import Account, LastMessage
+from user.models import Account
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -8,15 +8,12 @@ from funtions import last_active
 from django.utils.translation import gettext
 from django.http import Http404, HttpResponse
 import json
-from ch7almachya.settings import EMAIL_HOST_USER
-from django.core.mail import EmailMessage
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-
+from ch7almachya.user_interface_RT_updating import update_NMCount
 # Create your views here.
  
 @login_required(login_url = 'login')
 def messages_list(request):
+    last_active(request)
     return render(request, 'message/messages_list.html')
 
 @login_required(login_url = 'login')
@@ -49,15 +46,11 @@ def ajax_messages_list(request):
 
 @login_required(login_url = 'login')
 def messages_box(request, reciever_id):
-    
+    last_active(request)
     if reciever_id == request.user.id :
         return redirect('home')
-    try :
-        reciever = Account.objects.get(id=reciever_id)
-    except:
-        return render(request, 'error.html')
         
-
+    reciever = Account.objects.get(id=reciever_id)
     context={
         "reciever" : reciever,
         "title" : gettext('Messages'),
@@ -82,49 +75,6 @@ def ajax_save_message(request, reciever_id):
                 text = text,
             )        
             
-            # if reciever.profile.email_messages and reciever.profile.email_verified:
-            #     try :
-            #         url = 'http://' + str(get_current_site(request)) + f'/messages/{ request.user.id } :'
-            #         mail_subjet = gettext('{} Sent a message').format(request.user.full_name())
-            #         message = render_to_string('message/message_email.html', {
-            #             'line_1' : gettext("Go to message {}:").format(url),
-            #             'line_2' : gettext("{} said").format(request.user.first_name.capitalize()),
-            #             'text' : text
-            #         })
-            #         to_email = reciever.email
-            #         send_email = EmailMessage(subject=mail_subjet, body=message, from_email=EMAIL_HOST_USER, to=[to_email])
-            #         send_email.send()
-            #     except:
-            #         pass
-            user_last_message = request.user.last_messages.filter(friend = reciever)
-            reciever_last_message = reciever.last_messages.filter(friend = request.user)
-            if user_last_message:
-                user_last_message = user_last_message[0]
-                user_last_message.message = message
-                user_last_message.is_seen = True
-                user_last_message.save()
-                reciever_last_message = reciever_last_message[0]
-                reciever_last_message.message = message
-                reciever_last_message.is_seen = False
-                reciever_last_message.is_acknowleged = False
-                reciever_last_message.is_acknowleged_by_browser = False
-                reciever_last_message.is_acknowleged_by_android = False
-                reciever_last_message.save()
-            else:
-                l1= LastMessage.objects.create(
-                    user = request.user,
-                    message = message,
-                    friend = reciever,
-                    is_seen = True,
-                )
-                l2 = LastMessage.objects.create(
-                    friend = request.user,
-                    message = message,
-                    user = reciever,
-                )
-                
-            request.user.friendlist.add_friend(reciever)
-            reciever.friendlist.add_friend(request.user)
     return HttpResponse()
     
 

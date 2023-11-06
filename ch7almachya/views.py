@@ -12,6 +12,7 @@ from django.core.paginator import Paginator
 from os import makedirs, path
 from django.db.models import F, Q
 import funtions
+from funtions import last_active
 from funtions import get_ip_address, substract_time_messages, sub_time
 from django.contrib import messages
 from django.utils.translation import gettext
@@ -46,6 +47,7 @@ def delete_old_token(request):
 
 
 def home(request):
+    last_active(request)
     context = {
         'is_home' : True,
     }
@@ -257,7 +259,7 @@ def get_SP(request,allStates = State.objects.all(),allFuels=Fuel.objects.all(),a
     return searchparameters
 
 def search(request):
-    
+    last_active(request)
     allStates = State.objects.all()
     allOptions = Option.objects.all()
     allFuels = Fuel.objects.all()
@@ -699,7 +701,7 @@ def search_ajax(request):
     return  HttpResponse(json.dumps([list(products), products.has_next(), products.has_previous(), last_page])) 
 
 def category(request, parent, child):
-    
+    last_active(request)
     allStates = State.objects.all()
     allOptions = Option.objects.all()
     allFuels = Fuel.objects.all()
@@ -1348,6 +1350,7 @@ def category_ajax(request):
     return  HttpResponse(json.dumps([list(products), products.has_next(), products.has_previous(), last_page])) 
     
 def notifications(request):
+    last_active(request)
     return render(request, 'notifications.html')
 
 def ajax_load_notifications(request):
@@ -1449,6 +1452,7 @@ def ajax_load_notifications_messages(request):
     return HttpResponse(json.dumps([unseen_count, messages_list, notifications_list, unseen_count_2]))
 
 def contact_us(request):
+    last_active(request)
     if request.method == "GET" :
         form = ContactUsForm
     elif request.method == "POST":
@@ -1533,6 +1537,7 @@ def auto_complete_suggestions(request):
     return HttpResponse(json.dumps(suggesstions))
 
 def get_people(request):
+    last_active(request)
     keywords =  re.split(' |-', request.GET.get('keyword').lower().strip())
     ids = request.GET.getlist('ids[]') or []
     users = Account.objects.filter(profile__is_company = False).exclude(id__in = ids).values('last_name', 'first_name', 'id', 'profile__picture_150', 'username').annotate(scoore = F('profile__scoore'),rank = F('profile__rank'))
@@ -1564,6 +1569,7 @@ def get_people(request):
     return HttpResponse(json.dumps( [z[:20], z.__len__() > 20] ))
 
 def get_companies(request):
+    last_active(request)
     keywords =  re.split(' |-', request.GET.get('keyword').lower().strip())
     ids = request.GET.getlist('ids[]') or []
     users = Account.objects.filter(profile__is_company = True).exclude(id__in = ids).values('last_name', 'first_name', 'id', 'profile__picture_150', 'username').annotate(scoore = F('profile__scoore'),rank = F('profile__rank'))
@@ -1907,5 +1913,6 @@ def simular_products(request):
     products = products[:20]
     return  HttpResponse(json.dumps([list(products)])) 
     
+
 
 

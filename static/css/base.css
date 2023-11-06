@@ -408,3 +408,7 @@ input:checked[type="checkbox"]::after {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--green); 
 }
+
+.rounded-40{
+    border-radius: 40% !important;
+}

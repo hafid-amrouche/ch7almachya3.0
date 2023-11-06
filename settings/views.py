@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from ch7almachya.settings import EMAIL_HOST_USER
 from django.core.mail import EmailMessage
 from django.utils.translation import gettext
-
+from funtions import last_active
 from PIL import Image
 from user.models import State, Account, SearchWords
 from django.utils.translation import gettext
@@ -24,11 +24,12 @@ def check_word(name):
 
 @login_required(login_url = 'login')
 def email(request):
+  last_active(request)
   return render(request, 'settings/email.html')
 
 @login_required(login_url = 'login')
 def settings_profile(request):
-  
+  last_active(request)
   if request.method == "POST" :
     if request.POST.get("remove_profile_picture") == "on":
       request.user.profile.picture.delete()
@@ -107,6 +108,7 @@ def settings_profile(request):
 
 @login_required(login_url = 'login')
 def make_email(request):
+  last_active(request)
   email = request.GET.get('email').lower().strip()
   used_times = Account.objects.filter(email = email, profile__email_verified = True).count()
   if used_times > 3 :
@@ -123,6 +125,7 @@ def make_email(request):
 
 @login_required(login_url = 'login')
 def change_email(request):
+  last_active(request)
   if request.method == 'POST' :
     email = request.POST.get('email').lower().strip()
     used_times = Account.objects.filter(email = email, profile__email_verified = True).count()
@@ -155,7 +158,7 @@ def change_email(request):
 
 @login_required(login_url = 'login')
 def activate_email(request):
-  
+  last_active(request)
   if request.user.profile.email_verified == False :
     current_site = get_current_site(request)
     if request.LANGUAGE_CODE == "en" :
@@ -195,7 +198,7 @@ def activate_email(request):
   
 @login_required(login_url = 'login')
 def confirm_email_activation(request, uidb64, token):
-  
+  last_active(request)
   try:
     uid = urlsafe_base64_decode(uidb64).decode()
     user = Account._default_manager.get(pk=uid)
@@ -215,7 +218,7 @@ def confirm_email_activation(request, uidb64, token):
 
 @login_required(login_url = 'login')
 def change_password(request):
-    
+    last_active(request)
     if request.method == "GET" :
         return render(request,'settings/change_password.html', { 'title' : gettext('Change password') })
     else:
